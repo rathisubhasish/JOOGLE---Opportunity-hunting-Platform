@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;800&display=swap');
+
+:root{
+    --headColor: #696969;
+    --headFont: 'Orbitron', sans-serif;
+    --primaryBackColor: #6495ED;
+    --primaryColor: #1c4980;
+    --primaryWhite: #FFF;
+    --regularFont: 'Montserrat', sans-serif;
+    --secondaryBackColor: #A52A2A;
+    --secondaryColor: #A52A2A;
+}
+
+*{
+    /* background-color: lightblue; */
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+.App{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100vh;
+    width: 100%;
+}

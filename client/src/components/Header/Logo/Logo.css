@@ -1,0 +1,33 @@
+.logo-name{
+    align-items: center;
+    color: var(--headColor);
+    justify-content: center;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.material-icons.logoSize{
+    font-size: 15px;
+}
+
+/* Media quiries */
+
+@media screen and (min-width: 768px) and (min-height: 900px) {
+    .logo-name{
+        font-size: 2rem;
+    }
+
+    .material-icons.logoSize{
+        font-size: 25px;
+    }
+}
+
+@media screen and (min-width: 1280px) and (min-height: 700px) {
+    .logo-name{
+        font-size: 1.8rem;
+    }
+
+    .material-icons.logoSize{
+        font-size: 25px;
+    }
+}

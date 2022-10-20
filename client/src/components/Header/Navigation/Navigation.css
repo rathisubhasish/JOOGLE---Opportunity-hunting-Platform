@@ -1,0 +1,22 @@
+.menu-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    /* padding:0.5rem; */
+}
+
+.menu-container ul{
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.menu-container ul li{
+    padding: 0.3rem;
+    border: 1px solid blue;
+    border-radius: 3px;
+}
+
+
