@@ -1,0 +1,145 @@
+.brochure-container{
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    text-align: center;
+    width: 94%;
+    margin: 0 auto;
+    gap: 1rem;
+    background-color: transparent;
+}
+ 
+.brochure-item{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: transparent;
+    padding: 0.2rem;
+}
+
+.brochure-title{
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+    color: var(--primaryColor);
+    font-family: var(--headFont);
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.brochure-content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.brochure-image{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.brochure-image img{
+    width: 80%;
+}
+
+.brochure-detail{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0.2rem;
+    gap: 0.5rem;
+}
+
+.brochure-info{
+    width: inherit;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.brochure-btn-container{
+    display: flex;
+    margin: 0.5rem;
+    justify-content: center;
+}
+
+.brochure-btn{
+    background-color: var(--primaryBackColor);
+    border-radius: 5px;
+    border: 1px solid var(--headColor);
+    color: white;
+    cursor: pointer;
+    padding: 0.4rem;
+    text-decoration: none;
+    width: 50%;
+    font-size: 1.3rem;
+    transition: all 0.4s ease-in-out;
+}
+
+.brochure-btn:hover{
+    background-color: var(--primaryColor);
+    color: white;
+}
+
+/* ______________________________________ */
+
+/* Media queries */
+@media screen and (min-width: 768px) and (min-height: 900px) {
+    .brochure-content{
+        flex-direction: row;
+    }
+    .brochure-title{
+        font-size: 1.6rem;
+    }
+    .brochure-image{
+        flex: 40%;
+    }
+    .brochure-detail{
+        flex: 60%;
+        width: 60%;
+        justify-content: center;
+    }
+    .brochure-info{
+        width: 100%;
+        padding: 0.5rem;
+        margin-top: 1rem;
+    }
+    .brochure-btn{
+        width: 30%;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 1280px) and (min-height: 700px) {
+    .brochure-container{
+        width: 80%;
+    }
+    .brochure-title{
+        font-size: 1.6rem;
+    }
+    .brochure-content{
+        flex-direction: row;
+    }
+    .brochure-image{
+        flex: 40%;
+    }
+    .brochure-detail{
+        flex: 60%;
+        width: 60%;
+        justify-content: center;
+    }
+    .brochure-info{
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 1.4rem;
+        margin-top: 1rem;
+    }
+    .brochure-btn{
+        width: 30%;
+        font-size: 1.4rem;
+    }  
+}

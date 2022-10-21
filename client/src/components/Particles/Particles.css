@@ -1,0 +1,133 @@
+.particles-container{
+    /* background-color: lightblue; */
+    position: fixed;
+    width: 100%;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    opacity: 40%;       
+}
+
+.element{
+    width: 100%;
+    position: fixed;
+    animation-name: ckw;
+    animation-duration: 20.5s;
+    animation-iteration-count: infinite;
+}
+
+#P1{
+    top: 4rem;
+    left: 15rem;
+}
+
+#P2{
+    top: -5rem;
+    right: 10rem;
+}
+
+#P3{
+    top: 35rem;
+    right: 12rem;
+}
+
+#P4{
+    bottom: 0;
+    left: -12rem;
+}
+#P5{
+    bottom: -8rem;
+    right: -12rem;
+}
+#P6{
+    top: -12rem;
+    right: -12rem;
+}
+
+@keyframes ckw {
+    0% {
+        transform: rotate(0deg);
+    }
+    20% {
+        transform: rotate(50deg);
+    }
+    40% {
+        transform: rotate(100deg);
+    }
+    60% {
+        transform: rotate(50deg);
+    }
+    80% {
+        transform: rotate(25deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* ______________________________________ */
+
+/* Media queries */
+@media screen and (min-width: 768px) and (min-height: 900px) {
+    #P1{
+        /* display: none; */
+        top: 18rem;
+        left: 30rem;
+    }
+    #P2{
+        /* display: none; */
+        top: -5rem;
+        right: 22rem;
+    }
+    #P3{
+        /* display: none; */
+        top: 40rem;
+        right: 20rem;
+    }
+    #P4{
+        /* display: none; */
+        top: -20rem;
+        left: 32rem;
+    }
+    #P5{
+        display: none;
+        bottom: -30rem;
+        right: -12rem;
+    }
+    #P6{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1280px) and (min-height: 700px) {
+    #P1{
+        /* display: none; */
+        top: 18rem;
+        left: 38rem;
+    }
+    #P2{
+        /* display: none; */
+        top: -25rem;
+        right: 40rem;
+    }
+    #P3{
+        display: none;
+        top: 10rem;
+        right: 20rem;
+    }
+    #P4{
+        display: none;
+        top: -52rem;
+        left: 32rem;
+    }
+    #P5{
+        /* display: none; */
+        bottom: 16rem;
+        right: -25rem;
+    }
+    #P6{
+        display: none;
+        top: 14rem;
+        right: 38rem;
+    }
+}

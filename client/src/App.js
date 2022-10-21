@@ -2,16 +2,16 @@
 import './App.css';
 
 // importing components
-import {Header} from "./components/components";
-
+import {Header, Brochure, Particles} from "./components/components";
 // importing views
-
-
+import {trial} from "./a";
 
 function App() {
   return (
     <div className="App">
+        <Particles />
         <Header />
+        <Brochure ans={trial}/>
     </div>
   );
 };

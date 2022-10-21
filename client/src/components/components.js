@@ -1,3 +1,4 @@
 import Header from "./Header/Header";
-
-export {Header};
+import Brochure from "./Brochure/Brochure";
+import Particles from "./Particles/Particles";
+export {Header, Brochure, Particles};
