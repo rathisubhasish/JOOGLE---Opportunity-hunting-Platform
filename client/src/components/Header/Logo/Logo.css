@@ -7,7 +7,8 @@
 }
 
 .material-icons.logoSize{
-    font-size: 15px;
+    font-size: 20px;
+    color:darkgoldenrod;
 }
 
 /* ________________________________________ */
@@ -19,7 +20,7 @@
     }
 
     .material-icons.logoSize{
-        font-size: 25px;
+        font-size: 30px;
     }
 }
 

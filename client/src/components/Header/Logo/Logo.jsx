@@ -5,7 +5,7 @@ import "./Logo.css";
 const Logo = () => {
   return (
     <>
-        <h3 className="logo-name">
+        <h2 className="logo-name">
                 J
                 <span className="material-icons logoSize">
                 update
@@ -14,7 +14,7 @@ const Logo = () => {
                 alarm
                 </span>
                 gle
-        </h3>
+        </h2>
     </>
   )
 };
