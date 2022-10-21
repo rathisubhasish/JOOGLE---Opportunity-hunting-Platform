@@ -1,21 +1,28 @@
+// importing modules
 import React from 'react';
 import "./Navigation.css";
-import {unauthorizedNav} from "./Navigate";
+
+// importing navdata
+import {unauthorizedNav,authorizedNav} from "./Navigate";
 
 const Navigation = () => {
-
-  const navBtn = {
-    textDecoration: "none",
-    color: {},
-
-  }
-
   return (
     <>
-        <nav className="menu-container">
+        <div className="menu-container">
           <ul>
+            {
+              unauthorizedNav.map((val,key)=>{
+                return (
+                  <li key={key}>
+                    <a href={val.link} className="navBtn">
+                      {val.title}
+                    </a>
+                  </li>
+                );
+              })
+            }
           </ul>
-        </nav>
+        </div>
     </>
   ) 
 };

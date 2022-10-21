@@ -1,14 +1,19 @@
-const unauthorizedNav = [
+import React  from "react";
+
+export const unauthorizedNav = [
     {
         "title":"LOGIN",
         "link":"/login",
-        "color":""
     },
     {
         "title":"SIGNUP",
         "link":"/signup",
-        "color":""
+    },
+];
+
+export const authorizedNav = [
+    {
+        "title":"LOGOUT",
+        "link":"/logout",
     },
 ]
-
-export {unauthorizedNav};

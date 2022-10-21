@@ -1,14 +1,19 @@
+// importing modules
 import './App.css';
+
+// importing components
 import {Header} from "./components/components";
-import Logo from "./components/Header/Logo/Logo";
+
+// importing views
+
+
 
 function App() {
   return (
     <div className="App">
         <Header />
-        <Logo />
     </div>
   );
-}
+};
 
 export default App;

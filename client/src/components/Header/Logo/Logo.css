@@ -10,8 +10,9 @@
     font-size: 15px;
 }
 
-/* Media quiries */
+/* ________________________________________ */
 
+/* Media queries */
 @media screen and (min-width: 768px) and (min-height: 900px) {
     .logo-name{
         font-size: 2rem;
