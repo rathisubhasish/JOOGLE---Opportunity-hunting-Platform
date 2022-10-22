@@ -27,6 +27,7 @@
 }
 
 #P3{
+    display: none;
     top: 35rem;
     right: 12rem;
 }
@@ -40,6 +41,7 @@
     right: -12rem;
 }
 #P6{
+    
     top: -12rem;
     right: -12rem;
 }
@@ -81,6 +83,7 @@
     }
     #P3{
         /* display: none; */
+        display: block;
         top: 40rem;
         right: 20rem;
     }
@@ -122,7 +125,7 @@
     }
     #P5{
         /* display: none; */
-        bottom: 16rem;
+        bottom: 12rem;
         right: -25rem;
     }
     #P6{

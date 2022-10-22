@@ -2,16 +2,18 @@
 import './App.css';
 
 // importing components
-import {Header, Brochure, Particles} from "./components/components";
+import {Header, Brochure, Particles, Achievement, CardItem} from "./components/components";
 // importing views
 import {trial} from "./a";
 
 function App() {
   return (
     <div className="App">
-        <Particles />
+        {/* <Particles /> */}
         <Header />
-        <Brochure ans={trial}/>
+        <CardItem />
+        {/* <Brochure ans={trial}/> */}
+        {/* <Achievement /> */}
     </div>
   );
 };
