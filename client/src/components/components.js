@@ -4,7 +4,7 @@ import Particles from "./Particles/Particles";
 import CardItem from "./CardItem/CardItem";
 import LoginForm from "./Form/LoginForm";
 import SignupForm from "./Form/SignupForm";
-
+import Filter from "./Popup/Filter";
 
 export 
 { 
@@ -13,5 +13,6 @@ export
     Particles,
     CardItem,
     LoginForm,
-    SignupForm
+    SignupForm,
+    Filter
 };

@@ -9,7 +9,8 @@ import
   Particles,
   CardItem,
   LoginForm,
-  SignupForm
+  SignupForm,
+  Filter
 } from "./components/components";
 
 // importing views
@@ -20,7 +21,7 @@ function App() {
     <div className="App">
         {/* <Particles /> */}
         <Header />
-        <SignupForm />
+        <Filter />
         {/* <Brochure ans={trial}/> */}
         {/* <Achievement /> */}
     </div>
