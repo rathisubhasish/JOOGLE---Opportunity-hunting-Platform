@@ -2,7 +2,16 @@
 import './App.css';
 
 // importing components
-import {Header, Brochure, Particles, Achievement, CardItem} from "./components/components";
+import 
+{
+  Header, 
+  Brochure, 
+  Particles,
+  CardItem,
+  LoginForm,
+  SignupForm
+} from "./components/components";
+
 // importing views
 import {trial} from "./a";
 
@@ -11,7 +20,7 @@ function App() {
     <div className="App">
         {/* <Particles /> */}
         <Header />
-        <CardItem />
+        <SignupForm />
         {/* <Brochure ans={trial}/> */}
         {/* <Achievement /> */}
     </div>

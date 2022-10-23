@@ -1,7 +1,17 @@
 import Header from "./Header/Header";
 import Brochure from "./Brochure/Brochure";
 import Particles from "./Particles/Particles";
-import Achievement from "./Achivement/Achievement";
 import CardItem from "./CardItem/CardItem";
+import LoginForm from "./Form/LoginForm";
+import SignupForm from "./Form/SignupForm";
 
-export {Header, Brochure, Particles, Achievement, CardItem};
+
+export 
+{ 
+    Header, 
+    Brochure, 
+    Particles,
+    CardItem,
+    LoginForm,
+    SignupForm
+};
