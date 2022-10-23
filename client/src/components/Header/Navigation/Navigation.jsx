@@ -1,6 +1,7 @@
 // importing modules
 import React from 'react';
 import "./Navigation.css";
+import { NavLink } from 'react-router-dom';
 
 // importing navdata
 import {unauthorizedNav,authorizedNav} from "./Navigate";
@@ -14,9 +15,9 @@ const Navigation = () => {
               unauthorizedNav.map((val,key)=>{
                 return (
                   <li key={key}>
-                    <a href={val.link} className="navBtn">
+                    <NavLink to={val.link} className="navBtn">
                       {val.title}
-                    </a>
+                    </NavLink>
                   </li>
                 );
               })

@@ -3,10 +3,11 @@ import "./PopupCss/Popup.css";
 import { LoginForm, SignupForm } from "../components";
 
 const Filter = () => {
-  re<>
+  return (
+    <>
       <div className="popup-container">
-        <div turn (
-    className="popup-item-container">
+        <div
+          className="popup-item-container">
           <div className="popup-head">
             <p className='popup-title'>
               Filter

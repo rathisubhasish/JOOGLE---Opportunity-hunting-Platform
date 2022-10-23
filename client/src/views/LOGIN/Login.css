@@ -1,0 +1,46 @@
+.login-container {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    margin: 0.2rem 0rem 0rem 0rem;
+    text-align: center;
+}
+
+.login-items{
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    width: 94%;
+    text-align: center;
+    align-items: center;
+    gap: 0.1rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#login-image{
+    width: 100%;
+}
+
+/* ______________________________________ */
+
+/* Media queries */
+@media screen and (min-width: 768px) and (min-height: 900px) {
+    
+    .login-items{
+        flex-direction: row;
+        width: 80%;
+    }
+
+    
+
+}
+
+@media screen and (min-width: 1280px) and (min-height: 700px) {
+    .login-items{
+        flex-direction: row;
+        width: 60%;
+    }
+}
