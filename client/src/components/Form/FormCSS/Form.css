@@ -21,6 +21,22 @@
     text-align: center;
 }
 
+.form-head{
+    font-family: var(--headFont);
+    font-size: 1.2rem;
+    font-weight: bolder;
+    margin: 0 auto;
+    padding: 0.4rem;
+    text-align: center;
+}
+
+#signup-head{
+    color: var(--secondaryBackColor);
+}
+#login-head{
+    color: var(--primaryColor);
+}
+
 .label-content{
     color: var(--headColor);
     font-family: var(--headFont);
@@ -60,7 +76,7 @@
 
 .input-conditions {
     border-radius: 5px;
-    border: 1px solid var(--headColor);
+    border: 1px dashed var(--headColor);
     display: flex;
     flex-direction: column;
     font-size: 0.8rem;
@@ -68,12 +84,29 @@
     padding: 0.5rem;
     transition: all .4s ease-in-out;
     width: 80%;
+    color: var(--headColor);
+}
+
+.role-container{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.radio-item{
+    display: flex;
+    gap: 0.5rem;
+    color: var(--headColor);
+    border-radius: 4px;
 }
 
 
 .condition-item {
     align-items: center;
     display:flex;
+    transition: all .4s ease-in-out;
     justify-content: space-between;
     margin: 0 auto;
     text-align: center;
@@ -100,24 +133,31 @@
     border:1px dashed var(--headColor);
     color: var(--headColor);
     cursor: pointer;
-    display: flex;
-    justify-content: center;
     outline: none;
-    padding: 0.4rem;
+    font-size: 18px;
 }
 
 .checkSuccessIcon {
     color:cornflowerblue;
+    font-size: 22px;
 }
+
 .btn-submit:not([disabled]){
-    color: var(--primaryWhite);
-    font-family: var(--headFont);
-    font-weight: 600; 
-    margin-top: 0.5rem;
+   width: 40%;
+   padding: 0.5rem;
+   font-size: 1.2rem;
+   color: white;
+   border: none;
+   border-radius: 7px;
+   margin: 0 auto;
+   cursor: pointer;
+   transition: all 0.4s ease-in-out;
 }
+
 #login:not([disabled]){
     background-color: var(--primaryBackColor);
 }
+
 #login:hover:not([disabled]){
     background-color: var(--primaryColor);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
@@ -126,10 +166,12 @@
 .checkbox-container {
     align-items: center;
     display:flex;
-    justify-content: space-around;
-    margin: 0 auto;
+    justify-content: center;
     text-align: center;
-    width: 80%;
+}
+
+.checkbox-item{
+    padding: 0.5rem;
 }
 
 #checkbox{
@@ -150,9 +192,13 @@
 
 /* Media queries */
 @media screen and (min-width: 768px) and (min-height: 900px) {
-    
+    /* .checkbox-container{
+        width: 60%;
+    } */
 }
 
 @media screen and (min-width: 1280px) and (min-height: 700px) {
-      
+    /* .checkbox-container{
+        width: 60%;
+    }      */
 }

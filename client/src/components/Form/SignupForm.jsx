@@ -1,18 +1,78 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./FormCSS/Form.css";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
+// functions
+import { register } from "../../api/user";
+
 
 const SignupForm = () => {
+  const navigate = useNavigate();
+  const [showCondition] = useState(true);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
+  const [terms, setTerms] = useState(false);
+  // const [checkRole, setCheckRole] = useState(false);
+  
+  // Password Validation
+  let hasSixChar = password.length > 6;
+  let hasUpperChar = /(.*[A-Z].*)/.test(password);
+  let hasLowerChar = /(.*[a-z].*)/.test(password);
+  let hasNumber = /(.*[0-9].*)/.test(password);
+  let hasSpecialChar = /(.*[^a-zA-Z0-9].*)/.test(password);
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await register({ username, email, password, contactNumber });
+      if (res.error) toast.error(res.error, {
+        autoClose: 4000,
+        hideProgressBar: true,
+        closeButton: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      else {
+        toast.success(res.message, {
+          autoClose: 4000,
+          hideProgressBar: true,
+          closeButton: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        // redirect to login
+        navigate("/login");
+      }
+
+    } catch (err) {
+      toast.error("Server error, please try later!", {
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeButton: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }
   return (
     <>
       <div className="form-container">
         <form action="" className="form-content">
+          <label htmlFor="" className="form-head" id="signup-head">SIGNUP</label>
           <label htmlFor="" className='label-content'>Username</label>
           <input
             type="text"
             placeholder='Enter Username'
             className='input-content'
-            // value={username}
-            // onChange = {(e) => setUsername(e.target.value)}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             required
           />
           <label htmlFor="" className='label-content'>Email</label>
@@ -20,8 +80,8 @@ const SignupForm = () => {
             type="email"
             placeholder='Enter Email Id'
             className='input-content'
-            // value={email}
-            // onChange = {(e) => setEmail(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
           <label htmlFor="" className='label-content'>Password</label>
@@ -29,44 +89,44 @@ const SignupForm = () => {
             type="password"
             placeholder='Enter Password'
             className='input-content'
-            // value={password}
-            // onChange = {(e) => setPassword(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
 
-          {/* {showCondition && <div className="input-conditions">
+          {showCondition && <div className="input-conditions">
             <span className='condition-item'>
-              {hasSixChar ? <span className="material-symbols-outlined checkSuccessIcon">
+              {hasSixChar ? <span className="material-icons checkSuccessIcon">
                 verified
               </span> : <span></span>}
               <p>length &gt; 6</p>
             </span>
             <span className='condition-item'>
-              {hasUpperChar ? <span className="material-symbols-outlined checkSuccessIcon">
+              {hasUpperChar ? <span className="material-icons checkSuccessIcon">
                 verified
               </span> : <span></span>}
               <p>one uppercase</p>
             </span>
             <span className='condition-item'>
-              {hasLowerChar ? <span className="material-symbols-outlined checkSuccessIcon">
+              {hasLowerChar ? <span className="material-icons checkSuccessIcon">
                 verified
               </span> : <span></span>}
               <p>one lowercase</p>
             </span>
             <span className='condition-item'>
-              {hasNumber ? <span className="material-symbols-outlined checkSuccessIcon">
+              {hasNumber ? <span className="material-icons checkSuccessIcon">
                 verified
               </span> : <span></span>}
               <p>one number</p>
             </span>
             <span className='condition-item'>
-              {hasSpecialChar ? <span className="material-symbols-outlined checkSuccessIcon">
+              {hasSpecialChar ? <span className="material-icons checkSuccessIcon">
                 verified
               </span> : <span></span>}
               <p>one special character</p>
             </span>
           </div>
-          } */}
+          }
 
           <label htmlFor="" className='label-content'>Confirm Password</label>
 
@@ -74,72 +134,86 @@ const SignupForm = () => {
             type="password"
             placeholder='Re-Enter Password'
             className='input-content'
-            // value={confirmPassword}
-            // onChange = {(e) => setConfirmPassword(e.target.value)}
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
 
-          {/* {password && confirmPassword && <div className="input-conditions">
+          {password && confirmPassword && <div className="input-conditions">
             <span className='condition-item'>
-              {password === confirmPassword ? <span className="material-symbols-outlined checkSuccessIcon">
+              {password === confirmPassword ? <span className="material-icons checkSuccessIcon">
                 verified
               </span> : <span></span>}
               <p>password matched</p>
             </span>
           </div>
-          } */}
+          }
 
-<label htmlFor="" className='label-content'>Mobile Number</label>
-<input 
-                type="tel"
-                placeholder='xxxxx-xxxxx' 
+          <label htmlFor="" className='label-content'>Mobile Number</label>
+          <input
+            type="tel"
+            placeholder='xxxxx-xxxxx'
+            className='input-content'
+            maxLength={10}
+            pattern="[0-9]{10}"
+            value={contactNumber}
+            onChange={(e) => setContactNumber(e.target.value)}
+            required
+          />
+          {showCondition && <div className="input-conditions">
+            <span className='condition-item'>
+              {contactNumber ? <span className="material-icons checkSuccessIcon">
+                verified
+              </span> : <span></span>}
+              <p>eg - 9875496852</p>
+            </span>
+          </div>
+          }
+
+          <div className="role-container">
+            <div className="radio-item">
+              <input type="radio" name="role" id="student" value="student" />
+              <label htmlFor="" className='label-content'>Student</label>
+            </div>
+            <div className="radio-item">
+              <input type="radio" name="role" id="company" value="company"/>
+              <label htmlFor="" className='label-content'>Company</label>
+            </div>
+          </div>
+
+          <div className="checkbox-container">
+            <div className="checkbox-item">
+              <input
+                type="checkbox"
                 className='input-content'
-                maxLength={10}
-                pattern="[0-9]{10}"
-                // value={contactNumber}
-                // onChange = {(e) => setContactNumber(e.target.value)}
+                id="checkbox"
+                onChange={() => setTerms(!terms)}
                 required
-            />
-            {/* {showCondition && <div className="input-conditions">
-                <span className='condition-item'>
-                    {contactNumber ? <span className="material-symbols-outlined checkSuccessIcon">
-                    verified
-                    </span> : <span></span>}
-                    <p>eg - 9875496852</p>
-                </span>
+              />
+              <label htmlFor="" className='label-content' >Terms & Condition</label>
             </div>
-            } */}
+          </div>
 
-<div className="checkbox-container">
-                <input 
-                    type="checkbox"
-                    className='input-content'
-                    id="checkbox"
-                    // onChange = {()=> setTerms(!terms)}
-                    required
-                />
-                <label htmlFor="" className='label-content'>Terms & Condition</label>    
-            </div>
-            <button 
-                // disabled = {
-                //     !username || 
-                //     !email || 
-                //     !password || 
-                //     !confirmPassword || 
-                //     password !== confirmPassword ||
-                //     !hasSixChar ||
-                //     !hasUpperChar ||
-                //     !hasLowerChar ||
-                //     !hasNumber ||
-                //     !hasSpecialChar || 
-                //     !contactNumber ||
-                //     !terms
-                // } 
-                // onClick={handleRegister}
-                className="btn-submit" 
-                id="signup">
-                SIGNUP
-            </button>
+          <button
+            disabled={
+              !username ||
+              !email ||
+              !password ||
+              !confirmPassword ||
+              password !== confirmPassword ||
+              !hasSixChar ||
+              !hasUpperChar ||
+              !hasLowerChar ||
+              !hasNumber ||
+              !hasSpecialChar ||
+              !contactNumber ||
+              !terms
+            }
+            onClick={handleRegister}
+            className="btn-submit"
+            id="signup">
+            SIGNUP
+          </button>
         </form>
       </div>
     </>

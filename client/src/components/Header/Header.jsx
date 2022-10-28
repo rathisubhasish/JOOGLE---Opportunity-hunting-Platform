@@ -1,5 +1,4 @@
 // importing modules
-import React from 'react';
 import "./Header.css";
 import Logo from "./Logo/Logo";
 import Navigation from "./Navigation/Navigation";

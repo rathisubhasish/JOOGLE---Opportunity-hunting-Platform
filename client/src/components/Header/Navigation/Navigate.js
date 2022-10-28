@@ -13,7 +13,18 @@ export const unauthorizedNav = [
 
 export const authorizedNav = [
     {
-        "title":"LOGOUT",
-        "link":"/logout",
+        "id":"search_icon",
+        "icon":"search",
     },
+    {
+        "id":"notifications",
+        "icon":"notifications",
+        "active-icon":"notifications_active",
+    },
+    {
+        "id":"user",
+        "icon":"account_circle",
+    },
+    
+
 ]

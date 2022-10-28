@@ -7,21 +7,30 @@ import './App.css';
 import { UserContext } from "./UserContext";
 
 // importing components
-import { Header,Particles } from "./components/components";
+import { Header, Particles } from "./components/components";
 
 //importing APIs functions
 import { getUser } from "./api/user";
 
 // importing views
-import 
-{
-  JOOGLE, 
-  LOGIN, 
+import {
+  JOOGLE,
+  LOGIN,
   SIGNUP
 } from "./views/views";
 
 function App() {
   const [user, setUser] = useState(null);
+  useEffect(() => {
+    const checkUser = getUser()
+      .then((res) => {
+        if (res.error) console.error(res.error);
+        else setUser(res.username);
+      })
+      .catch((err) => console.error(err));
+    return () => checkUser;
+  }, [])
+  
   return (
     <div className="App">
       <Router>
@@ -29,7 +38,7 @@ function App() {
           <ToastContainer />
           <Header />
           <Routes>
-            <Route exact path="/" element={<JOOGLE />} />
+            <Route exact path="/" element={!user ? <JOOGLE /> : <h2>error</h2>} />
             <Route exact path="/login" element={<LOGIN />} />
             <Route exact path="/SIGNUP" element={<SIGNUP />} />
           </Routes>

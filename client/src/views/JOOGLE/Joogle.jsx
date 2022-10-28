@@ -5,7 +5,7 @@ const Joogle = () => {
   return (
     <>
       <div className="joogle-container">
-        <Particles />
+        {/* <Particles /> */}
       </div>
     </>
   )

@@ -7,6 +7,9 @@
     justify-content: center;
     margin: 0.2rem 0rem 0rem 0rem;
     text-align: center;
+    background: url("../../assets/images/login/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .login-items{
@@ -17,7 +20,13 @@
     text-align: center;
     align-items: center;
     gap: 0.1rem;
+    border-radius: 7px;
+    background-color: white;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#login-image-container{
+   width: 60%;
 }
 
 #login-image{
@@ -25,16 +34,16 @@
 }
 
 /* ______________________________________ */
-
 /* Media queries */
 @media screen and (min-width: 768px) and (min-height: 900px) {
     
     .login-items{
         flex-direction: row;
-        width: 80%;
     }
 
-    
+    #login-image-container{
+        width: 100%;
+     }
 
 }
 
@@ -43,4 +52,8 @@
         flex-direction: row;
         width: 60%;
     }
+
+    #login-image-container{
+        width: 100%;
+     }
 }

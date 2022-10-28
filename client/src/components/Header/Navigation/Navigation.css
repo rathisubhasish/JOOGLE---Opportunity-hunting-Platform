@@ -27,6 +27,28 @@
     color: white;
 }
 
+.icon-btn{
+    background-color: transparent;
+    border: none;
+    color: var(--primaryColor);
+    cursor: pointer;
+    padding: 0.3rem;
+    font-size: 26px;
+    transition: all 0.4s ease-in-out;
+}
+
+#search_icon{
+    color: red;
+}
+
+#notifications{
+    color: var(--secondaryBackColor);
+}
+
+#user{
+    color:darkgoldenrod;
+}
+
 /* ______________________________________ */
 
 /* Media queries */
@@ -35,6 +57,10 @@
         font-size: 1.2rem;
         padding: 0.6rem;
     }
+
+    .icon-btn{
+        font-size: 38px;
+    }
 }
 
 @media screen and (min-width: 1280px) and (min-height: 700px) {
@@ -42,4 +68,7 @@
         font-size: 1rem;
         padding: 0.4rem;
     }    
+    .icon-btn{
+        font-size: 30px;
+    }
 }

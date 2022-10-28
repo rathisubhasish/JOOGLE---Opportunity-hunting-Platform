@@ -1,0 +1,63 @@
+.signup-container {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    margin: 0.2rem 0rem 0rem 0rem;
+    text-align: center;
+    background: url("../../assets/images/login/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: all 0.4s ease-in-out;
+}
+
+.signup-items{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 94%;
+    text-align: center;
+    align-items: center;
+    gap: 0.1rem;
+    border-radius: 7px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#signup-image-container{
+   width: 40%;
+}
+
+#signup-image{
+    width: 100%;
+}
+
+/* ______________________________________ */
+/* Media queries */
+@media screen and (min-width: 768px) and (min-height: 900px) {
+    
+    .signup-items{
+        margin-top: 0rem;
+        flex-direction: row;
+    }
+
+    #signup-image-container{
+        width: 80%;
+     }
+
+}
+
+@media screen and (min-width: 1280px) and (min-height: 700px) {
+    .signup-items{
+        margin-top: 5rem;
+        flex-direction: row;
+        width: 60%;
+        margin-bottom: 5rem;
+    }
+
+    #signup-image-container{
+        width: 80%;
+     }
+}
