@@ -5,6 +5,7 @@ import CardItem from "./CardItem/CardItem";
 import LoginForm from "./Form/LoginForm";
 import SignupForm from "./Form/SignupForm";
 import Filter from "./Popup/Filter";
+import Slideshow from "./SlideShow/Slideshow";
 
 export 
 { 
@@ -14,5 +15,6 @@ export
     CardItem,
     LoginForm,
     SignupForm,
-    Filter
+    Filter,
+    Slideshow
 };
