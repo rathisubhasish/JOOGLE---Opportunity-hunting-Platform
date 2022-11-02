@@ -1,13 +1,14 @@
 import React from 'react';
 import "./Brochure.css";
-import Img1 from "../../assets/images/brochure/jobs.svg";
-import { trial } from "../../a";
+import Hiring from "../../assets/images/brochure/Hiring.gif";
 
-const Brochure = () => {
+
+
+const Brochure = ({brochureData}) => {
   return (
     <>
       <div className="brochure-container">
-        {trial.map((val, key) => {
+        {brochureData.map((val, key) => {
           return (
             <div className="brochure-item">
               <p className="brochure-title">
@@ -15,7 +16,7 @@ const Brochure = () => {
               </p>
               <div className="brochure-content">
                 <div className="brochure-image">
-                  <span><img src={Img1} alt="" /></span>
+                  <span><img src={require(`../../assets/images/brochure/${val.image}`)} alt="" /></span>
                 </div>
                 <div className="brochure-detail">
                   <p className='brochure-info'>
@@ -23,7 +24,7 @@ const Brochure = () => {
                   </p>
                   <span className='brochure-btn-container'>
                     <a href="/" className='brochure-btn'>
-                      Explore
+                    {val.pathName}
                     </a>
                   </span>
                 </div>

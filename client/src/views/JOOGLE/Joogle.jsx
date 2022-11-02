@@ -1,11 +1,17 @@
 import React from 'react';
 import "./Joogle.css";
-import {Particles} from "../../components/components";
+import { brochureData } from "./brochureData";
+import {Brochure, Particles, Slideshow} from "../../components/components";
+
 const Joogle = () => {
   return (
     <>
       <div className="joogle-container">
-        {/* <Particles /> */}
+        <Particles />
+        <br />
+        <Slideshow />
+        <br />
+        <Brochure brochureData={brochureData}/>
       </div>
     </>
   )
