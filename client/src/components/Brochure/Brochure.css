@@ -59,6 +59,7 @@
     width: inherit;
     text-align: center;
     word-wrap: break-word;
+    font-size: 1.2rem;
 }
 
 .brochure-btn-container{
@@ -107,6 +108,7 @@
         width: 100%;
         padding: 0.5rem;
         margin-top: 1rem;
+        font-size: 1.4rem;
     }
     .brochure-btn{
         width: 30%;

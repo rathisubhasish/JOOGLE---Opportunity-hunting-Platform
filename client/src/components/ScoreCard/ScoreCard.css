@@ -1,0 +1,79 @@
+.scores-container{
+    display: flex;
+    flex-direction: column;
+    background-color: lightblue;
+    gap: 0.5rem;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.scores-heading{
+    font-size: 1.4rem;
+    font-family: var(--headFont);
+    color: var(--primaryColor);
+    font-weight: bold;
+    margin: 0.5rem;
+}
+
+.scores-items{
+    background-color: white;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.score-card-item{
+    background: transparent;
+    border: 1px solid var(--primaryColor);
+    border-radius: 5px;
+    width: 44%;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.score-icon-container{
+    min-height: 6vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+}
+
+.score-icon{
+    font-size: 3rem;
+    color: var(--primaryColor);
+}
+
+.score-details{
+    width: inherit;
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+.score-count, .score-info{
+    color: var(--primaryColor);
+    font-family: var(--regularFont);
+    font-weight: bold;
+    width: inherit;
+    word-wrap: break-word;
+}

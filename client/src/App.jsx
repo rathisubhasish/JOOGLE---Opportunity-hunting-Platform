@@ -7,7 +7,7 @@ import './App.css';
 import { UserContext } from "./UserContext";
 
 // importing components
-import { Header} from "./components/components";
+import { Error, Header} from "./components/components";
 
 //importing APIs functions
 import { getUser } from "./api/user";
@@ -38,7 +38,7 @@ function App() {
           <ToastContainer />
           <Header />
           <Routes>
-            <Route exact path="/" element={!user ? <JOOGLE /> : <h2>error</h2>} />
+            <Route exact path="/" element={!user ? <JOOGLE /> : <Error />} />
             <Route exact path="/login" element={<LOGIN />} />
             <Route exact path="/SIGNUP" element={<SIGNUP />} />
           </Routes>

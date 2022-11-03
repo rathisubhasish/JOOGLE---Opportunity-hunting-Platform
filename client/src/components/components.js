@@ -6,7 +6,8 @@ import LoginForm from "./Form/LoginForm";
 import SignupForm from "./Form/SignupForm";
 import Filter from "./Popup/Filter";
 import Slideshow from "./SlideShow/Slideshow";
-
+import Error from "./Error/error";
+import ScoreCard from "./ScoreCard/ScoreCard";
 export 
 { 
     Header, 
@@ -16,5 +17,7 @@ export
     LoginForm,
     SignupForm,
     Filter,
-    Slideshow
+    Slideshow,
+    Error,
+    ScoreCard
 };

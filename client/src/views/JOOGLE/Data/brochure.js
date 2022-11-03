@@ -4,20 +4,30 @@ export const brochureData = [
         "detail": "",
         "pathName": "Explore",
         "path": "/hiring",
-        "image": "hiring.svg"
+        "imageName": "hiring.svg"
     },
     {
         "title": "Job Search",
         "detail": "sdfdujkdiujfkasdasduerhgfuikcqgructurfcqger8grufcgueqgrfcuqgefuygruykfcguqrfukcgq7fuicqierhficyriciqegfcuikqegfuicqgucgqru8ctqutquifgcuqterfu8cqttqukcueftukeqbe.",
         "pathName": "Explore",
         "path": "/jobHunt",
-        "image": "jobhunt.svg"
+        "imageName": "jobhunt.svg"
     },
     {
         "title": "Bootcamp Courses",
         "detail": "sdfdujkdiujfkasdasduerhgfuikcqgructurfcqger8grufcgueqgrfcuqgefuygruykfcguqrfukcgq7fuicqierhficyriciqegfcuikqegfuicqgucgqru8ctqutquifgcuqterfu8cqttqukcueftukeqbe.",
         "pathName": "Coming Soon",
         "path": "/jobHunt",
-        "image": "certificate.svg"
+        "imageName": "certificate.svg"
     }
+]
+
+export const welcomeData = [
+    {
+        "title": "Connect World",
+        "detail": "Joogle is a opportunity searching platform which help us to fill the communication-gap between the job seeker and the hiring companies.",
+        "pathName": "Explore",
+        "path": "/login",
+        "imageName": "world.svg"
+    },
 ]

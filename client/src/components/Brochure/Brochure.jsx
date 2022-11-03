@@ -1,22 +1,19 @@
 import React from 'react';
 import "./Brochure.css";
-import Hiring from "../../assets/images/brochure/Hiring.gif";
-
-
 
 const Brochure = ({brochureData}) => {
   return (
-    <>
+    <> 
       <div className="brochure-container">
         {brochureData.map((val, key) => {
           return (
-            <div className="brochure-item">
+            <div className="brochure-item" key={key}>
               <p className="brochure-title">
                 {val.title}
               </p>
-              <div className="brochure-content">
+              <div className="brochure-content" key={key}>
                 <div className="brochure-image">
-                  <span><img src={require(`../../assets/images/brochure/${val.image}`)} alt="" /></span>
+                  <span><img src={require(`../../assets/images/brochure/${val.imageName}`)} alt={val.imageName} /></span>
                 </div>
                 <div className="brochure-detail">
                   <p className='brochure-info'>

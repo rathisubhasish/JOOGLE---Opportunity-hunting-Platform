@@ -10,9 +10,9 @@
 .element{
     width: 100%;
     position: fixed;
-    animation-name: ckw;
+    /* animation-name: ckw;
     animation-duration: 20.5s;
-    animation-iteration-count: infinite;
+    animation-iteration-count: infinite; */
 }
 
 #P1{
