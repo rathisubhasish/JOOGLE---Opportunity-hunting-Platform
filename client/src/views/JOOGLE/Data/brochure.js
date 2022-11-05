@@ -24,7 +24,7 @@ export const brochureData = [
 
 export const welcomeData = [
     {
-        "title": "Connect World",
+        "title": "Connect The World",
         "detail": "Joogle is a opportunity searching platform which help us to fill the communication-gap between the job seeker and the hiring companies.",
         "pathName": "Explore",
         "path": "/login",
