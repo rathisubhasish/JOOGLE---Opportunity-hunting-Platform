@@ -8,6 +8,8 @@ import Filter from "./Popup/Filter";
 import Slideshow from "./SlideShow/Slideshow";
 import Error from "./Error/error";
 import ScoreCard from "./ScoreCard/ScoreCard";
+import Loading from "./Loading/Loading";
+
 export 
 { 
     Header, 
@@ -19,5 +21,6 @@ export
     Filter,
     Slideshow,
     Error,
-    ScoreCard
+    ScoreCard,
+    Loading
 };

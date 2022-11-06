@@ -1,6 +1,6 @@
 import React from 'react';
 import "./error.css";
-import notfound from "../../assets/images/error/404.gif";
+import notfound from "../../assets/images/global/error/404.gif";
 
 
 const error = () => {

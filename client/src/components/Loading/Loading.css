@@ -1,0 +1,21 @@
+.loading-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+}
+
+.screenLoad{
+    flex-grow: 1;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.dataLoad{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
