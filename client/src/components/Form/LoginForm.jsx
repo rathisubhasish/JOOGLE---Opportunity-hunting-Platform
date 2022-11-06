@@ -94,7 +94,7 @@ const LoginForm = () => {
               {showPassword ? "visibility" : "visibility_off"}
             </span>
           </div>
-          <div className="role-container">
+          {/* <div className="role-container">
             <div className="radio-item">
               <input type="radio" name="role" id="student" value="student" />
               <label htmlFor="" className='label-content'>Student</label>
@@ -103,7 +103,7 @@ const LoginForm = () => {
               <input type="radio" name="role" id="company" value="company"/>
               <label htmlFor="" className='label-content'>Company</label>
             </div>
-          </div>
+          </div> */}
           <button
             disabled={!email || !password} 
             className="btn-submit"

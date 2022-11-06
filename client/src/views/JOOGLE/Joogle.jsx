@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Joogle.css";
-import { brochureData, welcomeData } from "./Data/brochure";
+import { brochureData, welcomeData, slideShowImg} from "./Data/brochure";
 import {Brochure, Particles, ScoreCard, Slideshow} from "../../components/components";
 
 const Joogle = () => {
@@ -9,8 +9,8 @@ const Joogle = () => {
     <>
       <div className="joogle-container">
         <Particles />
-        <Slideshow />
-        <Brochure brochureData={!user ? welcomeData : brochureData}/>
+        <Slideshow slideShowImg={slideShowImg}/>
+        <Brochure brochureData={user ? welcomeData : brochureData}/>
         <ScoreCard />
       </div>
     </>

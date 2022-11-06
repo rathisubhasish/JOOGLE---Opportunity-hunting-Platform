@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Brochure.css";
+import { NavLink } from 'react-router-dom';
 
 const Brochure = ({brochureData}) => {
   return (
@@ -13,16 +14,16 @@ const Brochure = ({brochureData}) => {
               </p>
               <div className="brochure-content" key={key}>
                 <div className="brochure-image">
-                  <span><img src={require(`../../assets/images/brochure/${val.imageName}`)} alt={val.imageName} /></span>
+                  <span><img src={require(`../../assets/images/joogle/brochure/${val.imageName}`)} alt={val.imageName} /></span>
                 </div>
                 <div className="brochure-detail">
                   <p className='brochure-info'>
                     {val.detail}
                   </p>
                   <span className='brochure-btn-container'>
-                    <a href="/" className='brochure-btn'>
+                    <NavLink to={val.path} className='brochure-btn'>
                     {val.pathName}
-                    </a>
+                    </NavLink>
                   </span>
                 </div>
               </div>

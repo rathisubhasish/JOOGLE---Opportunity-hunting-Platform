@@ -170,7 +170,7 @@ const SignupForm = () => {
           </div>
           }
 
-          <div className="role-container">
+          {/* <div className="role-container">
             <div className="radio-item">
               <input type="radio" name="role" id="student" value="student" />
               <label htmlFor="" className='label-content'>Student</label>
@@ -179,7 +179,7 @@ const SignupForm = () => {
               <input type="radio" name="role" id="company" value="company"/>
               <label htmlFor="" className='label-content'>Company</label>
             </div>
-          </div>
+          </div> */}
 
           <div className="checkbox-container">
             <div className="checkbox-item">

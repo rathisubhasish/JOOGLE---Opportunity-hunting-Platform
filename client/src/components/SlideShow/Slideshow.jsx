@@ -1,15 +1,12 @@
 import React , { useEffect } from 'react';
 import "./Slideshow.css";
-import one from "../../assets/images/banner/1.jpg";
-import two from "../../assets/images/banner/5.jpeg";
-import three from "../../assets/images/banner/6.jpg";
 
-const Slideshow = () => {
+const Slideshow = ({slideShowImg}) => {
     useEffect(() => {
         let slides = document.querySelectorAll(".slide");
         let navBtns = document.querySelectorAll(".img-round-btn");
         let currentSlide = 1;
-
+        
         const manualImgNav = function(manual){
             slides.forEach((slide)=>{
                 slide.classList.remove("img-active");
@@ -30,25 +27,30 @@ const Slideshow = () => {
             });
         })
     });
-
   return (
     <>
         <div className="slideshow-container">
             <div className="slide-container">
-                <span className='slide' >
-                    <img src={one} alt="" />
-                </span>
-                <span className='slide img-active'>
-                    <img src={two} alt="" />
-                </span>
-                <span className='slide'>
-                    <img src={three} alt="" />
-                </span>
+                {
+                    slideShowImg.map((val,key) => {
+                        return(
+                            <>
+                                <div className={key === 0 ? "slide img-active" : "slide"} key={key}>
+                                    <img src={require(`../../assets/images/joogle/slideshow/${val.slideImg}`)} alt={val.slideImg} key={key}/>
+                                </div>
+                            </>
+                        );                        
+                    })
+                }
             </div>
             <div className="img-navigation">
-                <div className="img-round-btn"></div>
-                <div className="img-round-btn navbtn-active"></div>
-                <div className="img-round-btn"></div>
+                {
+                    slideShowImg.map((val,key) => {
+                        return(
+                            <div className={key === 0 ? "img-round-btn navbtn-active" : "img-round-btn"} key={key}></div>            
+                        );
+                    })
+                }
             </div>
         </div>
     </>
