@@ -4,10 +4,10 @@ import "./Loading.css";
 
 const Loading = () => {
   return (
-    <>
+    <> 
         <div className="loading-container screenLoad">
             <ReactLoading 
-                type="spin" 
+                type="spin"
                 color="#1c4980"
                 width="50px"
                 height="50px"

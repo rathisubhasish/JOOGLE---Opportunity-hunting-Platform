@@ -38,15 +38,15 @@
 }
 
 #search_icon{
-    color: red;
+    color: #1c4980;
 }
 
 #notifications{
-    color: var(--secondaryBackColor);
+    color: #1c4980;
 }
 
 #user{
-    color:darkgoldenrod;
+    color:#1c4980;
 }
 
 /* ______________________________________ */

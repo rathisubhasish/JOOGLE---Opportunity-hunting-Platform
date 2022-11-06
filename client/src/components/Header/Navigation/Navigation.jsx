@@ -1,5 +1,5 @@
 // importing modules
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../../../UserContext";
 import "./Navigation.css";
 import { NavLink } from 'react-router-dom';
@@ -15,7 +15,7 @@ const Navigation = () => {
           <ul>
             
             {
-              !user ?
+              user ?
               unauthorizedNav.map((val,key)=>{
                 return (
                   <li key={key}>

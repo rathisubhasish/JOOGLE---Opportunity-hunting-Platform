@@ -9,7 +9,7 @@
 
 .material-icons.logoSize{
     font-size: 20px;
-    color:darkgoldenrod;
+    color:var(--primaryColor);
 }
 
 /* ________________________________________ */
