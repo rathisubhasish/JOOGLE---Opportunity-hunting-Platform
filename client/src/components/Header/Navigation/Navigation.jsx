@@ -15,7 +15,7 @@ const Navigation = () => {
           <ul>
             
             {
-              user ?
+              !user ?
               unauthorizedNav.map((val,key)=>{
                 return (
                   <li key={key}>

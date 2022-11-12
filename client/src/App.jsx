@@ -18,6 +18,7 @@ import {
   LOGIN,
   SIGNUP
 } from "./views/views";
+import Explore from "./views/EXPLORE/Explore";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -38,7 +39,7 @@ function App() {
           <ToastContainer />
           <Header />
           <Routes>
-            <Route exact path="/" element={!user ? <JOOGLE /> : <Error />} />
+            <Route exact path="/" element={!user ? <Explore /> : <Error />} />
             <Route exact path="/login" element={<LOGIN />} />
             <Route exact path="/SIGNUP" element={<SIGNUP />} />
           </Routes>
