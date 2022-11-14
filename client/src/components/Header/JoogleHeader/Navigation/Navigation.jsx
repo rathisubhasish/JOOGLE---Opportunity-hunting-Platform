@@ -1,6 +1,6 @@
 // importing modules
 import React, { useContext } from "react";
-import { UserContext } from "../../../UserContext";
+import { UserContext } from "../../../../UserContext";
 import "./Navigation.css";
 import { NavLink } from 'react-router-dom';
 
@@ -13,7 +13,6 @@ const Navigation = () => {
     <>
         <div className="menu-container">
           <ul>
-            
             {
               !user ?
               unauthorizedNav.map((val,key)=>{

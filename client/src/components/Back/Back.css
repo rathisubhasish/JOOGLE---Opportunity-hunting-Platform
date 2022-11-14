@@ -1,0 +1,11 @@
+#back-arrow{
+    font-size: 1.8rem;
+    border: 1px solid var(--primaryBackColor);
+    width: fit-content;
+    padding: 0.2rem;
+    border-radius: 50%;
+    background-color: var(--primaryBackColor);
+    text-decoration: none;
+    color: white;
+}
+

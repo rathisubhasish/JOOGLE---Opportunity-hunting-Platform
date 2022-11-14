@@ -9,7 +9,8 @@ import Slideshow from "./SlideShow/Slideshow";
 import Error from "./Error/error";
 import ScoreCard from "./ScoreCard/ScoreCard";
 import Loading from "./Loading/Loading";
-
+import Search from "./Search/Search";
+import Back from "./Back/Back";
 export 
 { 
     Header, 
@@ -22,5 +23,7 @@ export
     Slideshow,
     Error,
     ScoreCard,
-    Loading
+    Loading,
+    Search,
+    Back
 };

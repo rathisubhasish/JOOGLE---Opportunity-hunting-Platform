@@ -1,16 +1,24 @@
 // importing modules
-import "./Header.css";
-import Logo from "./Logo/Logo";
-import Navigation from "./Navigation/Navigation";
+import InfoHeader from "./InfoHeader/InfoHeader";
+import JoogleHeader from "./JoogleHeader/JoogleHeader";
 
-const Header = () => {
+const Header = ({headType}) => {
   return (
     <>
-        <header>
-            <Logo />
-            <Navigation />
-        </header>
-    </>
+      {
+        headType === "JoogleHeader" 
+        ? 
+        <JoogleHeader /> 
+        :
+        (
+          headType === "InfoHeader"
+          ?
+          ""
+          :
+          ""  
+        )
+      }
+    </> 
   )
 };
 

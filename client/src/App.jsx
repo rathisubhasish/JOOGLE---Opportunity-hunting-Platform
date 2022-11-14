@@ -7,7 +7,7 @@ import './App.css';
 import { UserContext } from "./UserContext";
 
 // importing components
-import { Error, Header} from "./components/components";
+import { Back, Error, Header} from "./components/components";
 
 //importing APIs functions
 import { getUser } from "./api/user";
@@ -37,11 +37,11 @@ function App() {
       <Router>
         <UserContext.Provider value={{ user, setUser }}>
           <ToastContainer />
-          <Header />
+          {/* <Header headType="InfoHeader"/> */}
           <Routes>
-            <Route exact path="/" element={!user ? <Explore /> : <Error />} />
+            {/* <Route exact path="/" element={!user ? <Explore /> : <Error />} />
             <Route exact path="/login" element={<LOGIN />} />
-            <Route exact path="/SIGNUP" element={<SIGNUP />} />
+            <Route exact path="/SIGNUP" element={<SIGNUP />} /> */}
           </Routes>
         </UserContext.Provider>
       </Router>

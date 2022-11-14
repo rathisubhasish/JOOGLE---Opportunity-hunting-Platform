@@ -1,0 +1,20 @@
+.search-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+}
+
+.search-box{
+    width: inherit;
+    padding: 0.5rem;
+    font-size: 1.05rem;
+    color: var(--headColor);
+    text-decoration: none;
+    outline: none;
+    border: 0.4px solid var(--headColor);
+    border-radius: 7px;
+    text-align: center;
+}
