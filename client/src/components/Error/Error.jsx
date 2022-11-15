@@ -1,15 +1,20 @@
 import React from 'react';
-import "./error.css";
+import "./Error.css";
 import notfound from "../../assets/images/global/error/404.gif";
+import { useNavigate } from "react-router-dom";
 
-
-const error = () => {
-  return (
+const Error = ({errorTitle, errorRedirectName, errorRedirectPath}) => {
+    const handleRedirect = () => {
+        navigate(errorRedirectPath);
+    };
+    
+    const navigate = useNavigate();
+    return (
     <>
         <div className="error-container">
             <div className="error-items">
                 <div className="error-heading">
-                    oops!
+                    {errorTitle}
                 </div>
                 <div className="error-image">
                     <span className="error-image-container">
@@ -17,8 +22,11 @@ const error = () => {
                     </span>
                 </div>
                 <div className="error-path">
-                    <button className='error-redirect-btn'>
-                        sadf
+                    <button 
+                        className='error-redirect-btn'
+                        onClick={handleRedirect}
+                    >
+                        {errorRedirectName}
                     </button>
                 </div>
             </div>
@@ -27,4 +35,4 @@ const error = () => {
   )
 };
 
-export default error;
+export default Error;

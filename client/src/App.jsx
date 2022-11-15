@@ -7,7 +7,7 @@ import './App.css';
 import { UserContext } from "./UserContext";
 
 // importing components
-import { Back, Error, Header} from "./components/components";
+import { Error, Header, ScrollUp } from "./components/components";
 
 //importing APIs functions
 import { getUser } from "./api/user";
@@ -16,12 +16,14 @@ import { getUser } from "./api/user";
 import {
   JOOGLE,
   LOGIN,
-  SIGNUP
+  SIGNUP,
+  EXPLORE
 } from "./views/views";
-import Explore from "./views/EXPLORE/Explore";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [scrollUp, setScrollUp] = useState(false);
+
   useEffect(() => {
     const checkUser = getUser()
       .then((res) => {
@@ -30,18 +32,36 @@ function App() {
       })
       .catch((err) => console.error(err));
     return () => checkUser;
-  }, [])
-  
+  }, []);
+
+  useEffect(() => {
+    //button is displayed after scrolling for 300pixels
+    const handleScrollBtnVisibility = () => {
+      window.scrollY > 300 ? setScrollUp(true) : setScrollUp(false);
+    };
+
+    window.addEventListener("scroll", handleScrollBtnVisibility);
+
+    return () => {
+      window.removeEventListener("scroll",handleScrollBtnVisibility);
+    };
+  }, []);
+
+    
   return (
     <div className="App">
       <Router>
         <UserContext.Provider value={{ user, setUser }}>
           <ToastContainer />
-          {/* <Header headType="InfoHeader"/> */}
+          {scrollUp && <ScrollUp />}
+          
           <Routes>
-            {/* <Route exact path="/" element={!user ? <Explore /> : <Error />} />
-            <Route exact path="/login" element={<LOGIN />} />
-            <Route exact path="/SIGNUP" element={<SIGNUP />} /> */}
+            <Route path='*' exact={true} element={<><Error errorTitle="OOPs!" errorRedirectName="Home" errorRedirectPath="/" /></>} />
+
+            <Route exact path="/" element={<><Header headType="JoogleHeader" /><JOOGLE /></>} /> 
+            <Route exact path="/login" element={<><Header headType="JoogleHeader" /><LOGIN /></>} /> 
+            <Route exact path="/signup" element={<><Header headType="JoogleHeader" /><SIGNUP /></>} />
+            <Route path="/explore/:item" element={<EXPLORE />} />
           </Routes>
         </UserContext.Provider>
       </Router>

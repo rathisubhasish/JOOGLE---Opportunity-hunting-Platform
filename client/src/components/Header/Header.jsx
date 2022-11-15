@@ -13,7 +13,7 @@ const Header = ({headType}) => {
         (
           headType === "InfoHeader"
           ?
-          ""
+          <InfoHeader />
           :
           ""  
         )

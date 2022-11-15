@@ -6,7 +6,7 @@ const CardItem = () => {
     <>
       <a href="/" className="card-container">
         <span className="card-image-container">
-          <img src={Img} alt="image" className="image-element" />
+          <img src={Img} alt="Img" className="image-element" />
         </span>
         <div className="card-content">
           <p className="card-title" id="cardName">
@@ -17,13 +17,13 @@ const CardItem = () => {
           </p>
           <div className='card-info'>
               <span className='info-container'>
-                <span class="material-icons">
+                <span className="material-icons">
                   how_to_reg
                 </span>
                 <p>25 Registered</p>
               </span>
               <span className='info-container'>
-                <span class="material-icons">
+                <span className="material-icons">
                   timer
                 </span>
                 <p>3 days left</p>
@@ -33,7 +33,7 @@ const CardItem = () => {
       </a>
       <a href="/" className="card-container">
         <span className="card-image-container">
-          <img src={Img} alt="image" className="image-element" />
+          <img src={Img} alt="Img" className="image-element" />
         </span>
         <div className="card-content">
           <p className="card-title" id="cardName">
@@ -44,13 +44,13 @@ const CardItem = () => {
           </p>
           <div className='card-info'>
               <span className='info-container'>
-                <span class="material-icons">
+                <span className="material-icons">
                   how_to_reg
                 </span>
                 <p>25 Registered</p>
               </span>
               <span className='info-container'>
-                <span class="material-icons">
+                <span className="material-icons">
                   timer
                 </span>
                 <p>3 days left</p>
@@ -58,6 +58,7 @@ const CardItem = () => {
           </div>
         </div>
       </a>
+      
       
     </>
   )

@@ -1,0 +1,23 @@
+#scroll-up-icon{
+    align-items: center;
+    background-color: white;
+    border-radius: 50%;
+    border: none;
+    bottom: 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+    justify-content: center;
+    margin-bottom: 4rem;
+    margin-right: 2rem;
+    outline: none;
+    padding: 1rem;
+    position: fixed;
+    color: var(--headColor);
+    right: 0;
+    text-align: center;
+    width: fit-content;
+}
+
+#scroll-up-icon:hover{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
