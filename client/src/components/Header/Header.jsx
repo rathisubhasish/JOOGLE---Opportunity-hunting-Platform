@@ -1,7 +1,6 @@
 // importing modules
-import InfoHeader from "./InfoHeader/InfoHeader";
 import JoogleHeader from "./JoogleHeader/JoogleHeader";
-
+import ExploreHeader from "./ExploreHeader/ExploreHeader";
 const Header = ({headType}) => {
   return (
     <>
@@ -11,9 +10,9 @@ const Header = ({headType}) => {
         <JoogleHeader /> 
         :
         (
-          headType === "InfoHeader"
+          headType === "ExploreHeader"
           ?
-          <InfoHeader />
+          <ExploreHeader />
           :
           ""  
         )

@@ -57,8 +57,7 @@ function App() {
           
           <Routes>
             <Route path='*' exact={true} element={<><Error errorTitle="OOPs!" errorRedirectName="Home" errorRedirectPath="/" /></>} />
-
-            <Route exact path="/" element={<><Header headType="JoogleHeader" /><JOOGLE /></>} /> 
+            <Route exact path="/" element={<><Header headType="ExploreHeader" /><JOOGLE /></>} /> 
             <Route exact path="/login" element={<><Header headType="JoogleHeader" /><LOGIN /></>} /> 
             <Route exact path="/signup" element={<><Header headType="JoogleHeader" /><SIGNUP /></>} />
             <Route path="/explore/:item" element={<EXPLORE />} />

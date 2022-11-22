@@ -11,7 +11,7 @@ export const unauthorizedNav = [
     },
 ];
 
-export const authorizedNav = [
+export const homeNav = [
     {
         "id":"search_icon",
         "icon":"search",
@@ -25,6 +25,11 @@ export const authorizedNav = [
         "id":"user",
         "icon":"account_circle",
     },
-    
+];
 
+export const exploreNav = [
+    {
+        "id":"user",
+        "icon":"account_circle",
+    },
 ]

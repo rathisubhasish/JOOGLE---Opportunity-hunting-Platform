@@ -8,13 +8,13 @@
 }
 
 .search-box{
-    width: inherit;
-    padding: 0.5rem;
+    width: 90%;
+    padding: 0.3rem;
     font-size: 1.05rem;
     color: var(--headColor);
     text-decoration: none;
     outline: none;
-    border: 0.4px solid var(--headColor);
+    border: 0.1px solid var(--headColor);
     border-radius: 7px;
     text-align: center;
 }

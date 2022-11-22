@@ -12,7 +12,6 @@ import Loading from "./Loading/Loading";
 import Search from "./Search/Search";
 import Back from "./Back/Back";
 import ScrollUp from "./ScrollUp/Scrollup";
-
 export 
 { 
     Header, 
