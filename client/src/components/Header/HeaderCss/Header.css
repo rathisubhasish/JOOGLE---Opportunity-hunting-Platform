@@ -8,3 +8,13 @@ header{
     padding: 0.2rem;
     text-align: center;
 }
+
+.explore-header-container{
+    width: 100%;
+    display: flex;
+    margin-top: 0.2rem;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+}

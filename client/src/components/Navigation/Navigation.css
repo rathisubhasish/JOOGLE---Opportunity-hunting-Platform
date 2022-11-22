@@ -6,6 +6,9 @@
 }
 
 .menu-container ul {
+    justify-content: center;
+    text-align: center;
+    align-items: center;    
     display: flex;
     gap: 0.5rem;
     list-style: none;
@@ -32,8 +35,8 @@
     border: none;
     color: var(--primaryColor);
     cursor: pointer;
-    padding: 0.3rem;
-    font-size: 26px;
+    font-size: 1.8rem;
+    display: flex;
     transition: all 0.4s ease-in-out;
 }
 

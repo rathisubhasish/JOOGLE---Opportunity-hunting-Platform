@@ -8,9 +8,11 @@ const ExploreHeader = () => {
   return (
     <>
         <header>
+          <div className="explore-header-container">
             <Back />
             <Search />            
             <Navigation navType="explore" />
+          </div>
         </header>
     </>
   )

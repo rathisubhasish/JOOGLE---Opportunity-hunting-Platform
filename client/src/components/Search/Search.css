@@ -8,13 +8,15 @@
 }
 
 .search-box{
-    width: 90%;
-    padding: 0.3rem;
-    font-size: 1.05rem;
+    width: 100%;
+    padding: 0.4rem;
+    font-size: 1.1rem;
     color: var(--headColor);
     text-decoration: none;
     outline: none;
-    border: 0.1px solid var(--headColor);
+    border: none;
+    background-color:#B2FFFF;
+    font-weight: bold;
     border-radius: 7px;
     text-align: center;
 }

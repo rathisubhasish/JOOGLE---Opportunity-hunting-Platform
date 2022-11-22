@@ -44,6 +44,7 @@
 .explore-category-container{
     display: block;
     width: 100%;
+    margin-top: 0.5rem;
     overflow-x: scroll;
     box-sizing: border-box;
     font-family: var(--headFont);
@@ -62,8 +63,8 @@
     cursor: pointer;
     display: inline-block;
     margin: 0.2rem;
-    padding: 0.2rem;
-    border-radius: 7px;
+    padding: 0.4rem;
+    border-radius: 70px;
     color: var(--headColor);
     border: 1px solid var(--headColor);
 }
@@ -76,6 +77,7 @@
 
 .active{
     color: white;
-    background-color: lightblue;
-    border: 1px solid lightblue;
+    font-weight: bold;
+    background-color: var(--primaryBackColor);
+    border: 1px solid var(--primaryBackColor);
 }
