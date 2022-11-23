@@ -43,24 +43,66 @@ function App() {
     window.addEventListener("scroll", handleScrollBtnVisibility);
 
     return () => {
-      window.removeEventListener("scroll",handleScrollBtnVisibility);
+      window.removeEventListener("scroll", handleScrollBtnVisibility);
     };
   }, []);
 
-    
+
   return (
     <div className="App">
       <Router>
         <UserContext.Provider value={{ user, setUser }}>
           <ToastContainer />
           {scrollUp && <ScrollUp />}
-          
+
           <Routes>
-            <Route path='*' exact={true} element={<><Error errorTitle="OOPs!" errorRedirectName="Home" errorRedirectPath="/" /></>} />
-            <Route exact path="/" element={<><Header headType="ExploreHeader" /><JOOGLE /></>} /> 
-            <Route exact path="/login" element={<><Header headType="JoogleHeader" /><LOGIN /></>} /> 
-            <Route exact path="/signup" element={<><Header headType="JoogleHeader" /><SIGNUP /></>} />
-            <Route path="/explore/:item" element={<EXPLORE />} />
+            <Route path='*' exact={true}
+              element={
+                <>
+                  <Error
+                    errorTitle="OOPs!"
+                    errorRedirectName="Home"
+                    errorRedirectPath="/" 
+                  />
+                </>
+              }
+            />
+            <Route exact path="/" 
+              element={
+              <>
+                <Header 
+                  headType="ExploreHeader" 
+                />
+                <EXPLORE />
+              </>
+              }
+            />
+            <Route exact path="/login" 
+              element={
+              <>
+                <Header 
+                  headType="JoogleHeader" 
+                />
+                <LOGIN />
+              </>
+              }
+            />
+            <Route exact path="/signup" 
+              element={
+              <>
+                <Header 
+                  headType="JoogleHeader" 
+                />
+                <SIGNUP />
+              </>
+              }
+            />
+            <Route path="/explore/:item" 
+              element={
+                <JOOGLE />
+              }
+            />
+            
           </Routes>
         </UserContext.Provider>
       </Router>

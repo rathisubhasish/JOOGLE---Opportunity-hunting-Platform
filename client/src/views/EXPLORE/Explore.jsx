@@ -1,4 +1,4 @@
-import { CardItem } from '../../components/components';
+import { CardItem, Filter } from '../../components/components';
 import "./Explore.css";
 
 const Explore = () => {
@@ -26,6 +26,8 @@ const Explore = () => {
           <CardItem />
         </div>
       </div>
+
+      <Filter />
     </div>
     </>
   )

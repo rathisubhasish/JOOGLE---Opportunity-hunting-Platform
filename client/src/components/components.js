@@ -4,7 +4,7 @@ import Particles from "./Particles/Particles";
 import CardItem from "./CardItem/CardItem";
 import LoginForm from "./Form/LoginForm";
 import SignupForm from "./Form/SignupForm";
-import Filter from "./Popup/Filter";
+// import Filter from "./Popup/Filter";
 import Slideshow from "./SlideShow/Slideshow";
 import Error from "./Error/Error";
 import ScoreCard from "./ScoreCard/ScoreCard";
@@ -12,6 +12,7 @@ import Loading from "./Loading/Loading";
 import Search from "./Search/Search";
 import Back from "./Back/Back";
 import ScrollUp from "./ScrollUp/Scrollup";
+import Filter from "./Filter/Filter";
 export 
 { 
     Header, 
