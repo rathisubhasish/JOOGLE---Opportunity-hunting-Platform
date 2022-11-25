@@ -17,7 +17,8 @@ import {
   JOOGLE,
   LOGIN,
   SIGNUP,
-  EXPLORE
+  EXPLORE,
+  INFO
 } from "./views/views";
 
 function App() {
@@ -47,7 +48,6 @@ function App() {
     };
   }, []);
 
-
   return (
     <div className="App">
       <Router>
@@ -71,9 +71,10 @@ function App() {
               element={
               <>
                 <Header 
-                  headType="ExploreHeader" 
+                  headType="JoogleHeader" 
                 />
-                <EXPLORE />
+                <INFO />
+                {/* <EXPLORE /> */}
               </>
               }
             />
@@ -94,12 +95,13 @@ function App() {
                   headType="JoogleHeader" 
                 />
                 <SIGNUP />
+                <JOOGLE />
               </>
               }
             />
             <Route path="/explore/:item" 
               element={
-                <JOOGLE />
+                <EXPLORE />
               }
             />
             

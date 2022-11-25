@@ -14,7 +14,7 @@ const Navigation = ({navType}) => {
         <div className="menu-container">
           <ul>
             {
-              user ?
+              !user ?
               unauthorizedNav.map((val,key)=>{
                 return (
                   <li key={key}>
