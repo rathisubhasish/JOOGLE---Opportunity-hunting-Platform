@@ -7,9 +7,9 @@
     justify-content: center;
     margin: 0.2rem 0rem 0rem 0rem;
     text-align: center;
-    background: url("../../assets/images/login/background.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
+    /* background: url("../../assets/images/login/background.jpg"); */
+    /* background-size: cover;
+    background-repeat: no-repeat; */
 }
 
 .login-items{

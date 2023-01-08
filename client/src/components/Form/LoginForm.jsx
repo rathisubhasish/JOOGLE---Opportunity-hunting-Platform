@@ -18,6 +18,7 @@ const LoginForm = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    window.scrollTo({top : 0, behavior: 'smooth'});
     try {
       const res = await login({ email, password });
       if (res.error) toast.error(res.error, {
@@ -104,6 +105,7 @@ const LoginForm = () => {
               <label htmlFor="" className='label-content'>Company</label>
             </div>
           </div> */}
+          <br />
           <button
             disabled={!email || !password} 
             className="btn-submit"

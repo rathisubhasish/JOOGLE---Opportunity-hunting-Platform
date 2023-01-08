@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "./Joogle.css";
 import { brochureData, welcomeData, slideShowImg, scoresData} from "./Data/brochure";
 import {Brochure, Particles, ScoreCard, Slideshow} from "../../components/components";
+import { UserContext } from "../../UserContext";
 
 const Joogle = () => {
-  const user = false;
+  const {user} = useContext(UserContext);
   return (
     <>
       <div className="joogle-container">

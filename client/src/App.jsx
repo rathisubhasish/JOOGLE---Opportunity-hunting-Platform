@@ -73,8 +73,7 @@ function App() {
                 <Header 
                   headType="JoogleHeader" 
                 />
-                <INFO />
-                {/* <EXPLORE /> */}
+                <JOOGLE />
               </>
               }
             />
@@ -95,7 +94,6 @@ function App() {
                   headType="JoogleHeader" 
                 />
                 <SIGNUP />
-                <JOOGLE />
               </>
               }
             />
@@ -104,7 +102,6 @@ function App() {
                 <EXPLORE />
               }
             />
-            
           </Routes>
         </UserContext.Provider>
       </Router>

@@ -27,6 +27,7 @@ const SignupForm = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    window.scrollTo({top : 0, behavior: 'smooth'});
     try {
       const res = await register({ username, email, password, contactNumber });
       if (res.error) toast.error(res.error, {
@@ -193,7 +194,7 @@ const SignupForm = () => {
               <label htmlFor="" className='label-content' >Terms & Condition</label>
             </div>
           </div>
-
+            <br />
           <button
             disabled={
               !username ||
