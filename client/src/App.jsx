@@ -7,7 +7,7 @@ import './App.css';
 import { UserContext } from "./UserContext";
 
 // importing components
-import { Error, Header, ScrollUp } from "./components/components";
+import { Error, Header, Loading, ScrollUp } from "./components/components";
 
 //importing APIs functions
 import { getUser } from "./api/user";
@@ -77,7 +77,7 @@ function App() {
               </>
               }
             />
-            <Route exact path="/login" 
+            <Route exact path="/login"
               element={
               <>
                 <Header 

@@ -7,9 +7,9 @@
     justify-content: center;
     margin: 0.2rem 0rem 0rem 0rem;
     text-align: center;
-    background: url("../../assets/images/signup/background.jpg");
+    /* background: url("../../assets/images/signup/background.jpg");
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
     transition: all 0.4s ease-in-out;
 }
 
