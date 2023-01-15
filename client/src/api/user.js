@@ -1,9 +1,9 @@
 
-export const register = async ({username, email, password, contactNumber} = {}) => {
-    const user = {username, email, password, contactNumber};
+export const signup = async ({username, email, password, contact} = {}) => {
+    const user = {username, email, password, contact};
 
     try{
-        const res = await fetch(`${process.env.REACT_APP_API_URL}/register`, {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/signup`, {
             method:"POST",
             headers: {
                 Accept: "application/json",
@@ -14,7 +14,7 @@ export const register = async ({username, email, password, contactNumber} = {}) 
         return await res.json();
 
     } catch(err) {
-        throw new Error(`Cannot register! ${err}`);
+        throw new Error(`Cannot signup! ${err}`);
     }
 };
 

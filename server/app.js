@@ -8,10 +8,8 @@ require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const expressValidator = require("express-validator");
 
-
 // import app
 const app = express();
-
 
 // db
 mongoose

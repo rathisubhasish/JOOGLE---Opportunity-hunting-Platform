@@ -2,7 +2,7 @@ const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-exports.register = async (req,res) => {
+exports.signup = async (req,res) => {
     // check if user already exists
     const usernameExists = await User.findOne({
         username: req.body.username,

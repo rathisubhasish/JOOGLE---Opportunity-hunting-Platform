@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 // functions
-import { register } from "../../api/user";
+import { signup } from "../../api/user";
 
 
 const SignupForm = () => {
@@ -14,7 +14,7 @@ const SignupForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [contactNumber, setContactNumber] = useState("");
+  const [contact, setContactNumber] = useState("");
   const [terms, setTerms] = useState(false);
   // const [checkRole, setCheckRole] = useState(false);
   
@@ -29,7 +29,7 @@ const SignupForm = () => {
     e.preventDefault();
     window.scrollTo({top : 0, behavior: 'smooth'});
     try {
-      const res = await register({ username, email, password, contactNumber });
+      const res = await signup({ username, email, password, contact });
       if (res.error) toast.error(res.error, {
         autoClose: 4000,
         hideProgressBar: true,
@@ -157,13 +157,13 @@ const SignupForm = () => {
             className='input-content'
             maxLength={10}
             pattern="[0-9]{10}"
-            value={contactNumber}
+            value={contact}
             onChange={(e) => setContactNumber(e.target.value)}
             required
           />
           {showCondition && <div className="input-conditions">
             <span className='condition-item'>
-              {contactNumber ? <span className="material-icons checkSuccessIcon">
+              {contact? <span className="material-icons checkSuccessIcon">
                 verified
               </span> : <span></span>}
               <p>eg - 9875496852</p>
@@ -207,7 +207,7 @@ const SignupForm = () => {
               !hasLowerChar ||
               !hasNumber ||
               !hasSpecialChar ||
-              !contactNumber ||
+              !contact ||
               !terms
             }
             onClick={handleRegister}

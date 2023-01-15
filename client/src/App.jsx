@@ -7,7 +7,7 @@ import './App.css';
 import { UserContext } from "./UserContext";
 
 // importing components
-import { Error, Header, Loading, ScrollUp } from "./components/components";
+import { Error, Header, ScrollUp } from "./components/components";
 
 //importing APIs functions
 import { getUser } from "./api/user";
@@ -17,8 +17,7 @@ import {
   JOOGLE,
   LOGIN,
   SIGNUP,
-  EXPLORE,
-  INFO
+  EXPLORE
 } from "./views/views";
 
 function App() {

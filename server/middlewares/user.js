@@ -18,6 +18,9 @@ exports.userRegisterValidator = (req,res,next) => {
         "password",
         "Password must contains one uppercase, one lowercase, one number, and one special symbol"
         ).matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{6,}$/,"i");
+    
+    //check contact is not null
+    req.check("contact","contact is required!").notEmpty();
 
     // check for errors
     const errors = req.validationErrors();
@@ -48,6 +51,5 @@ exports.userById = async (req,res,next) => {
         req.user = user;
 
         next();
-
     });
 }
