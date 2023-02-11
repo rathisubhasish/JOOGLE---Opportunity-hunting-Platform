@@ -11,11 +11,3 @@ Status Code -
 
 500 - internal server error
 503 - service unavailable
-
-
-{
-    "username":"subhch",
-    "email": "rathi@gmail.com",
-    "password": "Checking@12",
-    "contact": "8209170851"
-}
