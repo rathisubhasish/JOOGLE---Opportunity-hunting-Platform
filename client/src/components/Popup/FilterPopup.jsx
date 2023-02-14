@@ -1,8 +1,7 @@
 import React from 'react';
 import "./PopupCss/Popup.css";
-import { LoginForm, SignupForm } from "../components";
 
-const Filter = () => {
+const FilterPopup = () => {
   return (
     <>
       <div className="popup-container">
@@ -25,4 +24,4 @@ const Filter = () => {
   )
 };
 
-export default Filter;
+export default FilterPopup;

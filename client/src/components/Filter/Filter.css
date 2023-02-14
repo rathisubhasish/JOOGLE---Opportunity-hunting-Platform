@@ -1,23 +1,39 @@
-#filter-floating-icon{
-    align-items: center;
+.filter-container {
     background-color: var(--primaryBackColor);
-    border-radius: 50%;
-    border: none;
-    bottom: 0;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    cursor: pointer;
-    justify-content: center;
-    margin-bottom: 4rem;
-    margin-right: 2rem;
-    outline: none;
-    padding: 1rem;
-    position: fixed;
-    color: white;
-    right: 0;
+    display: flex;
     text-align: center;
-    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+    position: fixed;
+    bottom: 0;
+    margin-bottom: -8px;
+    width: 100%;
+    border: none;
+    color: white;
+    border-radius: 20%;
+    font-size: 1.4rem;
+    cursor: pointer;
+    outline: none;
+    padding: 0.7rem;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
 }
 
-#filter-floating-icon:hover{
+.filter-container :hover{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+/* ______________________________________ */
+
+/* Media queries */
+@media screen and (min-width: 768px) and (min-height: 900px) {
+    .filter-container {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1280px) and (min-height: 700px) {
+    .filter-container {
+        display: none;
+    }
 }

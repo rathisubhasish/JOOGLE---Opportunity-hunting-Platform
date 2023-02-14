@@ -7,7 +7,7 @@ import './App.css';
 import { UserContext } from "./UserContext";
 
 // importing components
-import { Error, Header, Loading, ScrollUp, UserMenu } from "./components/components";
+import { Error, Header,  ScrollUp } from "./components/components";
 
 //importing APIs functions
 import { getUser } from "./api/api";
@@ -106,8 +106,25 @@ function App() {
             <Route path="/explore" 
               element={
                 <>
-                  <Header headType="ExploreHeader"/>
-                  <EXPLORE />
+                  {
+                    !user 
+                    ?
+                    (
+                      <>
+                      <Header headType="JoogleHeader" />
+                      <LOGIN />
+                      </>
+                    )
+                    :
+                    (
+                      
+                      <>
+                      <Header headType="ExploreHeader"/>
+                      <EXPLORE />
+                      </>
+                    )
+                  }
+                  
                 </>
               }
             />
