@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 // functions
-import { signup } from "../../api/user";
+import { signup } from "../../api/api";
 
 
 const SignupForm = () => {
@@ -24,6 +24,8 @@ const SignupForm = () => {
   let hasLowerChar = /(.*[a-z].*)/.test(password);
   let hasNumber = /(.*[0-9].*)/.test(password);
   let hasSpecialChar = /(.*[^a-zA-Z0-9].*)/.test(password);
+  let checkContactDigit = /^\d+$/.test(contact);
+  let checkContactLength = contact.length === 10;
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -163,7 +165,7 @@ const SignupForm = () => {
           />
           {showCondition && <div className="input-conditions">
             <span className='condition-item'>
-              {contact? <span className="material-icons checkSuccessIcon">
+              {(checkContactDigit && checkContactLength) ? <span className="material-icons checkSuccessIcon">
                 verified
               </span> : <span></span>}
               <p>eg - 9875496852</p>

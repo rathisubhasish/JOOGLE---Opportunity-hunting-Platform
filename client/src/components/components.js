@@ -13,6 +13,8 @@ import Search from "./Search/Search";
 import Back from "./Back/Back";
 import ScrollUp from "./ScrollUp/Scrollup";
 import Filter from "./Filter/Filter";
+import UserMenu from "./UserManual/UserMenu";
+
 export 
 { 
     Header, 
@@ -28,5 +30,6 @@ export
     Loading,
     Search,
     Back,
-    ScrollUp
+    ScrollUp,
+    UserMenu
 };

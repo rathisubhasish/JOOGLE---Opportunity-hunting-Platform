@@ -1,5 +1,5 @@
 // importing modules
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -7,10 +7,10 @@ import './App.css';
 import { UserContext } from "./UserContext";
 
 // importing components
-import { Error, Header, ScrollUp } from "./components/components";
+import { Error, Header, Loading, ScrollUp, UserMenu } from "./components/components";
 
 //importing APIs functions
-import { getUser } from "./api/user";
+import { getUser } from "./api/api";
 
 // importing views
 import {
@@ -82,7 +82,7 @@ function App() {
                 <Header 
                   headType="JoogleHeader" 
                 />
-                <LOGIN />
+                {!user ? <LOGIN /> : <JOOGLE />}
               </>
               }
             />
@@ -92,13 +92,23 @@ function App() {
                 <Header 
                   headType="JoogleHeader" 
                 />
-                <SIGNUP />
+                {!user ? <SIGNUP /> : <JOOGLE />}
               </>
               }
             />
-            <Route path="/explore/:item" 
+            <Route exact path="/profile" 
               element={
-                <EXPLORE />
+                <>
+                  <div>asdasd</div>
+                </>
+              }
+            />
+            <Route path="/explore" 
+              element={
+                <>
+                  <Header headType="ExploreHeader"/>
+                  <EXPLORE />
+                </>
               }
             />
           </Routes>

@@ -5,7 +5,7 @@ import { toast, Flip } from "react-toastify";
 
 
 // functions
-import { login } from "../../api/user";
+import { login } from "../../api/api";
 import { UserContext } from '../../UserContext';
 
 

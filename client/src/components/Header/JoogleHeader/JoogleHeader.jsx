@@ -8,7 +8,7 @@ const JoogleHeader = () => {
     <>
         <header>
             <Logo />
-            <Navigation navType="explore"/>
+            <Navigation navType="home"/>
         </header>
     </>
   )

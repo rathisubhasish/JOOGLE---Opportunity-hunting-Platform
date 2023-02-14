@@ -1,10 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import "./Joogle.css";
 import { brochureData, welcomeData, slideShowImg, scoresData} from "./Data/brochure";
 import {Brochure, Particles, ScoreCard, Slideshow} from "../../components/components";
 import { UserContext } from "../../UserContext";
 
+
 const Joogle = () => {
+  
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
+
+
   const {user} = useContext(UserContext);
   return (
     <>

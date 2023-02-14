@@ -4,10 +4,28 @@ header{
     font-family: var(--headFont);
     font-weight: 700;
     justify-content: space-between;
+    margin: 0 auto;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    z-index: 1000;
+    min-height: 8vh;
+    padding: 0.4rem;
+    text-align: center;
+    background-color: white;
+}
+
+/* header{
+    align-items: center;
+    display: flex;
+    font-family: var(--headFont);
+    font-weight: 700;
+    justify-content: space-between;
     margin: 0.2rem 0.8rem;
     padding: 0.2rem;
     text-align: center;
-}
+} */
 
 .explore-header-container{
     width: 100%;

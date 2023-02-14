@@ -17,7 +17,6 @@ export const homeNav = [
     {
         "id":"notifications",
         "icon":"notifications",
-        "active-icon":"notifications_active",
     },
     {
         "id":"user",

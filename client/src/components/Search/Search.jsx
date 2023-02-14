@@ -35,7 +35,7 @@ const Search = ({searchItem}) => {
             clear
             </span>
             :
-            <span class="material-icons" id="search-btn-icon">
+            <span className="material-icons" id="search-btn-icon">
             search
             </span>
             }
