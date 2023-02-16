@@ -1,12 +1,12 @@
 import React, {useContext}from 'react'
 import './UserMenu.css';
-import { userMenu } from './userMenu';
+import { homeMenu, exploreMenu } from './userMenu';
 import { logout } from '../../api/api';
 import { UserContext } from '../../UserContext';
 import { useNavigate } from "react-router-dom";
 import { toast, Flip } from "react-toastify";
 
-const UserMenu = () => {
+const UserMenu = ({menuType}) => {
     const navigate = useNavigate();
     const { setUser } = useContext(UserContext);
     
@@ -62,18 +62,37 @@ const UserMenu = () => {
             <div className="user-menu-items">
                 <ul className='user-menu-list' id="user-menu-list">
                 {
-                        userMenu.map((val,key)=>{
-                            return (
-                                <li key={key} className="user-nav-btn" onClick={handleUserMenuAction} id={val.name}>
-                                    <span className="material-icons user-menu-icon">
-                                    {val.icon} 
-                                    </span>
-                                    <span className='user-menu-text'>
-                                        {val.name}
-                                    </span>
-                                </li>
-                            );
-                        })
+                    menuType === 'homeMenu'
+                    ?
+                        (
+                            homeMenu.map((val,key)=>{
+                                return (
+                                    <li key={key} className="user-nav-btn" onClick={handleUserMenuAction} id={val.name}>
+                                        <span className="material-icons user-menu-icon">
+                                        {val.icon} 
+                                        </span>
+                                        <span className='user-menu-text'>
+                                            {val.name}
+                                        </span>
+                                    </li>
+                                );
+                            })
+                        )
+                    :
+                        (
+                            exploreMenu.map((val,key)=>{
+                                return (
+                                    <li key={key} className="user-nav-btn" onClick={handleUserMenuAction} id={val.name}>
+                                        <span className="material-icons user-menu-icon">
+                                        {val.icon} 
+                                        </span>
+                                        <span className='user-menu-text'>
+                                            {val.name}
+                                        </span>
+                                    </li>
+                                );
+                            })
+                        )
                     }              
                 </ul>
             </div>

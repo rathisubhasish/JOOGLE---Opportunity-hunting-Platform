@@ -54,7 +54,7 @@ const Navigation = ({navType}) => {
                     </li>
                   );
                 })
-                : 
+                :
                 (
                   navType === "explore"
                   ?
@@ -73,7 +73,7 @@ const Navigation = ({navType}) => {
               )
             }
           </ul>
-          {menu ? <UserMenu /> : ""}
+          {navType === "home" ? (menu ? <UserMenu menuType='homeMenu'/> : '') : (menu ? <UserMenu menuType='exploreMenu' /> : '')}
         </div>
     </>
   ) 
