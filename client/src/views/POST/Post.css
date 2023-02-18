@@ -2,6 +2,7 @@
     background-color:aliceblue;
     display: flex;
     flex-grow: 1;
+    margin-top: 8vh;
     justify-content: flex-start;
     flex-direction: column;
 }
@@ -33,10 +34,37 @@
     flex-direction: column;
     flex-grow: 1;
     padding: 0.5rem;
+    gap: 1rem;
     justify-content: flex-start;
     text-align: center;
     align-items: center;
     position: relative;
+}
+
+.post-title-container{
+    display: flex;
+    flex-direction: column;
+    width: inherit;
+    margin-top: 3.5rem;
+}
+
+.post-title{
+    text-align: center;
+    align-items: center;
+    color: var(--headColor);
+    font-family: var(--headFont);
+    word-wrap: break-word;
+    font-weight: bold;
+}
+
+.post-itemName{
+    font-size: 1.3rem;
+    font-style: italic;
+}
+
+.post-organization{
+    font-size: 1rem;
+    color:red;
 }
 
 .company-info-logo{

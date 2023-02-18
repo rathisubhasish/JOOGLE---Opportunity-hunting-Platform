@@ -1,9 +1,10 @@
 import React from 'react';
-import "./Info.css";
+import "./Post.css";
 import Img from "../../assets/images/global/card/back.jpg";
 import logo from "../../assets/images/global/companies/snapchat-logo-svgrepo-com.svg";
+import { AddPostForm } from '../../components/components';
 
-const Info = () => {
+const ADDPOST = () => {
   return (
     <>
         <div className="info-container">
@@ -20,16 +21,12 @@ const Info = () => {
               </span>
             </div>
             <br />
-            <br />
-            <div className="info-title">
-              <h3>CodeOhNinja 2022</h3>
-              <h4>Snapchat</h4>
-            </div>
 
+            <AddPostForm />
           </div>
         </div>
     </>
   )
 };
 
-export default Info;
+export default ADDPOST;

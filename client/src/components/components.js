@@ -4,6 +4,7 @@ import Particles from "./Particles/Particles";
 import CardItem from "./CardItem/CardItem";
 import LoginForm from "./Form/LoginForm";
 import SignupForm from "./Form/SignupForm";
+import AddPostForm from "./Form/AddPostForm";
 // import FilterPopup from "./Popup/FilterPopup";
 import Slideshow from "./SlideShow/Slideshow";
 import Error from "./Error/Error";
@@ -31,5 +32,6 @@ export
     Search,
     Back,
     ScrollUp,
-    UserMenu
+    UserMenu,
+    AddPostForm
 };

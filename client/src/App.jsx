@@ -17,7 +17,8 @@ import {
   JOOGLE,
   LOGIN,
   SIGNUP,
-  EXPLORE
+  EXPLORE,
+  ADDPOST
 } from "./views/views";
 
 function App() {
@@ -100,6 +101,13 @@ function App() {
               element={
                 <>
                   <div>asdasd</div>
+                </>
+              }
+            />
+            <Route exact path="/addPost" 
+              element={
+                <>
+                  <ADDPOST />
                 </>
               }
             />

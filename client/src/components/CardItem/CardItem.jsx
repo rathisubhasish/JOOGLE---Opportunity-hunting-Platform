@@ -4,7 +4,7 @@ import Img from "../../assets/images/global/cardBack.jpg";
 
 const CardItem = ({data}) => {
   return (
-    <>
+    <> 
       <a href="/" className="card-container">
           <span className="card-image-container">
             <img src={Img} alt="Img" className="image-element" />
