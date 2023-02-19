@@ -15,6 +15,7 @@ import Back from "./Back/Back";
 import ScrollUp from "./ScrollUp/Scrollup";
 import Filter from "./Filter/Filter";
 import UserMenu from "./UserMenu/UserMenu";
+import HeadingBar from "./HeadingBar/HeadingBar";
 
 export 
 { 
@@ -33,5 +34,6 @@ export
     Back,
     ScrollUp,
     UserMenu,
-    AddPostForm
+    AddPostForm,
+    HeadingBar
 };

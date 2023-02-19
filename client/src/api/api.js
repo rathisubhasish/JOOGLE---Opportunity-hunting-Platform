@@ -5,6 +5,8 @@ import logout from './logout';
 import profile from './profile';
 import explore from './explore';
 import addPost from './addPost';
+import myPost from './myPost';
+
 export{
     getUser,
     signup,
@@ -12,5 +14,6 @@ export{
     logout,
     profile,
     explore,
-    addPost
+    addPost,
+    myPost
 };

@@ -3,7 +3,7 @@ import { CardItem, Filter } from '../../components/components';
 import "./Explore.css";
 
 import {explore} from '../../api/api';
-
+ 
 const Explore = () => {
   useEffect(() => {
     window.scrollTo(0, 0)

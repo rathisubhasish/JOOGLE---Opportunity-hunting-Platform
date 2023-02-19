@@ -8,7 +8,7 @@ export const homeMenu = [
         "icon":"article"
     },
     {
-        "name":"add post",
+        "name":"addpost",
         "icon":"post_add"
     },
     {

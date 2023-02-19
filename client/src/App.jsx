@@ -18,7 +18,8 @@ import {
   LOGIN,
   SIGNUP,
   EXPLORE,
-  ADDPOST
+  ADDPOST,
+  MYPOST
 } from "./views/views";
 
 function App() {
@@ -107,7 +108,16 @@ function App() {
             <Route exact path="/addPost" 
               element={
                 <>
+                  <Header headType="DetailHeader" headText="ADD POST"/>
                   {!user ? <LOGIN /> : <ADDPOST />}
+                </>
+              }
+            />
+            <Route exact path="/myPost" 
+              element={
+                <>
+                  <Header headType="DetailHeader" headText="MY POST"/>
+                  {!user ? <LOGIN /> : <MYPOST />}
                 </>
               }
             />

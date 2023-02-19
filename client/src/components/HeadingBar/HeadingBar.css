@@ -1,0 +1,16 @@
+
+
+.heading-bar-container{
+    /* background-color: black; */
+    display: flex;
+    /* flex-grow: 1; */
+    font-size: 1.3rem;
+    padding: 0.1rem;
+    justify-content: center;
+    text-align: center;
+    font-style: var(--regularFont);
+    align-items: center;
+    color: var(--headColor);
+    font-weight: bolder;
+    text-transform: uppercase;
+}

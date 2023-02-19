@@ -18,6 +18,7 @@ const ExploreDetail = require('../Controllers/ExploreDetail');
 //Middlewares
 const {userRegisterValidator, userById, validatePost,validatePassword} = require('../Middlewares/UserMiddleware');
 const {verifyToken} = require('../Middlewares/AuthenticationMiddleware');
+const MyPost = require('../Controllers/MyPost');
 
 
 // APIs Route
@@ -28,6 +29,7 @@ router.get('/getUser', verifyToken, userById, GetUser);
 router.get('/profile', verifyToken, userById, Profile);
 router.put('/changePassword',verifyToken,userById,validatePassword,ChangePassword);
 router.post('/explore/addPost', verifyToken, validatePost, userById, AddPost);
+router.get('/explore/myPost', verifyToken, userById, MyPost);
 router.get('/explore', verifyToken, Explore);
 router.get('/explore/:_id', verifyToken, ExploreDetail);
 router.delete('/explore/deletePost/:_id', verifyToken,userById,DeletePost);

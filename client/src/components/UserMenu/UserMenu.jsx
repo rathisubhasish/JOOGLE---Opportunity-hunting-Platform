@@ -16,10 +16,15 @@ const UserMenu = ({menuType}) => {
             e.preventDefault();
             navigate("/profile");
         }
-        if(e.currentTarget.id === "add post")
+        if(e.currentTarget.id === "addpost")
         {
             e.preventDefault();
             navigate("/addPost");
+        }
+        if(e.currentTarget.id === "mypost")
+        {
+            e.preventDefault();
+            navigate("/myPost");
         }
         if(e.currentTarget.id === "logout")
         {
