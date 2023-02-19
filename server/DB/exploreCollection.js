@@ -1,13 +1,18 @@
 //Importing Modules
 const mongoose = require('mongoose');
 
-var categoryOptions = {
-    values: ['HiringChallenges', 'Jobs', 'Bootcamps']
+var postCategoryOptions = {
+    values: ['HiringChallenges', 'Jobs', 'Bootcamps', 'Others']
   , message: 'Category is required.'
 };
 
+var PostTagOptions = {
+    values: ['Others', 'Accounts', 'Acting', 'Animation', 'Architecture', 'Automobile','Aviation', 'Banking', 'Big Data', 'BPO', 'Brand Management', 'Business Development', 'Content Writing', 'Data Analytics', 'Data Entry', 'Data Science', 'Digital marketing', 'Ecommerce', 'Education', 'Engineering', 'Entertainment', 'Event Management', 'Fashion', 'Finance', 'Game Development', 'Graphic Design', 'Healthcare', 'Hotel Management', 'Human Resource', 'IT Comsultant', 'Medical', 'App Development', 'Photography', 'Programming', 'Research', 'Robotics', 'Sales', 'Software Development', 'Automation Testing', 'Full Stack Developer', 'UI/UX Design', 'Web Development']
+  , message: 'Tag is required.'
+};
+
 const ExploreSchema = new mongoose.Schema({
-    itemName: {
+    postName: {
         type: String,
         required: true,
         trim: true,
@@ -23,10 +28,60 @@ const ExploreSchema = new mongoose.Schema({
         type: Object,
         required: true,
     },
+    startDate: {
+        type: String,
+        required: true,
+    },
+    endDate: {
+        type: String,
+        required: true,
+    },
     category: {
         type: String,
         required: true,
-        enum: categoryOptions
+        enum: postCategoryOptions
+    },
+    tags : {
+        type: String,
+        required: true,
+        enum: PostTagOptions
+    },
+    registered : {
+        type: Number,
+        default:0
+    },
+    salary : {
+        type: String,
+    },
+    fees : {
+        type: String,
+    },
+    firstPrize: {
+        type: String,
+    },
+    secondPrize: {
+        type: String,
+    },
+    thirdprize: {
+        type: String,
+    },
+    responsibility: {
+        type: String,
+        required: true
+    },
+    requirements: {
+        type: String,
+        required: true
+    },
+    location: {
+        type: String,
+        required: true
+    },
+    minExperience: {
+        type: Number,
+    },
+    maxExperience: {
+        type: Number,
     }
     },
     {

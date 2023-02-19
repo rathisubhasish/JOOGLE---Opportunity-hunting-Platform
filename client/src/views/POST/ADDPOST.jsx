@@ -1,7 +1,6 @@
 import React from 'react';
 import "./Post.css";
 import Img from "../../assets/images/global/card/back.jpg";
-import logo from "../../assets/images/global/companies/snapchat-logo-svgrepo-com.svg";
 import { AddPostForm } from '../../components/components';
 
 const ADDPOST = () => {
@@ -14,14 +13,12 @@ const ADDPOST = () => {
             </span>  
           </div>
           <div className="info-items">
-
             <div className="company-info-logo">
               <span className='company-logo-container'>
-                <img src={logo} alt="logo" className='company-logo'/>
+                <img src={Img} alt="logo" className='company-logo'/>
               </span>
             </div>
             <br />
-
             <AddPostForm />
           </div>
         </div>

@@ -5,11 +5,11 @@ const AddPost = async (req,res) => {
 
     try{
         // check if post title already exists
-        const itemNameExists = await explores.findOne({
-            itemName: req.body.itemName,
+        const postNameExists = await explores.findOne({
+            postName: req.body.postName,
         });
 
-        if(itemNameExists) {
+        if(postNameExists) {
             return res.status(400).json({
                 error: "Title is already taken, try another",
             });
@@ -17,7 +17,9 @@ const AddPost = async (req,res) => {
 
         // if new title, create a new post
         try{
-            const newPost = new explores({itemName:req.body.itemName, organization: req.body.organization, userId: _id, category: req.body.category});
+            var myData = req.body;
+            myData.userId = _id;
+            const newPost = new explores(myData);
             await newPost.save().then(()=>{
                 res.status(201).json({
                     message: "Post created succesfully",
@@ -27,7 +29,6 @@ const AddPost = async (req,res) => {
         catch(err)
         {
             res.status(400).json({
-                message: "category should match with one of the required enumValues only",
                 error: err
             });
         }

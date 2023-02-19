@@ -85,13 +85,22 @@ exports.validatePassword = async (req,res,next) => {
 
 exports.validatePost = async (req,res,next) => {
     // itemName is not null
-    req.check("itemName","Title is required!").notEmpty();
+    req.check("postName","Title is required!").notEmpty();
     
     //organization is not null
     req.check("organization","Organization is required!").notEmpty();
-
     req.check("category","Category is required!").notEmpty();
+    
+    //dates is required
+    req.check("startDate","StartDate is required!").notEmpty();
+    req.check("endDate","EndDate is required!").notEmpty();
 
+    //details is required
+    req.check("tags","Tags is required!").notEmpty();
+    req.check("responsibility","Responsibility is required!").notEmpty();
+    req.check("requirements","Requirements is required!").notEmpty();
+    req.check("location","Location is required!").notEmpty();
+    
     // check for errors
     const errors = req.validationErrors();
     //if error , show the first one as it happens

@@ -74,6 +74,47 @@
     text-decoration: none;
 }
 
+.input-dropdown{
+    padding: 0.8rem;
+    width: 80%;
+    border-radius: 7px;
+    margin: 0 auto;
+    font-size: 1rem;
+    border: none;
+    color: var(--headColor);
+}
+.input-dropdown:focus{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.prizes-container{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.prizes-levels{
+    display: flex;
+    gap: 0.8rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.prizes-level-item{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
 .input-conditions {
     border-radius: 5px;
     border: 1px dashed var(--headColor);
@@ -193,6 +234,36 @@
 #signup:hover:not([disabled]) {
     background-color: var(--secondaryColor);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+#addPost:not([disabled]){
+    background-color: var(--primaryBackColor);
+}
+
+#addPost:hover:not([disabled]) {
+    background-color: var(--primaryColor);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+
+.experience-container{
+    width: 80%;
+    margin: 0 auto;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    border-radius: 7px;
+    flex-direction: column;
+}
+
+.experience-items{
+    display: flex;
+    width: 100%;
+    gap: 0.2rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 /* ______________________________________ */
