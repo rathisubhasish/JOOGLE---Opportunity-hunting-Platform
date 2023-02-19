@@ -96,7 +96,6 @@ exports.validatePost = async (req,res,next) => {
     req.check("endDate","EndDate is required!").notEmpty();
 
     //details is required
-    req.check("tags","Tags is required!").notEmpty();
     req.check("responsibility","Responsibility is required!").notEmpty();
     req.check("requirements","Requirements is required!").notEmpty();
     req.check("location","Location is required!").notEmpty();

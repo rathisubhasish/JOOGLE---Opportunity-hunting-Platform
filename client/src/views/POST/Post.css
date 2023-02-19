@@ -1,5 +1,5 @@
 .info-container{
-    background-color:aliceblue;
+    /* background-color:aliceblue; */
     display: flex;
     flex-grow: 1;
     margin-top: 8vh;

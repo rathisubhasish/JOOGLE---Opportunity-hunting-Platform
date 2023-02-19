@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import "./FormCSS/Form.css";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
+// API import
+import {addPost} from '../../api/api';
 
 const AddPostForm = () => {
+    const navigate = useNavigate();
     const [postName, setPostName] = useState("");
     const [organizationDecide, setOrganizationSelection] = useState("");
     const [startDate, setStartDate] = useState("");
@@ -19,12 +25,104 @@ const AddPostForm = () => {
     const [secondPrizeDecide, setSecondPrizeDecide] = useState("");
     const [thirdPrizeDecide, setThirdPrizeDecide] = useState("");
 
+    const handleAddPost = async (e) => {
+      e.preventDefault();
+      window.scrollTo({top : 0, behavior: 'smooth'});
+      const postData = {
+        "postName": postName,
+        "organization": organizationDecide,
+        "startDate": startDate,
+        "endDate": endDate,
+        "category": categoryDecide,
+        "responsibility": ResponsibilityDecide,
+        "requirements": RequirementsDecide,
+        "location": LocationDecide
+      }
+      if(salaryDecide){
+        postData.salary = salaryDecide;
+      }
+      if(feeDecide)
+      {
+        postData.fee = feeDecide;
+      }
+      if(firstPrizeDecide)
+      {
+        postData.firstPrize = firstPrizeDecide;
+      }
+      if(secondPrizeDecide)
+      {
+        postData.secondPrize = secondPrizeDecide;
+      }
+      if(thirdPrizeDecide)
+      {
+        postData.thirdPrize = thirdPrizeDecide;
+      }
+      if(minExperienceDecide)
+      {
+        postData.minExperience = minExperienceDecide;
+      }
+      if(maxExperienceDecide)
+      {
+        postData.maxExperience = maxExperienceDecide;
+      }
+      console.log(postData);
+      
+      try {
+        const res = await addPost(postData);
+        if (res.error) toast.error(res.error, {
+          autoClose: 4000,
+          hideProgressBar: true,
+          closeButton: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        else {
+          toast.success(res.message, {
+            autoClose: 4000,
+            hideProgressBar: true,
+            closeButton: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+          setPostName("");
+          setOrganizationSelection("");
+          setStartDate("");
+          setEndDate("");
+          setCategorySelection("");
+          setSalarySelection("");
+          setResponsibilityDetail("");
+          setRequirementsDetail("");
+          setLocationDecide("");
+          setMinExperienceDecide("");
+          setMaxExperienceDecide("");
+          setWorkingDayDecide("");
+          setFeeDecide("");
+          setFirstPrizeDecide("");
+          setSecondPrizeDecide("");
+          setThirdPrizeDecide("");
+          // redirect to login
+          navigate("/");
+        }
+  
+      } catch (err) {
+        toast.error("Server error, please try later!", {
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeButton: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    }
     // const todayDate = new Date(Date.now()).toLocaleDateString();
     return (
       <>
         <div className="form-container">
           <form action="" className="form-content">
-          <label htmlFor="" className='label-content'>Enter Post Name</label>
+          <label htmlFor="" className='label-content'>Enter Post Name <span className='mandatory-star'>*</span></label>
             <input
               type="text"
               placeholder='Enter Post Name'
@@ -33,7 +131,7 @@ const AddPostForm = () => {
               onChange={(e) => setPostName(e.target.value)}
               required
             />
-            <label htmlFor="" className='label-content'>Enter Organization Name</label>
+            <label htmlFor="" className='label-content'>Enter Organization <span className='mandatory-star'>*</span></label>
             <input
               type="text"
               placeholder='Enter Organization Name'
@@ -42,7 +140,7 @@ const AddPostForm = () => {
               onChange={(e) => setOrganizationSelection(e.target.value)}
               required
             />
-            <label htmlFor="" className='label-content'>Registration Open Date</label>
+            <label htmlFor="" className='label-content'>Registration Open Date <span className='mandatory-star'>*</span></label>
             <input
               type="date"
               className='input-content'
@@ -51,7 +149,7 @@ const AddPostForm = () => {
               onChange={(e) => setStartDate(e.target.value)}
               required
             />
-            <label htmlFor="" className='label-content'>Registration Close Date</label>
+            <label htmlFor="" className='label-content'>Registration Close Date <span className='mandatory-star'>*</span></label>
             <input
               type="date"
               placeholder='Enter Post Name'
@@ -62,7 +160,7 @@ const AddPostForm = () => {
               required
             />
             
-            <label htmlFor="" className='label-content'>Category</label>
+            <label htmlFor="" className='label-content'>Category <span className='mandatory-star'>*</span></label>
             <select className='input-dropdown' name="categoryDecide" id="categoryDecide" onChange={(e) => setCategorySelection(e.target.value)} value={categoryDecide}>
               <option value="notSelected">Select Category</option>
               <option value="Hiring Challenges">Hiring Challenges</option>
@@ -120,8 +218,9 @@ const AddPostForm = () => {
                     <>
                       <label htmlFor="" className='label-content'>Salary/Stipend</label>
                       <select name="salaryDecide" id="salaryDecide" className='input-dropdown' value={salaryDecide} onChange={(e) => setSalarySelection(e.target.value)}>
-                        <option value="NA">Not Disclose</option>
-                        <option value="market">Expected Market Value</option>
+                        <option value="">Select Salary</option>
+                        <option value="Not Disclose">Not Disclose</option>
+                        <option value="Market Expected">Expected Market Value</option>
                         <option value="0-5LPA">0 - 5 LPA</option>
                         <option value="5-10LPA">5 - 10 LPA</option>
                         <option value="10-20LPA">10 - 20 LPA</option>
@@ -152,16 +251,16 @@ const AddPostForm = () => {
               )
             }
             
-            <label htmlFor="" className='label-content'>Responsibility</label>
+            <label htmlFor="" className='label-content'>Responsibility <span className='mandatory-star'>*</span></label>
             <textarea name="" id="" className='input-content'  rows="10" value={ResponsibilityDecide}
               onChange={(e) => setResponsibilityDetail(e.target.value)}></textarea>
 
-            <label htmlFor="" className='label-content'>Requirements</label>
+            <label htmlFor="" className='label-content'>Requirements <span className='mandatory-star'>*</span></label>
             <textarea name="" id="" className='input-content'  rows="10" value={RequirementsDecide}
               onChange={(e) => setRequirementsDetail(e.target.value)}></textarea>
             
             
-            <label htmlFor="" className='label-content'>Location</label>
+            <label htmlFor="" className='label-content'>Location <span className='mandatory-star'>*</span></label>
             <input
               type="text"
               className='input-content'
@@ -206,21 +305,17 @@ const AddPostForm = () => {
             />
 
           <button
-            // disabled={
-            //   !username ||
-            //   !email ||
-            //   !password ||
-            //   !confirmPassword ||
-            //   password !== confirmPassword ||
-            //   !hasSixChar ||
-            //   !hasUpperChar ||
-            //   !hasLowerChar ||
-            //   !hasNumber ||
-            //   !hasSpecialChar ||
-            //   !contact ||
-            //   !terms
-            // }
-            // onClick={handleRegister}
+            disabled={
+              !postName ||
+              !organizationDecide ||
+              !startDate ||
+              !endDate ||
+              !categoryDecide ||
+              !ResponsibilityDecide ||
+              !RequirementsDecide ||
+              !LocationDecide
+            }
+            onClick={handleAddPost}
             className="btn-submit"
             id="addPost">
             Add Post

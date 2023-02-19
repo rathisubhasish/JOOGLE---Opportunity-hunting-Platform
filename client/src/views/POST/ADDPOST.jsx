@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import "./Post.css";
 import Img from "../../assets/images/global/card/back.jpg";
 import { AddPostForm } from '../../components/components';
 
 const ADDPOST = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
   return (
     <>
         <div className="info-container">

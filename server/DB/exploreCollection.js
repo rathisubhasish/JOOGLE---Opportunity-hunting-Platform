@@ -41,14 +41,9 @@ const ExploreSchema = new mongoose.Schema({
         required: true,
         enum: postCategoryOptions
     },
-    tags : {
-        type: String,
-        required: true,
-        enum: PostTagOptions
-    },
     registered : {
-        type: Number,
-        default:0
+        type: Array,
+        default:[]
     },
     salary : {
         type: String,
