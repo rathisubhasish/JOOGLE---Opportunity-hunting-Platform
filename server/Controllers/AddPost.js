@@ -19,6 +19,7 @@ const AddPost = async (req,res) => {
         try{
             var myData = req.body;
             myData.userId = _id;
+            console.log(myData);
             const newPost = new explores(myData);
             await newPost.save().then(()=>{
                 res.status(201).json({
@@ -28,6 +29,7 @@ const AddPost = async (req,res) => {
         }
         catch(err)
         {
+            console.log(err);
             res.status(400).json({
                 error: err
             });

@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 var postCategoryOptions = {
-    values: ['HiringChallenges', 'Jobs', 'Bootcamps', 'Others']
+    values: ['Hiring Challenges', 'Jobs', 'Bootcamps', 'Others']
   , message: 'Category is required.'
 };
 

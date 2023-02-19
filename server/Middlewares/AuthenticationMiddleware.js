@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 
 exports.verifyToken = (req,res,next) => {
     let accesstoken = req.cookies.jwt;
-
     // if there is no token , it is unauthorized
     if(!accesstoken)
     {

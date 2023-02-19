@@ -107,7 +107,7 @@ function App() {
             <Route exact path="/addPost" 
               element={
                 <>
-                  <ADDPOST />
+                  {!user ? <LOGIN /> : <ADDPOST />}
                 </>
               }
             />

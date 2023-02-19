@@ -6,7 +6,7 @@ import { UserContext } from '../../UserContext';
 import { useNavigate } from "react-router-dom";
 import { toast, Flip } from "react-toastify";
 
-const UserMenu = ({menuType}) => {
+const UserMenu = ({menuType}) => { 
     const navigate = useNavigate();
     const { setUser } = useContext(UserContext);
     
@@ -15,6 +15,11 @@ const UserMenu = ({menuType}) => {
         {
             e.preventDefault();
             navigate("/profile");
+        }
+        if(e.currentTarget.id === "add post")
+        {
+            e.preventDefault();
+            navigate("/addPost");
         }
         if(e.currentTarget.id === "logout")
         {

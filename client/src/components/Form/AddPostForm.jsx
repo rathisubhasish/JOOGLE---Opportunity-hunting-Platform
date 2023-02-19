@@ -38,24 +38,49 @@ const AddPostForm = () => {
         "requirements": RequirementsDecide,
         "location": LocationDecide
       }
-      if(salaryDecide){
+      if(salaryDecide && categoryDecide === "Jobs"){
         postData.salary = salaryDecide;
       }
-      if(feeDecide)
+      else
+      {
+        delete postData.salary;
+        setSalarySelection("");
+      }
+      if(feeDecide && categoryDecide === "Bootcamps")
       {
         postData.fee = feeDecide;
       }
-      if(firstPrizeDecide)
+      else
+      {
+        delete postData.fee;
+        setFeeDecide("");
+      }
+      if(firstPrizeDecide && categoryDecide === "Hiring Challenges")
       {
         postData.firstPrize = firstPrizeDecide;
       }
-      if(secondPrizeDecide)
+      else
+      {
+        delete postData.firstPrize;
+        setFirstPrizeDecide("");
+      }
+      if(secondPrizeDecide && categoryDecide === "Hiring Challenges")
       {
         postData.secondPrize = secondPrizeDecide;
       }
-      if(thirdPrizeDecide)
+      else
+      {
+        delete postData.secondPrize;
+        setSecondPrizeDecide("");
+      }
+      if(thirdPrizeDecide && categoryDecide === "Hiring Challenges")
       {
         postData.thirdPrize = thirdPrizeDecide;
+      }
+      else
+      {
+        delete postData.thirdPrize;
+        setThirdPrizeDecide("");
       }
       if(minExperienceDecide)
       {
@@ -102,7 +127,7 @@ const AddPostForm = () => {
           setFirstPrizeDecide("");
           setSecondPrizeDecide("");
           setThirdPrizeDecide("");
-          // redirect to login
+          // redirect to home
           navigate("/");
         }
   
@@ -161,7 +186,7 @@ const AddPostForm = () => {
             />
             
             <label htmlFor="" className='label-content'>Category <span className='mandatory-star'>*</span></label>
-            <select className='input-dropdown' name="categoryDecide" id="categoryDecide" onChange={(e) => setCategorySelection(e.target.value)} value={categoryDecide}>
+            <select className='input-dropdown' name="categoryDecide" id="categoryDecide" value={categoryDecide} onChange={(e) => setCategorySelection(e.target.value)} >
               <option value="notSelected">Select Category</option>
               <option value="Hiring Challenges">Hiring Challenges</option>
               <option value="Jobs">Jobs</option>
@@ -177,7 +202,7 @@ const AddPostForm = () => {
                   <div className="prizes-container">
                     <div className="prizes-levels">
                       <div className="prizes-level-item">
-                        <span class="material-icons">
+                        <span className="material-icons">
                           emoji_events
                         </span>
                         <span className='label-content'>
@@ -187,7 +212,7 @@ const AddPostForm = () => {
               onChange={(e) => setFirstPrizeDecide(e.target.value)}/>
                       </div>
                       <div className="prizes-level-item">
-                        <span class="material-icons">
+                        <span className="material-icons">
                           emoji_events
                         </span>
                         <span className='label-content'>
@@ -197,7 +222,7 @@ const AddPostForm = () => {
               onChange={(e) => setSecondPrizeDecide(e.target.value)}/>
                       </div>
                       <div className="prizes-level-item">
-                        <span class="material-icons">
+                        <span className="material-icons">
                           emoji_events
                         </span>
                         <span className='label-content'>

@@ -85,7 +85,7 @@ exports.validatePassword = async (req,res,next) => {
 
 exports.validatePost = async (req,res,next) => {
     // itemName is not null
-    req.check("postName","Title is required!").notEmpty();
+    req.check("postName","Post Name is required!").notEmpty();
     
     //organization is not null
     req.check("organization","Organization is required!").notEmpty();

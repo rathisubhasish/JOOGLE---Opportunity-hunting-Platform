@@ -11,7 +11,7 @@ const CardItem = ({data}) => {
           </span>
           <div className="card-content">
             <p className="card-title" id="cardName">
-              {data.itemName}
+              {data.postName}
             </p>
             <p className="card-title" id="cardOwnerName">
               {data.organization}
