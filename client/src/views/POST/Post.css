@@ -1,5 +1,4 @@
 .info-container{
-    /* background-color:aliceblue; */
     display: flex;
     flex-grow: 1;
     margin-top: 8vh;
@@ -106,4 +105,13 @@
     gap: 0.5rem;
     text-align: center;
     align-items: center;
+}
+
+.user-post{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
 }

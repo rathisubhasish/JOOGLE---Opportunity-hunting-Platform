@@ -36,7 +36,7 @@ const Login = async (req,res) => {
                 {
                     //generate a token with userId and jwt secret
                     const token = jwt.sign({_id: user._id},process.env.JWT_SECRET,{
-                        expiresIn: "10m",
+                        expiresIn: "60m",
                     });
     
                     //persist the token as 'jwt' in cookie with an expiry date

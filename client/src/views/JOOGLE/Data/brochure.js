@@ -53,8 +53,8 @@ export const brochureData = [
     {
         "title": "Bootcamp Courses",
         "detail": "We are the only organisation which is providing the bootcamp opportunity with the industry directly. In this bootcamp you will learn the industry based skills and after completion , the certificate and some major industry based projects.",
-        "pathName": "Coming Soon",
-        "path": "/",
+        "pathName": "Explore",
+        "path": "/explore",
         "imageName": "certificate.svg"
     }
 ]

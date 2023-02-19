@@ -35,6 +35,12 @@ const Explore = () => {
                 <div className="category-item">
                   <a href="/" className='category-item-name'>Jobs</a>
                 </div>
+                <div className="category-item">
+                  <a href="/" className='category-item-name'>Bootcamps</a>
+                </div>
+                <div className="category-item">
+                  <a href="/" className='category-item-name'>Others</a>
+                </div>
               </div>
             </div>
             <p className="explore-heading">
