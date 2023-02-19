@@ -32,7 +32,7 @@ router.post('/explore/addPost', verifyToken, validatePost, userById, AddPost);
 router.get('/explore/myPost', verifyToken, userById, MyPost);
 router.get('/explore', verifyToken, Explore);
 router.get('/explore/:_id', verifyToken, ExploreDetail);
-router.delete('/explore/deletePost/:_id', verifyToken,userById,DeletePost);
+router.delete('/explore/deletePost/:postId', verifyToken,userById,DeletePost);
 router.post('/logout', verifyToken, Logout);
 
 module.exports = router;

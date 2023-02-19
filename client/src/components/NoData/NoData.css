@@ -1,0 +1,25 @@
+.nodata-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    margin-top: 8vh;
+}
+
+.nodata-items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    background-color: chartreuse;
+}
+
+.image-nodata{
+    display: flex;
+    justify-content: center;
+    width: inherit;
+    align-items: center;
+    text-align: center;
+}

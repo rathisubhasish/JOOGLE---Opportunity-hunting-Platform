@@ -4,7 +4,7 @@ const DeletePost = async (req,res) => {
     
     // check if post title already exists
     try{
-        await explores.findOne({_id: req.params._id,},{userId:1,_id:1}).exec(async (err,postData)=>{
+        await explores.findOne({_id: req.params.postId,},{userId:1,_id:1}).exec(async (err,postData)=>{
             // If err or no post
             if(err || !postData)
             {
@@ -16,7 +16,7 @@ const DeletePost = async (req,res) => {
             //if post found and only created by the logged in user
             if(postData.userId.equals(req.user._id))
             {
-                await explores.deleteOne({_id:req.params._id}).then(()=>{
+                await explores.deleteOne({_id:req.params.postId}).then(()=>{
                     return res.status(200).json({
                         message: "Post deleted successfully"
                     });

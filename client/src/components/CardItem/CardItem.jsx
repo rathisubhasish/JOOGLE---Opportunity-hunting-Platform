@@ -1,16 +1,81 @@
-import React, {useState} from 'react';
+import React from 'react';
 import "./CardItem.css";
 import Img from "../../assets/images/global/cardBack.jpg";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
-const CardItem = ({data}) => {
-  const [prize,showPrize] = useState("");
-  const [salary,showSalary] = useState("");
-  const [fee,showFee] = useState("");
+// functions
+import { deletePost } from "../../api/api";
+
+const CardItem = ({data, role}) => {
+  const navigate = useNavigate();
+
+  const handleDeletePost = async (e) => {
+    e.preventDefault();
+    window.scrollTo({top : 0, behavior: 'smooth'});
+    try {
+      const res = await deletePost({"postId":data._id});
+      if (res.error) toast.error(res.error, {
+        autoClose: 4000,
+        hideProgressBar: true,
+        closeButton: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      else {
+        toast.success(res.message, {
+          autoClose: 4000,
+          hideProgressBar: true,
+          closeButton: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        // redirect
+        window.location.reload(false);
+      }
+
+    } catch (err) {
+      toast.error("Server error, please try later!", {
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeButton: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }
 
   return (
     <> 
-      <a href="/" className="card-container">
-        <div className="card-contents">
+      <div className="card-container">
+        {/* __________________ Action Items */}
+        {
+            role === "creator"
+            ?
+            (
+              <>
+                <div className="card-action-container">
+                <div className="card-action-items">
+                  <span className="material-icons action-item" id="post-edit-icon">
+                    edit
+                  </span>
+                  <span className="material-icons action-item" id="post-delete-icon" onClick={handleDeletePost}>
+                    delete
+                  </span>
+                  </div>
+                </div>  
+                <hr /> 
+              </>
+            )
+            :
+            ''
+          }
+          
+        <a href="/" className="card-contents">
+          
           {/* _______________ card header  */}
           <div className="card-header-container">
             <div className="card-header-items">
@@ -111,8 +176,9 @@ const CardItem = ({data}) => {
               </div>
             </div>
           </div>
-        </div>
-      </a>
+          <br />
+        </a>
+      </div>
     </>
   )
 };

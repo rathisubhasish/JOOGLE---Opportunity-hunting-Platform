@@ -6,7 +6,7 @@ import profile from './profile';
 import explore from './explore';
 import addPost from './addPost';
 import myPost from './myPost';
-
+import deletePost from './deletePost';
 export{
     getUser,
     signup,
@@ -15,5 +15,6 @@ export{
     profile,
     explore,
     addPost,
-    myPost
+    myPost,
+    deletePost
 };
