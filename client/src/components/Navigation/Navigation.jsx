@@ -2,7 +2,7 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../../UserContext";
 import "./Navigation.css";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 // importing navdata
 import {unauthorizedNav,homeNav, exploreNav} from "./Navigate";
@@ -11,21 +11,19 @@ import { UserMenu } from "../components";
 const Navigation = ({navType}) => {
   const [menu, showMenu] = useState(false);
   const {user} = useContext(UserContext);
+  const navigate = useNavigate();
 
-  const handleHomeNavAction = (command) => {
+  const handleNavAction = (command) => {
       if(command.target.id === "search_icon")
       {
-        alert("search");
-      } 
-      if(command.target.id === "notifications")
-      {
-        alert("notifications");
+        navigate('/explore');
       }
       if(command.target.id === "user")
       {
         showMenu(!menu);
       }
   }
+
   return (
     <>
         <div className="menu-container">
@@ -48,7 +46,7 @@ const Navigation = ({navType}) => {
                 homeNav.map((val,key)=>{
                   return (
                       <li key={key}>
-                      <span className="material-icons icon-btn" id={val.id} onClick={handleHomeNavAction}>
+                      <span className="material-icons icon-btn" id={val.id} onClick={handleNavAction}>
                         {val.icon}
                       </span>
                     </li>
@@ -61,7 +59,7 @@ const Navigation = ({navType}) => {
                   exploreNav.map((val,key)=>{
                     return (
                         <li key={key}>
-                        <span className="material-icons icon-btn" id={val.id} onClick={handleHomeNavAction}>
+                        <span className="material-icons icon-btn" id={val.id} onClick={handleNavAction}>
                           {val.icon}
                         </span>
                       </li>
@@ -73,7 +71,7 @@ const Navigation = ({navType}) => {
               )
             }
           </ul>
-          {navType === "home" ? (menu ? <UserMenu menuType='homeMenu'/> : '') : (menu ? <UserMenu menuType='exploreMenu' /> : '')}
+          {navType === "home" ? (menu ? <UserMenu menuType='homeMenu' visibility={showMenu}/> : '') : (menu ? <UserMenu menuType='exploreMenu' visibility={showMenu}/> : '')}
         </div>
     </>
   ) 

@@ -15,10 +15,6 @@ export const homeNav = [
         "icon":"search",
     },
     {
-        "id":"notifications",
-        "icon":"notifications",
-    },
-    {
         "id":"user",
         "icon":"account_circle",
     },

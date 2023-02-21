@@ -6,11 +6,13 @@ import { UserContext } from '../../UserContext';
 import { useNavigate } from "react-router-dom";
 import { toast, Flip } from "react-toastify";
 
-const UserMenu = ({menuType}) => { 
+const UserMenu = ({menuType, visibility}) => { 
     const navigate = useNavigate();
     const { setUser } = useContext(UserContext);
     
     const handleUserMenuAction = async (e) => {
+        
+        visibility(!visibility);
         if(e.currentTarget.id === "profile")
         {
             e.preventDefault();
@@ -20,6 +22,7 @@ const UserMenu = ({menuType}) => {
         {
             e.preventDefault();
             navigate("/addPost");
+
         }
         if(e.currentTarget.id === "mypost")
         {

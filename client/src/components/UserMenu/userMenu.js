@@ -29,12 +29,8 @@ export const exploreMenu = [
         "icon":"article"
     },
     {
-        "name":"add post",
+        "name":"addpost",
         "icon":"post_add"
-    },
-    {
-        "name": "notifications",
-        "icon": "notifications"
     },
     {
         "name":"logout",

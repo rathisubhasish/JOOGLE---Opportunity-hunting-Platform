@@ -7,7 +7,8 @@ const addPost = async (postData) => {
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
-            }
+            },
+            body: JSON.stringify(postData),
         });
         return await res.json();
 
