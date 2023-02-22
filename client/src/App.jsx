@@ -7,7 +7,7 @@ import './App.css';
 import { UserContext } from "./UserContext";
 
 // importing components
-import { Error, Header,  ScrollUp } from "./components/components";
+import { Error, Header,  Loading,  ScrollUp } from "./components/components";
 
 //importing APIs functions
 import { getUser } from "./api/api";
@@ -24,15 +24,27 @@ import {
 
 function App() {
   const [user, setUser] = useState(null);
+  const [userLoading, setUserLoading] = useState(false);
   const [scrollUp, setScrollUp] = useState(false);
 
   useEffect(() => {
+    setUserLoading(true);
     const checkUser = getUser()
       .then((res) => {
-        if (res.error) console.error(res.error);
-        else setUser(res.username);
+        if (res.error){
+          setUserLoading(false);
+          console.error(res.error);
+        }
+        else{
+          setUser(res.username);
+          setUserLoading(false);
+        }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setUserLoading(false);
+        console.error(err)
+        }
+      );
     return () => checkUser;
   }, []);
 
@@ -71,30 +83,44 @@ function App() {
             <Route exact path="/" 
               element={
               <>
-                <Header 
-                  headType="JoogleHeader" 
-                />
-                <JOOGLE />
+                {userLoading ? <Loading loadType='blankLoad'/> : ''}
+                {!userLoading && <JOOGLE />}
               </>
               }
             />
             <Route exact path="/login"
               element={
               <>
-                <Header 
-                  headType="JoogleHeader" 
-                />
-                {!user ? <LOGIN /> : <JOOGLE />}
+                {!user 
+                  ? 
+                  (<>
+                    {userLoading ? <Loading loadType='blankLoad'/> : ''}
+                    {!userLoading && <LOGIN />}
+                  </>)
+                  :
+                  (<>
+                  {userLoading ? <Loading loadType='blankLoad'/> : ''}
+                  {!userLoading && <JOOGLE />} 
+                  </>)
+                }
               </>
               }
             />
             <Route exact path="/signup" 
               element={
               <>
-                <Header 
-                  headType="JoogleHeader" 
-                />
-                {!user ? <SIGNUP /> : <JOOGLE />}
+                {!user 
+                  ? 
+                  (<>
+                    {userLoading ? <Loading loadType='blankLoad'/> : ''}
+                    {!userLoading && <SIGNUP />}
+                  </>)
+                  :
+                  (<>
+                  {userLoading ? <Loading loadType='blankLoad'/> : ''}
+                  {!userLoading && <JOOGLE />}
+                  </>)
+                }
               </>
               }
             />
@@ -108,16 +134,36 @@ function App() {
             <Route exact path="/addPost" 
               element={
                 <>
-                  <Header headType="DetailHeader" headText="ADD POST"/>
-                  {!user ? <LOGIN /> : <ADDPOST />}
+                  {!user 
+                  ? 
+                  (<>
+                    {userLoading ? <Loading loadType='blankLoad'/> : ''}
+                    {!userLoading && <LOGIN />}
+                  </>)
+                  :
+                  (<>
+                  {userLoading ? <Loading loadType='blankLoad'/> : ''}
+                  {!userLoading && <ADDPOST />} 
+                  </>)
+                  }
                 </>
               }
             />
             <Route exact path="/myPost" 
               element={
                 <>
-                  <Header headType="DetailHeader" headText="MY POST"/>
-                  {!user ? <LOGIN /> : <MYPOST />}
+                  {!user 
+                  ? 
+                  (<>
+                    {userLoading ? <Loading loadType='blankLoad'/> : ''}
+                    {!userLoading && <LOGIN />}
+                  </>)
+                  :
+                  (<>
+                  {userLoading ? <Loading loadType='blankLoad'/> : ''}
+                  {!userLoading && <MYPOST />} 
+                  </>)
+                  }
                 </>
               }
             />
@@ -126,23 +172,17 @@ function App() {
                 <>
                   {
                     !user 
-                    ?
-                    (
-                      <>
-                      <Header headType="JoogleHeader" />
-                      <LOGIN />
-                      </>
-                    )
+                    ? 
+                    (<>
+                      {userLoading ? <Loading loadType='blankLoad'/> : ''}
+                      {!userLoading && <LOGIN />}
+                    </>)
                     :
-                    (
-                      
-                      <>
-                      <Header headType="ExploreHeader"/>
-                      <EXPLORE />
-                      </>
-                    )
+                    (<>
+                    {userLoading ? <Loading loadType='blankLoad'/> : ''}
+                    {!userLoading && <EXPLORE />} 
+                    </>)
                   }
-                  
                 </>
               }
             />

@@ -9,7 +9,7 @@ import { login } from "../../api/api";
 import { UserContext } from '../../UserContext';
 
 
-const LoginForm = () => {
+const LoginForm = ({loadingVisibility}) => {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
@@ -19,9 +19,13 @@ const LoginForm = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     window.scrollTo({top : 0, behavior: 'smooth'});
+    loadingVisibility(true);
     try {
       const res = await login({ email, password });
-      if (res.error) toast.error(res.error, {
+      if (res.error)
+      {
+        loadingVisibility(false);
+        toast.error(res.error, {
         autoClose: 4000,
         hideProgressBar: true,
         closeButton: false,
@@ -29,7 +33,8 @@ const LoginForm = () => {
         draggable: true,
         progress: undefined,
         transition: Flip
-      });
+        });
+      }
       else {
         toast.success(res.message, {
           autoClose: 4000,
@@ -41,10 +46,12 @@ const LoginForm = () => {
           transition: Flip
         });
         setUser(res.username);
+        loadingVisibility(false);
         //redirect the user to home
         navigate("/");
       }
     } catch (err) {
+      loadingVisibility(false);
       toast.error(err, {
         autoClose: 4000,
         hideProgressBar: true,

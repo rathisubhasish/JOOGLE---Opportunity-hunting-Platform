@@ -23,6 +23,14 @@
     width: 100%;
     height: inherit;
 }
+.logged-user-name{
+    display: flex;
+    width: 100%;
+    padding: 0.3rem;
+    color: var(--headColor);
+    word-wrap: break-word;
+    /* background-color: red; */
+}
 
 #user-menu-list{
     display: flex;

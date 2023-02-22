@@ -8,7 +8,7 @@ import { toast, Flip } from "react-toastify";
 
 const UserMenu = ({menuType, visibility}) => { 
     const navigate = useNavigate();
-    const { setUser } = useContext(UserContext);
+    const { user,setUser } = useContext(UserContext);
     
     const handleUserMenuAction = async (e) => {
         
@@ -73,6 +73,8 @@ const UserMenu = ({menuType, visibility}) => {
     <>
         <div className="user-menu-container">
             <div className="user-menu-items">
+                <span className='logged-user-name'>{user}</span>
+                <hr className='separator'/>
                 <ul className='user-menu-list' id="user-menu-list">
                 {
                     menuType === 'homeMenu'

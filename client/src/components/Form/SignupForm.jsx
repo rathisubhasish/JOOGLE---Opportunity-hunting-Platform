@@ -6,8 +6,7 @@ import { toast } from "react-toastify";
 // functions
 import { signup } from "../../api/api";
 
-
-const SignupForm = () => {
+const SignupForm = ({loadingVisibility}) => {
   const navigate = useNavigate();
   const [showCondition] = useState(true);
   const [username, setUsername] = useState("");
@@ -30,17 +29,22 @@ const SignupForm = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     window.scrollTo({top : 0, behavior: 'smooth'});
+    loadingVisibility(true);
     try {
       const res = await signup({ username, email, password, contact });
-      if (res.error) toast.error(res.error, {
+      if (res.error){
+        loadingVisibility(false);
+        toast.error(res.error, {
         autoClose: 4000,
         hideProgressBar: true,
         closeButton: false,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-      });
+        });
+      }
       else {
+        loadingVisibility(false);
         toast.success(res.message, {
           autoClose: 4000,
           hideProgressBar: true,
@@ -54,6 +58,7 @@ const SignupForm = () => {
       }
 
     } catch (err) {
+      loadingVisibility(false);
       toast.error("Server error, please try later!", {
         autoClose: 2000,
         hideProgressBar: true,

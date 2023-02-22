@@ -1,15 +1,17 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./Post.css";
 import Img from "../../assets/images/global/card/back.jpg";
-import { AddPostForm } from '../../components/components';
+import { AddPostForm, Header, Loading } from '../../components/components';
 
 const ADDPOST = () => {
-
+  const [addPostLoading, setAddPostLoading] = useState(false);
   useEffect(() => {
     window.scrollTo(0, 0)
   }, []);
   return (
     <>
+        {addPostLoading ? <Loading loadType='screenLoad'/> : ''}
+        <Header headType="DetailHeader" headText="ADD POST"/>
         <div className="info-container">
           <div className="info-cover-container">
             <span className='info-cover'>
@@ -23,7 +25,7 @@ const ADDPOST = () => {
               </span>
             </div>
             <br />
-            <AddPostForm />
+            <AddPostForm loadingVisibility={setAddPostLoading}/>
           </div>
         </div>
     </>

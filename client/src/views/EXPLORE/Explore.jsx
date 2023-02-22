@@ -1,27 +1,38 @@
 import React, {useEffect, useState} from 'react';
-import { CardItem, Filter } from '../../components/components';
+import { CardItem, Filter, Header, Loading } from '../../components/components';
 import "./Explore.css";
 
 import {explore} from '../../api/api';
  
 const Explore = () => {
+
+  const [exploreData, setExploreData] = useState([]);
+  const [exploreLoading, setExploreLoading] = useState(true);
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, []);
 
-  useEffect(() => {
+  useEffect(() => { 
+    setExploreLoading(true);
     const checkExplore = explore()
       .then((actualData) => {
         setExploreData(actualData.data);
+        setTimeout(()=> {
+          setExploreLoading(false);
+        },1000);
       })
-      .catch((err) => console.error(err.message));
+      .catch((err) => {
+        setExploreLoading(false);
+        console.error(err.message)
+        }
+      );
     return () => checkExplore;
   }, []);
 
-  const [exploreData, setExploreData] = useState([]);
-
   return (
     <>
+          <Header headType="ExploreHeader"/>
           <div className="explore-container">
           <div className="explore-items">
             <div className="explore-category-container">
@@ -40,21 +51,29 @@ const Explore = () => {
                 </div>
                 <div className="category-item">
                   <a href="/" className='category-item-name'>Others</a>
-                </div>
+                </div> 
               </div>
             </div>
-            <p className="explore-heading">
-              {exploreData.length}
-            </p>
-            <div className="explore-data">
-              {
-                exploreData.map((item,index) => {
-                  return(
-                      <CardItem data={item} key={index.toString()}/>
-                  )
-                })
-              }
-            </div>
+            {exploreLoading ? <Loading loadType="pageLoad"/> :''}
+            {!exploreLoading &&
+                (
+                <>
+                  <p className="explore-heading">
+                {exploreData.length}
+                </p>
+                <div className="explore-data">
+                {
+                  exploreData.map((item,index) => {
+                    return(
+                        <CardItem data={item} key={index.toString()}/>
+                    )
+                  })
+                }
+                </div>
+                </>
+                )  
+            }
+            
           </div>
             <Filter />
           </div>
