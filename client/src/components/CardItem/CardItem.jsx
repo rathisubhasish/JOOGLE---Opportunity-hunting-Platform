@@ -59,6 +59,9 @@ const CardItem = ({data, role}) => {
               <>
                 <div className="card-action-container">
                 <div className="card-action-items">
+                  <span className="material-icons action-item" id="post-insights-icon">
+                    insights
+                  </span>
                   <span className="material-icons action-item" id="post-edit-icon">
                     edit
                   </span>

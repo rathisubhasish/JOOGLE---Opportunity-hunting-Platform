@@ -1,9 +1,5 @@
 export const homeMenu = [
     {
-        "name":"profile",
-        "icon":"person"
-    },
-    {
         "name":"mypost",
         "icon":"article"
     },
@@ -15,15 +11,10 @@ export const homeMenu = [
         "name":"logout",
         "icon":"logout",
     },
-    
 ];
 
 
 export const exploreMenu = [
-    {
-        "name":"profile",
-        "icon":"person"
-    },
     {
         "name":"mypost",
         "icon":"article"

@@ -25,12 +25,20 @@
 }
 .logged-user-name{
     display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
     width: 100%;
-    padding: 0.3rem;
-    color: var(--headColor);
+    margin: 0 auto;
+    padding: 10px;
+    flex-grow: 1;
+    cursor: pointer;
+    gap: 5px;
+    background-color: var(--headColor);
+    color: white;
+    text-transform: uppercase;
     word-wrap: break-word;
-    /* background-color: red; */
-}
+} 
 
 #user-menu-list{
     display: flex;

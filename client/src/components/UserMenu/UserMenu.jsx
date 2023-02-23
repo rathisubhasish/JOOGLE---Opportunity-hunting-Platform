@@ -13,7 +13,7 @@ const UserMenu = ({menuType, visibility}) => {
     const handleUserMenuAction = async (e) => {
         
         visibility(!visibility);
-        if(e.currentTarget.id === "profile")
+        if(e.currentTarget.id === "userprofile")
         {
             e.preventDefault();
             navigate("/profile");
@@ -73,7 +73,14 @@ const UserMenu = ({menuType, visibility}) => {
     <>
         <div className="user-menu-container">
             <div className="user-menu-items">
-                <span className='logged-user-name'>{user}</span>
+                <span className='logged-user-name' onClick={handleUserMenuAction} id='userprofile'>
+                    <span className="material-icons">
+                        face
+                    </span>
+                    <span className='user-name'>
+                        {user}
+                    </span>
+                </span>
                 <hr className='separator'/>
                 <ul className='user-menu-list' id="user-menu-list">
                 {

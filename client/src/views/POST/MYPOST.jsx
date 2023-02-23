@@ -27,8 +27,6 @@ const MYPOST = () => {
     return () => checkMyPost;
   }, []);
 
-  
-
   return (
     <> 
       <Header headType="DetailHeader" headText="MY POST"/>
