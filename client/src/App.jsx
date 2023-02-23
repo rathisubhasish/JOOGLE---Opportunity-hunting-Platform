@@ -19,7 +19,8 @@ import {
   SIGNUP,
   EXPLORE,
   ADDPOST,
-  MYPOST
+  MYPOST,
+  DETAILS
 } from "./views/views";
 
 function App() {
@@ -128,6 +129,24 @@ function App() {
               element={
                 <>
                   <div>asdasd</div>
+                </>
+              }
+            />
+            <Route exact path="/explore/:postId" 
+              element={
+                <>
+                  {!user 
+                  ? 
+                  (<>
+                    {userLoading ? <Loading loadType='blankLoad'/> : ''}
+                    {!userLoading && <LOGIN />}
+                  </>)
+                  :
+                  (<>
+                  {userLoading ? <Loading loadType='blankLoad'/> : ''}
+                  {!userLoading && <DETAILS />} 
+                  </>)
+                  }
                 </>
               }
             />

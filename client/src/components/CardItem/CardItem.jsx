@@ -2,13 +2,19 @@ import React from 'react';
 import "./CardItem.css";
 import Img from "../../assets/images/global/cardBack.jpg";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 // functions
 import { deletePost } from "../../api/api";
 
 const CardItem = ({data, role}) => {
   const navigate = useNavigate();
+
+  const handleEditPost = (e) => {
+    e.preventDefault();
+    window.scrollTo({top : 0, behavior: 'smooth'});
+    navigate(`/editPost/${data._id}`);
+  }
 
   const handleDeletePost = async (e) => {
     e.preventDefault();
@@ -62,7 +68,8 @@ const CardItem = ({data, role}) => {
                   <span className="material-icons action-item" id="post-insights-icon">
                     insights
                   </span>
-                  <span className="material-icons action-item" id="post-edit-icon">
+                  <span className="material-icons action-item" id="post-edit-icon"
+                  onClick={handleEditPost}>
                     edit
                   </span>
                   <span className="material-icons action-item" id="post-delete-icon" onClick={handleDeletePost}>
@@ -77,8 +84,7 @@ const CardItem = ({data, role}) => {
             ''
           }
           
-        <a href="/" className="card-contents">
-          
+        <NavLink to={`/explore/${data._id}`} className="card-contents">
           {/* _______________ card header  */}
           <div className="card-header-container">
             <div className="card-header-items">
@@ -180,7 +186,7 @@ const CardItem = ({data, role}) => {
             </div>
           </div>
           <br />
-        </a>
+        </NavLink>
       </div>
     </>
   )
