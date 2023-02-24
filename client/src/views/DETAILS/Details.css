@@ -104,7 +104,7 @@
     width: 90%;
 }
 
-.detail-brief-category{
+.detail-brief{
     display: flex;
     width: 90%;
     padding: 0.5rem;
@@ -117,4 +117,78 @@
     box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
     flex-direction: column;
     justify-content: flex-start;
+}
+
+.detail-brief-card-container{
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.detail-brief-card-items{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.4rem;
+    text-align: center;
+    align-items: center;
+}   
+
+.left-right-detail-brief-card{
+    display: flex;
+    justify-content: left;
+    text-align: center;
+    width: 100%;
+    gap: 0.5rem;
+    word-wrap: break-word;
+    align-items: center;
+}
+
+.left-detail-brief-card{
+    display: flex;
+    justify-content: left;
+    text-align: center;
+    width: 50%;
+    gap: 0.5rem;
+    word-wrap: break-word;
+    align-items: center;
+}
+.right-detail-brief-card{
+    display: flex;
+    width: 50%;
+    justify-content: right;
+    text-align: center;
+    word-wrap: break-word;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.detail-brief-card-icon{
+    word-wrap: break-word;
+    display: flex;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    color: var(--headColor);
+    box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
+}
+
+.detail-brief-card-name{
+    word-wrap: break-word;
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    height: 100%;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    color: var(--headColor);
+    font-family: var(--regularFont);
 }

@@ -36,6 +36,10 @@ const ExploreSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    aboutUs: {
+        type: String,
+        required: true,
+    },
     category: {
         type: String,
         required: true,
@@ -57,7 +61,7 @@ const ExploreSchema = new mongoose.Schema({
     secondPrize: {
         type: String,
     },
-    thirdprize: {
+    thirdPrize: {
         type: String,
     },
     responsibility: {
@@ -76,6 +80,9 @@ const ExploreSchema = new mongoose.Schema({
         type: Number,
     },
     maxExperience: {
+        type: Number,
+    },
+    workingDays: {
         type: Number,
     }
     },

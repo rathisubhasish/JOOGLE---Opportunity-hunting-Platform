@@ -24,6 +24,7 @@ const AddPostForm = ({loadingVisibility}) => {
     const [firstPrizeDecide, setFirstPrizeDecide] = useState("");
     const [secondPrizeDecide, setSecondPrizeDecide] = useState("");
     const [thirdPrizeDecide, setThirdPrizeDecide] = useState("");
+    const [aboutUsDecide, setAboutUsDecide] = useState("");
 
     const handleAddPost = async (e) => {
       e.preventDefault();
@@ -34,6 +35,7 @@ const AddPostForm = ({loadingVisibility}) => {
         "organization": organizationDecide,
         "startDate": startDate,
         "endDate": endDate,
+        "aboutUs": aboutUsDecide,
         "category": categoryDecide,
         "responsibility": ResponsibilityDecide,
         "requirements": RequirementsDecide,
@@ -91,6 +93,10 @@ const AddPostForm = ({loadingVisibility}) => {
       {
         postData.maxExperience = maxExperienceDecide;
       }
+      if(workingDayDecide)
+      {
+        postData.workingDays = workingDayDecide;
+      }
       console.log(postData);
       
       try {
@@ -120,6 +126,7 @@ const AddPostForm = ({loadingVisibility}) => {
           setOrganizationSelection("");
           setStartDate("");
           setEndDate("");
+          setAboutUsDecide("");
           setCategorySelection("");
           setSalarySelection("");
           setResponsibilityDetail("");
@@ -191,12 +198,18 @@ const AddPostForm = ({loadingVisibility}) => {
               required
             />
             
+            <label htmlFor="" className='label-content'>About Us <span className='mandatory-star'>*</span></label>
+            <textarea name="" id="" className='input-content'  rows="10" value={aboutUsDecide}
+              onChange={(e) => setAboutUsDecide(e.target.value)}>
+            </textarea>
+
             <label htmlFor="" className='label-content'>Category <span className='mandatory-star'>*</span></label>
             <select className='input-dropdown' name="categoryDecide" id="categoryDecide" value={categoryDecide} onChange={(e) => setCategorySelection(e.target.value)} >
               <option value="notSelected">Select Category</option>
               <option value="Hiring Challenges">Hiring Challenges</option>
               <option value="Jobs">Jobs</option>
               <option value="Bootcamps">Bootcamps</option>
+              <option value="Others">Others</option>
             </select>
 
             {
@@ -260,6 +273,17 @@ const AddPostForm = ({loadingVisibility}) => {
                         <option value="40-50LPA">40 - 50 LPA</option>
                         <option value=">50LPA">&gt; 50 LPA</option>
                       </select>
+
+                      <label htmlFor="" className='label-content'>Working days</label>
+            <input
+              type="number"
+              className='input-content'
+              max="7"
+              min="0"
+              value={workingDayDecide}
+              onChange={(e) => setWorkingDayDecide(e.target.value)}
+              required
+            />
                     </>
                   )
                 :
@@ -324,16 +348,7 @@ const AddPostForm = ({loadingVisibility}) => {
                 />
               </div>
             </div>
-            <label htmlFor="" className='label-content'>Working days</label>
-            <input
-              type="number"
-              className='input-content'
-              max="7"
-              min="0"
-              value={workingDayDecide}
-              onChange={(e) => setWorkingDayDecide(e.target.value)}
-              required
-            />
+            <br />
 
           <button
             disabled={
@@ -341,6 +356,7 @@ const AddPostForm = ({loadingVisibility}) => {
               !organizationDecide ||
               !startDate ||
               !endDate ||
+              !aboutUsDecide ||
               !categoryDecide ||
               !ResponsibilityDecide ||
               !RequirementsDecide ||
