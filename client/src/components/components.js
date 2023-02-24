@@ -5,6 +5,7 @@ import CardItem from "./CardItem/CardItem";
 import LoginForm from "./Form/LoginForm";
 import SignupForm from "./Form/SignupForm";
 import AddPostForm from "./Form/AddPostForm";
+import EditPostForm from "./Form/EditPostForm";
 // import FilterPopup from "./Popup/FilterPopup";
 import Slideshow from "./SlideShow/Slideshow";
 import Error from "./Error/Error";
@@ -35,5 +36,6 @@ export
     ScrollUp,
     UserMenu,
     AddPostForm,
+    EditPostForm,
     HeadingBar
 };

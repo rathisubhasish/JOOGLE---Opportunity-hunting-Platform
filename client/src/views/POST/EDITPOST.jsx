@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import "./Post.css";
 import Img from "../../assets/images/global/card/back.jpg";
-import { AddPostForm, Header, Loading } from '../../components/components';
+import { AddPostForm, EditPostForm, Header, Loading } from '../../components/components';
 
 const EDITPOST = () => {
 
@@ -13,7 +13,7 @@ const EDITPOST = () => {
   return (
     <>
         {editPostLoading ? <Loading loadType='screenLoad'/> : ''}
-        <Header headType="DetailHeader" headText="ADD POST"/>
+        <Header headType="DetailHeader" headText="EDIT POST"/>
         <div className="info-container">
           <div className="info-cover-container">
             <span className='info-cover'>
@@ -27,6 +27,7 @@ const EDITPOST = () => {
               </span>
             </div>
             <br />
+            <EditPostForm loadingVisibility={setEditPostLoading}/>
             {/* <AddPostForm loadingVisibility={setAddPostLoading}/> */}
           </div>
         </div>

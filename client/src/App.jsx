@@ -20,7 +20,8 @@ import {
   EXPLORE,
   ADDPOST,
   MYPOST,
-  DETAILS
+  DETAILS,
+  EDITPOST
 } from "./views/views";
 
 function App() {
@@ -163,6 +164,24 @@ function App() {
                   (<>
                   {userLoading ? <Loading loadType='blankLoad'/> : ''}
                   {!userLoading && <ADDPOST />} 
+                  </>)
+                  }
+                </>
+              }
+            />
+            <Route exact path="/editPost/:postId" 
+              element={
+                <>
+                  {!user 
+                  ? 
+                  (<>
+                    {userLoading ? <Loading loadType='blankLoad'/> : ''}
+                    {!userLoading && <LOGIN />}
+                  </>)
+                  :
+                  (<>
+                  {userLoading ? <Loading loadType='blankLoad'/> : ''}
+                  {!userLoading && <EDITPOST />} 
                   </>)
                   }
                 </>
