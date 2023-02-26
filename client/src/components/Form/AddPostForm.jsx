@@ -49,6 +49,15 @@ const AddPostForm = ({loadingVisibility}) => {
         delete postData.salary;
         setSalarySelection("");
       }
+      if(workingDayDecide && categoryDecide === "Jobs")
+      {
+        postData.workingDays = workingDayDecide;
+      }
+      else
+      {
+        delete postData.workingDays;
+        setWorkingDayDecide("");
+      }
       if(feeDecide && categoryDecide === "Bootcamps")
       {
         postData.fee = feeDecide;
@@ -92,10 +101,6 @@ const AddPostForm = ({loadingVisibility}) => {
       if(maxExperienceDecide)
       {
         postData.maxExperience = maxExperienceDecide;
-      }
-      if(workingDayDecide)
-      {
-        postData.workingDays = workingDayDecide;
       }
       console.log(postData);
       
@@ -275,15 +280,15 @@ const AddPostForm = ({loadingVisibility}) => {
                       </select>
 
                       <label htmlFor="" className='label-content'>Working days</label>
-            <input
-              type="number"
-              className='input-content'
-              max="7"
-              min="0"
-              value={workingDayDecide}
-              onChange={(e) => setWorkingDayDecide(e.target.value)}
-              required
-            />
+                      <input
+                        type="number"
+                        className='input-content'
+                        max="7"
+                        min="0"
+                        value={workingDayDecide}
+                        onChange={(e) => setWorkingDayDecide(e.target.value)}
+                        required
+                      />
                     </>
                   )
                 :

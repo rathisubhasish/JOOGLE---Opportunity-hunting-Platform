@@ -14,7 +14,7 @@
 }
 
 .signup-items{
-    margin-top: 2rem;
+    margin-top: 5rem;
     display: flex;
     flex-direction: column;
     width: 94%;
@@ -51,7 +51,7 @@
 
 @media screen and (min-width: 1280px) and (min-height: 700px) {
     .signup-items{
-        margin-top: 5rem;
+        margin-top: 7rem;
         flex-direction: row;
         width: 60%;
         margin-bottom: 5rem;

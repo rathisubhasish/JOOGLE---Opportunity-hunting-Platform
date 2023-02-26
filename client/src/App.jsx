@@ -21,7 +21,8 @@ import {
   ADDPOST,
   MYPOST,
   DETAILS,
-  EDITPOST
+  EDITPOST,
+  PROFILE
 } from "./views/views";
 
 function App() {
@@ -129,7 +130,18 @@ function App() {
             <Route exact path="/profile" 
               element={
                 <>
-                  <div>asdasd</div>
+                  {!user 
+                  ? 
+                  (<>
+                    {userLoading ? <Loading loadType='blankLoad'/> : ''}
+                    {!userLoading && <LOGIN />}
+                  </>)
+                  :
+                  (<>
+                  {userLoading ? <Loading loadType='blankLoad'/> : ''}
+                  {!userLoading && <PROFILE />} 
+                  </>)
+                  }
                 </>
               }
             />

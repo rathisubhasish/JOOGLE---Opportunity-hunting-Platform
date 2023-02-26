@@ -14,26 +14,26 @@ const EditPost = async (req,res) => {
                 error: "Title is already taken, try another",
             });
         }
-
+        res.send(req.body);
         // if new title, create a new post
-        try{
-            var myData = req.body;
-            myData.userId = _id;
-            console.log(myData);
-            const newPost = new explores(myData);
-            await newPost.save().then(()=>{
-                res.status(201).json({
-                    message: "Post created succesfully",
-                });
-            });
-        }
-        catch(err)
-        {
-            console.log(err);
-            res.status(400).json({
-                error: err
-            });
-        }
+        // try{
+        //     var myData = req.body;
+        //     myData.userId = _id;
+        //     console.log(myData);
+        //     const newPost = new explores(myData);
+        //     await newPost.save().then(()=>{
+        //         res.status(201).json({
+        //             message: "Post created succesfully",
+        //         });
+        //     });
+        // }
+        // catch(err)
+        // {
+        //     console.log(err);
+        //     res.status(400).json({
+        //         error: err
+        //     });
+        // }
     }
     catch(err)
     {

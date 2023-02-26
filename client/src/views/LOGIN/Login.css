@@ -51,7 +51,7 @@
 @media screen and (min-width: 1280px) and (min-height: 700px) {
     .login-items{
         flex-direction: row;
-        width: 60%;
+        width: 70%;
     }
 
     #login-image-container{

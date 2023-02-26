@@ -10,7 +10,7 @@ header{
     top: 0;
     overflow: hidden;
     z-index: 1000;
-    min-height: 8vh;
+    min-height: 5vh;
     padding: 0.4rem;
     text-align: center;
     background-color: white;
@@ -22,6 +22,9 @@ header{
     margin-top: 0.2rem;
     justify-content: space-between;
     align-items: center;
+    min-height: 5vh;
+    padding: 0.4rem;
+    overflow: hidden;
     text-align: center;
     gap: 0.5rem;
 }

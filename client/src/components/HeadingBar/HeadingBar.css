@@ -3,8 +3,8 @@
 .heading-bar-container{
     /* background-color: black; */
     display: flex;
-    /* flex-grow: 1; */
-    font-size: 1.3rem;
+    flex-grow: 1;
+    font-size: 1.2rem;
     padding: 0.1rem;
     justify-content: center;
     text-align: center;
@@ -13,4 +13,19 @@
     color: var(--headColor);
     font-weight: bolder;
     text-transform: uppercase;
+}
+
+/* ______________________________________ */
+/* Media queries */
+@media screen and (min-width: 768px) and (min-height: 900px) {
+    
+.heading-bar-container{
+    font-size: 1.3rem;
+}
+}
+
+@media screen and (min-width: 1280px) and (min-height: 700px) {
+    .heading-bar-container{
+        font-size: 1.3rem;
+    }
 }
