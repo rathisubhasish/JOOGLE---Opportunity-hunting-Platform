@@ -17,6 +17,7 @@ import ScrollUp from "./ScrollUp/Scrollup";
 import Filter from "./Filter/Filter";
 import UserMenu from "./UserMenu/UserMenu";
 import HeadingBar from "./HeadingBar/HeadingBar";
+import ChangePassword from "./ProfileComponents/ChangePassword";
 
 export 
 { 
@@ -37,5 +38,6 @@ export
     UserMenu,
     AddPostForm,
     EditPostForm,
-    HeadingBar
+    HeadingBar,
+    ChangePassword
 };

@@ -20,6 +20,7 @@ const EditPost = require('../Controllers/EditPost');
 //Middlewares
 const {userRegisterValidator, userById, validatePost,validatePassword} = require('../Middlewares/UserMiddleware');
 const {verifyToken} = require('../Middlewares/AuthenticationMiddleware');
+const DeleteAccount = require('../Controllers/DeleteAccount');
 
 
 
@@ -36,6 +37,7 @@ router.get('/explore/myPost', verifyToken, userById, MyPost);
 router.get('/explore', verifyToken, Explore);
 router.get('/explore/:_id', verifyToken, ExploreDetail);
 router.delete('/explore/deletePost/:postId', verifyToken,userById,DeletePost);
+router.delete('/profile/deleteAccount', verifyToken,userById, DeleteAccount);
 router.post('/logout', verifyToken, Logout);
 
 module.exports = router;

@@ -1,0 +1,116 @@
+
+.profile-component-container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+    flex-grow: 1;
+    justify-content: flex-start;
+    text-align: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+
+.change-password-container{
+    display: flex;
+    flex-direction: column;
+    border: none;
+    width: 60%;
+    height: 60%;
+    /* border-radius: 7px; */
+    justify-content: center;
+    text-align: center;
+    margin-top: 3vh;
+    align-items: center;
+    padding: 1rem;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 30px;
+    gap: 1rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.profile-component-title{
+    font-size: 1.8rem;
+    color: var(--headColor);
+    font-weight: bold;
+    margin: 0 auto;
+    padding: 1rem;
+    font-family: var(--headFont);
+}
+
+.profile-label-content{
+    color: var(--headColor);
+    font-family: var(--headFont);
+    font-size: 1.2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 auto;
+    padding: 0.4rem;
+    text-align: left;
+    width: 50%;
+}
+
+.profile-input-content {
+    border-radius: 7px;
+    border:none;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    color: var(--headColor);
+    font-size: 1rem;
+    margin: 0 auto;
+    outline: none;
+    padding: 0.8rem;
+    text-align: center;
+    text-align: left;
+    transition: all .4s ease-in-out;
+    width: 50%;
+}
+
+.profile-input-content:focus{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.profile-btn-submit:disabled{
+    color: white;
+    background-color: white;
+    border: none;
+    outline: none;
+}
+
+.profile-btn-submit:not([disabled]){
+   width: 40%;
+   padding: 0.5rem;
+   font-size: 1.2rem;
+   color: white;
+   border: none;
+   border-radius: 7px;
+   margin: 0 auto;
+   cursor: pointer;
+   transition: all 0.4s ease-in-out;
+}
+
+.change-password-action-container{
+    display: flex;
+    gap: 1rem;
+    width: 60%;
+}
+
+#showpassword-btn:not([disabled]){
+    background-color: var(--primaryBackColor);
+}
+
+#showpassword-btn:hover:not([disabled]) {
+    background-color: var(--primaryColor);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+#changepassword-btn:not([disabled]){
+    background-color: var(--secondaryBackColor);
+}
+
+#changepassword-btn:hover:not([disabled]) {
+    background-color: var(--secondaryColor);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}

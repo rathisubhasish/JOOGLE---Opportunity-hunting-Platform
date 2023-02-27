@@ -7,8 +7,12 @@ import explore from './explore';
 import addPost from './addPost';
 import myPost from './myPost';
 import deletePost from './deletePost';
+import changePassword from './changePassword';
+import deleteAccount from './deleteAccount';
+
 export{
     getUser,
+    deleteAccount,
     signup,
     login,
     logout,
@@ -16,5 +20,6 @@ export{
     explore,
     addPost,
     myPost,
-    deletePost
+    deletePost,
+    changePassword
 };

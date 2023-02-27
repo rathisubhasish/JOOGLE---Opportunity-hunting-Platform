@@ -23,6 +23,7 @@ const Login = async (req,res) => {
     try{
         await users.findOne({email}).exec((err,user) => {
             // if err or no user
+            console.log(user);
             if(err || !user)
             {
                 return res.status(400).json({

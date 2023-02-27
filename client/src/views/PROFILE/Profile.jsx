@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import "./Profile.css";
 import loginImg from "../../assets/images/signup/signup.svg";
 
-import {Header, Loading, Particles, SignupForm} from "../../components/components";
+import {ChangePassword, Header, Loading, Particles, SignupForm} from "../../components/components";
 
 const Profile = () => {
   const [showInfoContainer, setShowInfoContainer] = useState(false);
@@ -18,7 +18,7 @@ const Profile = () => {
     }
     
     if(e.currentTarget.id === "profile-change-password-container"){
-
+      setShowChangePasswordContainer(!showChangePasswordContainer);
     }
     if(e.currentTarget.id === "profile-education-container"){
 
@@ -103,7 +103,9 @@ const Profile = () => {
               </ul>
           </div>
           <div className="profile-right-panel">
-              
+              {showChangePasswordContainer && 
+                <ChangePassword />
+              }
           </div>
       </div>
     </div>
