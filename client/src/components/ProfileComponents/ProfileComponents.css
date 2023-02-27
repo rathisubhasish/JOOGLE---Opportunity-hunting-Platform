@@ -2,32 +2,12 @@
 .profile-component-container{
     display: flex;
     flex-direction: column;
-    border: 1px solid;
+    border: none;
     flex-grow: 1;
     justify-content: flex-start;
     text-align: center;
     align-items: center;
     padding: 1rem;
-}
-
-
-.change-password-container{
-    display: flex;
-    flex-direction: column;
-    border: none;
-    width: 60%;
-    height: 60%;
-    /* border-radius: 7px; */
-    justify-content: center;
-    text-align: center;
-    margin-top: 3vh;
-    align-items: center;
-    padding: 1rem;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 30px;
-    gap: 1rem;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .profile-component-title{
@@ -113,4 +93,71 @@
 #changepassword-btn:hover:not([disabled]) {
     background-color: var(--secondaryColor);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+
+/* ___________________________ */
+.profile-info-container{
+    display: flex;
+    flex-direction: column;
+    border: none;
+    width: 90%;
+    height: 90%;
+    position: relative;
+    justify-content: flex-start;
+    text-align: center;
+    margin-top: 3vh;
+    align-items: center;
+    padding: 1rem;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 30px;
+    gap: 1rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.profile-action-item{
+    display: flex;
+    right: 0;
+    position: absolute;
+    margin-right: 3rem;
+    margin-top: 1rem;
+    padding: 0.4rem;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background-color: var(--headColor);
+    color: white;
+    border-radius: 50%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.profile-info-content,.profile-education-content,.profile-experience-content,.profile-resume-content, .profile-deleteacc-content{
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid; */
+    width: 90%;
+    flex-grow: 1;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+
+.change-password-container{
+    display: flex;
+    flex-direction: column;
+    border: none;
+    width: 60%;
+    height: 60%;
+    justify-content: center;
+    text-align: center;
+    margin-top: 3vh;
+    align-items: center;
+    padding: 1rem;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 30px;
+    gap: 1rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }

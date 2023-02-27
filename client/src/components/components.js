@@ -18,6 +18,10 @@ import Filter from "./Filter/Filter";
 import UserMenu from "./UserMenu/UserMenu";
 import HeadingBar from "./HeadingBar/HeadingBar";
 import ChangePassword from "./ProfileComponents/ChangePassword";
+import ProfileInfo from "./ProfileComponents/ProfileInfo";
+import Education from "./ProfileComponents/Education";
+import Experience from "./ProfileComponents/Experience";
+import Resume from "./ProfileComponents/Resume";
 
 export 
 { 
@@ -39,5 +43,9 @@ export
     AddPostForm,
     EditPostForm,
     HeadingBar,
-    ChangePassword
+    ChangePassword,
+    ProfileInfo,
+    Education,
+    Experience,
+    Resume
 };

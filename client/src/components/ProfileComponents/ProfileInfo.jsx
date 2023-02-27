@@ -1,23 +1,24 @@
 import React from "react";
+import Img from "../../assets/images/global/cardBack.jpg";
 
-const DeleteAccount = () => {
+const ProfileInfo = () => {
     return(
         <>
             <div className="profile-component-container">
                 <div className="profile-info-container">
                     <span className="profile-component-title">
-                        Delete Account
+                        Profile Info
                     </span>
                     <span className="material-icons profile-action-item" id="profile-edit-icon">
                     edit
                     </span>
-                    <div className="profile-deleteacc-content">
+                    <div className="profile-info-content">
                         <label htmlFor="">coming soon</label>
                     </div>
                 </div>
             </div>
         </>
     )
-};
+}
 
-export default DeleteAccount;
+export default ProfileInfo;

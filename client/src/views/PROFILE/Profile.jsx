@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import "./Profile.css";
 import loginImg from "../../assets/images/signup/signup.svg";
 
-import {ChangePassword, Header, Loading, Particles, SignupForm} from "../../components/components";
+import {ChangePassword, Education, Experience, Header, Loading, Particles, ProfileInfo, Resume, SignupForm} from "../../components/components";
+import DeleteAccount from '../../components/ProfileComponents/DeleteAccount';
 
 const Profile = () => {
   const [showInfoContainer, setShowInfoContainer] = useState(false);
@@ -13,24 +14,31 @@ const Profile = () => {
   const [showDeleteAccContainer, setShowDeleteAccContainer] = useState(false);
 
   const handleProfileNavActions = (e) =>{
+    setShowInfoContainer(false);
+    setShowChangePasswordContainer(false);
+    setShowEducationContainer(false);
+    setShowExperienceContainer(false);
+    setShowResumeContainer(false);
+    setShowDeleteAccContainer(false);
+    
     if(e.currentTarget.id === "profile-info-container"){
-
+      setShowInfoContainer(!showInfoContainer);
     }
     
     if(e.currentTarget.id === "profile-change-password-container"){
       setShowChangePasswordContainer(!showChangePasswordContainer);
     }
     if(e.currentTarget.id === "profile-education-container"){
-
+      setShowEducationContainer(!showEducationContainer);
     }
     if(e.currentTarget.id === "profile-experience-container"){
-
+      setShowExperienceContainer(!showExperienceContainer);
     }
     if(e.currentTarget.id === "profile-resume-container"){
-
+      setShowResumeContainer(!showResumeContainer);
     }
     if(e.currentTarget.id === "profile-delete-acc-container"){
-      
+      setShowDeleteAccContainer(!showDeleteAccContainer);
     }
 
   }
@@ -105,6 +113,22 @@ const Profile = () => {
           <div className="profile-right-panel">
               {showChangePasswordContainer && 
                 <ChangePassword />
+              }
+              {showInfoContainer && 
+                <ProfileInfo />
+              }
+              {showEducationContainer && 
+                <Education />
+              }
+              {
+                showExperienceContainer &&
+                <Experience />
+              }
+              {showResumeContainer && 
+                <Resume />
+              }
+              {showDeleteAccContainer &&
+                <DeleteAccount />
               }
           </div>
       </div>
