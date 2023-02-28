@@ -8,9 +8,6 @@ const Resume = () => {
                     <span className="profile-component-title">
                         Resume
                     </span>
-                    <span className="material-icons profile-action-item" id="profile-edit-icon">
-                    edit
-                    </span>
                     <div className="profile-resume-content">
                         <label htmlFor="">coming soon</label>
                     </div>

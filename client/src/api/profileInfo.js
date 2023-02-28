@@ -1,7 +1,7 @@
-const profile = async () => {
+const profileInfo = async () => {
     
     try{
-        const res = await fetch(`${process.env.REACT_APP_API_URL}/profile`, {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/profile/info`, {
             method:"GET",
             credentials: "include",
             headers: {
@@ -12,8 +12,8 @@ const profile = async () => {
         return await res.json();
 
     } catch(err) {
-        throw new Error(`Cannot open profile! ${err}`);
+        throw new Error(`Cannot fetch profile info! ${err}`);
     }
 };
 
-module.exports = profile;
+module.exports = profileInfo;

@@ -8,9 +8,6 @@ const DeleteAccount = () => {
                     <span className="profile-component-title">
                         Delete Account
                     </span>
-                    <span className="material-icons profile-action-item" id="profile-edit-icon">
-                    edit
-                    </span>
                     <div className="profile-deleteacc-content">
                         <label htmlFor="">coming soon</label>
                     </div>

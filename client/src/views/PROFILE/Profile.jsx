@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
 import "./Profile.css";
-import loginImg from "../../assets/images/signup/signup.svg";
-
-import {ChangePassword, Education, Experience, Header, Loading, Particles, ProfileInfo, Resume, SignupForm} from "../../components/components";
+import {ChangePassword, Education, Experience, Header, ProfileInfo, Resume} from "../../components/components";
 import DeleteAccount from '../../components/ProfileComponents/DeleteAccount';
 
 const Profile = () => {
-  const [showInfoContainer, setShowInfoContainer] = useState(false);
+  const [showInfoContainer, setShowInfoContainer] = useState(true);
   const [showChangePasswordContainer, setShowChangePasswordContainer] = useState(false);
   const [showEducationContainer, setShowEducationContainer] = useState(false);
   const [showExperienceContainer, setShowExperienceContainer] = useState(false);
@@ -22,23 +20,23 @@ const Profile = () => {
     setShowDeleteAccContainer(false);
     
     if(e.currentTarget.id === "profile-info-container"){
-      setShowInfoContainer(!showInfoContainer);
+      setShowInfoContainer(true);
     }
     
     if(e.currentTarget.id === "profile-change-password-container"){
-      setShowChangePasswordContainer(!showChangePasswordContainer);
+      setShowChangePasswordContainer(true);
     }
     if(e.currentTarget.id === "profile-education-container"){
-      setShowEducationContainer(!showEducationContainer);
+      setShowEducationContainer(true);
     }
     if(e.currentTarget.id === "profile-experience-container"){
-      setShowExperienceContainer(!showExperienceContainer);
+      setShowExperienceContainer(true);
     }
     if(e.currentTarget.id === "profile-resume-container"){
-      setShowResumeContainer(!showResumeContainer);
+      setShowResumeContainer(true);
     }
     if(e.currentTarget.id === "profile-delete-acc-container"){
-      setShowDeleteAccContainer(!showDeleteAccContainer);
+      setShowDeleteAccContainer(true);
     }
 
   }
@@ -54,7 +52,7 @@ const Profile = () => {
       <div className="profile-content-items">
           <div className="profile-left-panel">
               <ul className='profile-left-nav-list'>
-                <li className='profile-left-nav-list-item' id="profile-info-container"
+                <li className={showInfoContainer ? 'profile-left-nav-list-item profile-nav-active' : 'profile-left-nav-list-item'} id="profile-info-container"
                 onClick={handleProfileNavActions}>
                   <span className="material-icons profile-nav-icon">
                       info
@@ -63,7 +61,7 @@ const Profile = () => {
                       Info
                   </span>
                 </li>
-                <li className='profile-left-nav-list-item' id="profile-change-password-container"
+                <li className={showChangePasswordContainer ? 'profile-left-nav-list-item profile-nav-active' : 'profile-left-nav-list-item'} id="profile-change-password-container"
                 onClick={handleProfileNavActions}>
                   <span className="material-icons profile-nav-icon">
                       password
@@ -72,7 +70,7 @@ const Profile = () => {
                       Change Password
                   </span>
                 </li>
-                <li className='profile-left-nav-list-item' id="profile-education-container"
+                <li className={showEducationContainer ? 'profile-left-nav-list-item profile-nav-active' : 'profile-left-nav-list-item'} id="profile-education-container"
                 onClick={handleProfileNavActions}>
                   <span className="material-icons profile-nav-icon">
                       school
@@ -81,7 +79,7 @@ const Profile = () => {
                       Education
                   </span>
                 </li>
-                <li className='profile-left-nav-list-item' id="profile-experience-container"
+                <li className={showExperienceContainer ? 'profile-left-nav-list-item profile-nav-active' : 'profile-left-nav-list-item'} id="profile-experience-container"
                 onClick={handleProfileNavActions}>
                   <span className="material-icons profile-nav-icon">
                     work_history
@@ -90,7 +88,7 @@ const Profile = () => {
                       Experience
                   </span>
                 </li>
-                <li className='profile-left-nav-list-item' id="profile-resume-container"
+                <li className={showResumeContainer ? 'profile-left-nav-list-item profile-nav-active' : 'profile-left-nav-list-item'} id="profile-resume-container"
                 onClick={handleProfileNavActions}>
                   <span className="material-icons profile-nav-icon">
                     article
@@ -99,7 +97,7 @@ const Profile = () => {
                       Resume
                   </span>
                 </li>
-                <li className='profile-left-nav-list-item' id="profile-delete-acc-container"
+                <li className={showDeleteAccContainer ? 'profile-left-nav-list-item profile-nav-active' : 'profile-left-nav-list-item'} id="profile-delete-acc-container"
                 onClick={handleProfileNavActions}>
                   <span className="material-icons profile-nav-icon">
                     delete_forever
@@ -133,14 +131,6 @@ const Profile = () => {
           </div>
       </div>
     </div>
-      {/* <div className="signup-container">
-            <div className="signup-items">
-              <span id="signup-image-container">
-                <img src={loginImg} alt="logo" id='signup-image'/>
-              </span>
-              <SignupForm loadingVisibility={setSignupLoading}/>
-            </div>
-        </div> */}
     </>
   )
 };

@@ -20,15 +20,17 @@
 }
 
 .profile-label-content{
+    display: flex;
+    width: fit-content;
+    padding: 0.4rem;
+    font-size: 1rem;
     color: var(--headColor);
     font-family: var(--headFont);
-    font-size: 1.2rem;
-    font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
     margin: 0 auto;
-    padding: 0.4rem;
-    text-align: left;
-    width: 50%;
+    text-align: center;
+    text-transform: uppercase;
+    align-items: center;
 }
 
 .profile-input-content {
@@ -126,23 +128,74 @@
     border: none;
     cursor: pointer;
     outline: none;
-    background-color: var(--headColor);
-    color: white;
     border-radius: 50%;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+#profile-edit-icon{
+    background-color: var(--headColor);
+    color: white;
+}
+
+#profile-save-icon{
+    margin-top: 4rem;
+    background-color: var(--secondaryBackColor);
+    color: white;
+}
+
+#profile-delete-icon{
+    color: white;
+    background-color: red;
 }
 
 .profile-info-content,.profile-education-content,.profile-experience-content,.profile-resume-content, .profile-deleteacc-content{
     display: flex;
     flex-direction: column;
-    /* border: 1px solid; */
     width: 90%;
     flex-grow: 1;
-    justify-content: center;
-    text-align: center;
+    gap: 0.5rem;
+    justify-content: flex-start;
+    text-align: left;
     align-items: center;
 }
 
+.profile-info-item{
+    display: flex;
+    width: 100%;
+    padding: 0.7rem;
+    gap: 1rem;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.profile-field-area{
+    display: flex;
+    width: 30%;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+}
+
+.profile-field-item{
+    display: flex;
+    flex-grow: 1;
+    height: inherit;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-field-value{
+    display: flex;
+    flex-grow: 1;
+    font-size: 1.2rem;
+    padding: 0.3rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--primaryColor);
+}
 
 .change-password-container{
     display: flex;

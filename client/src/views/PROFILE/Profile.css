@@ -60,7 +60,8 @@
     color: var(--headColor);
 }
 
-.profile-left-nav-list-item:hover{
+
+.profile-nav-active{
     background-color: orange;
     color:white;
 }
