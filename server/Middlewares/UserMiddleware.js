@@ -1,5 +1,6 @@
 const users = require('../DB/userCollection');
 
+const moment = require('moment');
 
 exports.userRegisterValidator = (req,res,next) => {
     // username is not null
@@ -84,8 +85,31 @@ exports.validatePassword = async (req,res,next) => {
 }
 
 exports.validatePost = async (req,res,next) => {
+    const today = moment(new Date()).format("MM/DD/YYYY");
+
+    const checkDate = (myDate) => {
+        return moment(myDate, "MM/DD/YYYY").isValid();
+    }
+
+
+    const validateDate = (dateInput) => {
+        // const dateInput = moment(myDate);
+        // console.log(dateInput);
+        if(dateInput > today){
+            console.log(`${dateInput} is greater than ${today}`)
+        } else if(dateInput < today){
+            console.log(`${today} is greater than ${dateInput}`)
+        } else{
+            console.log(`Both dates are equal`)
+        }
+        return "done";
+    } 
+    
     // itemName is not null
     req.check("postName","Post Name is required!").notEmpty();
+    req.check("postName")
+        .isLength({max:30})
+        .withMessage("postName should be <= 30 Letters");
     
     //organization is not null
     req.check("organization","Organization is required!").notEmpty();
@@ -93,6 +117,17 @@ exports.validatePost = async (req,res,next) => {
     //dates is required
     req.check("startDate","StartDate is required!").notEmpty();
     req.check("endDate","EndDate is required!").notEmpty();
+
+
+    console.log(validateDate(req.body.startDate));
+
+    if(!checkDate(req.body.startDate) || !checkDate(req.body.endDate))
+    {
+        console.log(checkDate(req.body.startDate));
+        return res.status(400).json({
+            error: "Date should be in format mm-dd-yyyy",
+        });
+    }
 
 
     //details is required

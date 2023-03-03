@@ -25,6 +25,8 @@ const AddPostForm = ({loadingVisibility}) => {
     const [secondPrizeDecide, setSecondPrizeDecide] = useState("");
     const [thirdPrizeDecide, setThirdPrizeDecide] = useState("");
     const [aboutUsDecide, setAboutUsDecide] = useState("");
+    var todayDate = new Date().toISOString().split('T')[0];
+    console.log(todayDate);
 
     const handleAddPost = async (e) => {
       e.preventDefault();
@@ -171,6 +173,7 @@ const AddPostForm = ({loadingVisibility}) => {
               placeholder='Enter Post Name'
               className='input-content'
               value={postName}
+              maxlength="30"
               onChange={(e) => setPostName(e.target.value)}
               required
             />
@@ -187,7 +190,7 @@ const AddPostForm = ({loadingVisibility}) => {
             <input
               type="date"
               className='input-content'
-              min="02/15/2023"
+              min={todayDate}
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
               required
@@ -197,7 +200,7 @@ const AddPostForm = ({loadingVisibility}) => {
               type="date"
               placeholder='Enter Post Name'
               className='input-content'
-              min="02/15/2023"
+              min={todayDate}
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
               required

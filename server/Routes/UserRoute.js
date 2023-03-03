@@ -29,15 +29,18 @@ router.get('/', (_,res) => {res.send('Hey, Welcome to JOOGLE');});
 router.post('/signup',userRegisterValidator, Signup);
 router.post('/login', Login);
 router.get('/getUser', verifyToken, userById, GetUser);
-router.get('/profile/info', verifyToken, userById, ProfileInfo);
 router.put('/changePassword',verifyToken,userById,validatePassword,ChangePassword);
+router.post('/logout', verifyToken, Logout);
 router.post('/explore/addPost', verifyToken, validatePost, userById, AddPost);
+
+router.get('/profile/info', verifyToken, userById, ProfileInfo);
+
 router.put('/explore/editPost', verifyToken, validatePost, userById, EditPost);
 router.get('/explore/myPost', verifyToken, userById, MyPost);
 router.get('/explore', verifyToken, Explore);
 router.get('/explore/:_id', verifyToken, ExploreDetail);
 router.delete('/explore/deletePost/:postId', verifyToken,userById,DeletePost);
 router.delete('/profile/deleteAccount', verifyToken,userById, DeleteAccount);
-router.post('/logout', verifyToken, Logout);
+
 
 module.exports = router;
