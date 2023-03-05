@@ -9,8 +9,11 @@ import deletePost from './deletePost';
 import changePassword from './changePassword';
 import deleteAccount from './deleteAccount';
 import profileInfo from './profileInfo';
+import explorePost from './explorePost';
+
 export{
     getUser,
+    explorePost,
     deleteAccount,
     profileInfo,
     signup,

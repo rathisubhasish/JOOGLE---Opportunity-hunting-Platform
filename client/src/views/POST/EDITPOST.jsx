@@ -2,10 +2,16 @@ import React, {useEffect, useState} from 'react';
 import "./Post.css";
 import Img from "../../assets/images/global/card/back.jpg";
 import { AddPostForm, EditPostForm, Header, Loading } from '../../components/components';
+import { useParams } from 'react-router-dom';
+import explorePost from '../../api/explorePost';
+import moment from 'moment';
 
 const EDITPOST = () => {
 
   const [editPostLoading, setEditPostLoading] = useState(false);
+  const {postId} = useParams();
+  const [fetchEditPostData, setFetchEditPostData] = useState([]);
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, []);
@@ -27,8 +33,7 @@ const EDITPOST = () => {
               </span>
             </div>
             <br />
-            <EditPostForm loadingVisibility={setEditPostLoading}/>
-            {/* <AddPostForm loadingVisibility={setAddPostLoading}/> */}
+            <EditPostForm loadingVisibility={setEditPostLoading} />
           </div>
         </div>
     </>

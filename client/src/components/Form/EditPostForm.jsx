@@ -1,32 +1,79 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import "./FormCSS/Form.css";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 // API import
-import {addPost} from '../../api/api';
+import {addPost, explorePost} from '../../api/api';
 
 const EditPostForm = ({loadingVisibility}) => {
-    const navigate = useNavigate();
-    const [postName, setPostName] = useState("");
-    const [organizationDecide, setOrganizationSelection] = useState("");
-    const [startDate, setStartDate] = useState("");
-    const [endDate, setEndDate] = useState("");
-    const [categoryDecide, setCategorySelection] = useState("");
-    const [salaryDecide, setSalarySelection] = useState("");
-    const [ResponsibilityDecide, setResponsibilityDetail] = useState("");
-    const [RequirementsDecide, setRequirementsDetail] = useState("");
-    const [LocationDecide, setLocationDecide] = useState("");
-    const [minExperienceDecide, setMinExperienceDecide] = useState("");
-    const [maxExperienceDecide, setMaxExperienceDecide] = useState("");
-    const [workingDayDecide, setWorkingDayDecide] = useState("");
-    const [feeDecide, setFeeDecide] = useState("");
-    const [firstPrizeDecide, setFirstPrizeDecide] = useState("");
-    const [secondPrizeDecide, setSecondPrizeDecide] = useState("");
-    const [thirdPrizeDecide, setThirdPrizeDecide] = useState("");
-    const [aboutUsDecide, setAboutUsDecide] = useState("");
+  const {postId} = useParams();
+  const [postName, setPostName] = useState("");
+  const [organizationDecide, setOrganizationSelection] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [aboutUsDecide, setAboutUsDecide] = useState("");
+  const [categoryDecide, setCategorySelection] = useState("");
+  const [workingDayDecide, setWorkingDayDecide] = useState("");
+  const [salaryDecide, setSalarySelection] = useState("");
+  const [feeDecide, setFeeDecide] = useState("");
+  const [firstPrizeDecide, setFirstPrizeDecide] = useState("");
+  const [secondPrizeDecide, setSecondPrizeDecide] = useState("");
+  const [thirdPrizeDecide, setThirdPrizeDecide] = useState("");
+  const [ResponsibilityDecide, setResponsibilityDetail] = useState("");
+  const [RequirementsDecide, setRequirementsDetail] = useState("");
+  const [LocationDecide, setLocationDecide] = useState("");
+  const [minExperienceDecide, setMinExperienceDecide] = useState("");
+  const [maxExperienceDecide, setMaxExperienceDecide] = useState("");
+  
+  useEffect(() => { 
+    // setExploreLoading(true);
+    const ExplorePost = explorePost({postId})
+      .then((actualData) => {
+        console.log(actualData.data[0]);
+        setPostName(actualData.data[0].postName);
+        setOrganizationSelection(actualData.data[0].organization);
+        setStartDate(actualData.data[0].startDate);
+        setEndDate(actualData.data[0].endDate);
+        setAboutUsDecide(actualData.data[0].aboutUs);
+        setCategorySelection(actualData.data[0].category);
+        setResponsibilityDetail(actualData.data[0].responsibility);
+        setRequirementsDetail(actualData.data[0].requirements);
+        setLocationDecide(actualData.data[0].location);
+        setMinExperienceDecide(actualData.data[0].minExperience);
+        setMaxExperienceDecide(actualData.data[0].maxExperience);
+        if(actualData.data[0].category === "Jobs")
+        {
+          setWorkingDayDecide(actualData.data[0].workingDays);
+          setSalarySelection(actualData.data[0].salary);
+        }
+        else if(actualData.data[0].category === "Hiring Challenges")
+        {
+          setFirstPrizeDecide(actualData.data[0].firstPrize);
+          setSecondPrizeDecide(actualData.data[0].secondPrize);
+          setThirdPrizeDecide(actualData.data[0].thirdPrize);
+        }
+        else if(actualData.data[0].category === "Bootcamps")
+        {
+          setFeeDecide(actualData.data[0].fees);
+        }
+        // setTimeout(()=> {
+        //   setExploreLoading(false);
+        // },1000);
+      })
+      .catch((err) => {
+        // setExploreLoading(false);
+        console.error(err.message)
+        }
+      );
+    return () => ExplorePost;
+  }, []);
 
-    const handleAddPost = async (e) => {
+  
+    const todayDate = new Date().toISOString().split('T')[0];
+    const navigate = useNavigate();
+
+    const handleEditPost = async (e) => {
       e.preventDefault();
       window.scrollTo({top : 0, behavior: 'smooth'});
       loadingVisibility(true);
@@ -161,11 +208,12 @@ const EditPostForm = ({loadingVisibility}) => {
         <div className="form-container">
           <form action="" className="form-content">
           <label htmlFor="" className='label-content'>Enter Post Name <span className='mandatory-star'>*</span></label>
-            <input
+          <input
               type="text"
               placeholder='Enter Post Name'
               className='input-content'
               value={postName}
+              maxLength="30"
               onChange={(e) => setPostName(e.target.value)}
               required
             />
@@ -182,7 +230,7 @@ const EditPostForm = ({loadingVisibility}) => {
             <input
               type="date"
               className='input-content'
-              min="02/15/2023"
+              min={todayDate}
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
               required
@@ -190,7 +238,7 @@ const EditPostForm = ({loadingVisibility}) => {
             <label htmlFor="" className='label-content'>Registration Close Date <span className='mandatory-star'>*</span></label>
             <input
               type="date"
-              placeholder='Enter Post Name'
+              placeholder={endDate}
               className='input-content'
               min="02/15/2023"
               value={endDate}
@@ -362,10 +410,10 @@ const EditPostForm = ({loadingVisibility}) => {
               !RequirementsDecide ||
               !LocationDecide
             }
-            onClick={handleAddPost}
+            onClick={handleEditPost}
             className="btn-submit"
             id="addPost">
-            Add Post
+            Update Post
           </button>
           </form>
         </div>

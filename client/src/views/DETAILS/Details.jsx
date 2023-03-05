@@ -1,16 +1,60 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { CardItem, Filter, Header, Loading } from '../../components/components';
 import { useParams } from 'react-router-dom';
 import "./Details.css";
 import Img from "../../assets/images/global/card/back.jpg";
 import CImg from "../../assets/images/global/companies/bmw-2-logo-svgrepo-com.svg";
+import explorePost from '../../api/explorePost';
+import moment from 'moment';
+const Details = () => { 
 
-const Details = () => {
-
+  const [postDetail, setPostDetail] = useState([]);
   useEffect(() => {
     window.scrollTo(0, 0)
   }, []);
+
   const { postId } = useParams();
+  const [remainingDays, setRemainingDays] = useState("");
+  const [registeredCount, setRegisteredCount] = useState(0);
+  const [showSalaryContainer, setSalaryContainer] = useState(false);
+  const [showWorkingDaysContainer, setWorkingDaysContainer] = useState(false);
+  const [showPrizesContainer, setShowPrizesContainer] = useState(false);
+  const [showFeesContainer, setShowFeesContainer] = useState(false);
+  useEffect(() => { 
+    // setExploreLoading(true);
+    const ExplorePost = explorePost({postId})
+      .then((actualData) => {
+        setPostDetail(actualData.data[0]);
+        console.log(actualData.data[0]);
+        const daysCalc = moment(actualData.data[0].endDate).diff(moment().format("MM/DD/YYYY"),'days');
+        setRegisteredCount(actualData.data[0].registered.length);
+        setRemainingDays(daysCalc);
+        if(actualData.data[0].category === "Jobs")
+        {
+            setWorkingDaysContainer(true);
+            setSalaryContainer(true);
+        }
+        else if(actualData.data[0].category === "Hiring Challenges")
+        {
+            setShowPrizesContainer(true);
+        }
+        else if(actualData.data[0].category === "Bootcamps")
+        {
+            setShowFeesContainer(true);
+        }
+        // setTimeout(()=> {
+        //   setExploreLoading(false);
+        // },1000);
+      })
+      .catch((err) => {
+        // setExploreLoading(false);
+        console.error(err.message)
+        }
+      );
+    return () => ExplorePost;
+  }, []);
+
+
   return (
     <>
         <Header headType="DetailHeader" headText=""/>
@@ -29,8 +73,8 @@ const Details = () => {
                 <br />
                 <br />
                 <div className="detail-header-container">
-                    <p className='detail-post-name'>sfddf</p>
-                    <p className='detail-post-org'>sfddfsdfs</p>
+                    <p className='detail-post-name'>{postDetail.postName}</p>
+                    <p className='detail-post-org'>{postDetail.organization}</p>
                 </div>
                 
                 <div className="detail-brief-card-container">
@@ -40,7 +84,7 @@ const Details = () => {
                                 how_to_reg
                             </span>
                             <span className="detail-brief-card-name">
-                                4 Registered
+                                {registeredCount} Registered
                             </span>
                         </div>
                         <div className="right-detail-brief-card">
@@ -48,7 +92,7 @@ const Details = () => {
                                 timer
                             </span>
                             <span className="detail-brief-card-name">
-                                3 days left
+                                {remainingDays} days left
                             </span>
                         </div>
                     </div>
@@ -56,22 +100,22 @@ const Details = () => {
                 
                 <label htmlFor="" className='detail-label-content'>About us</label>
                 <span className="detail-brief">
-                    About your company
+                    {postDetail.aboutUs}
                 </span>
 
                 <label htmlFor="" className='detail-label-content'>Category</label>
                 <span className="detail-brief">
-                    Bootcamps
+                    {postDetail.category}
                 </span>
 
                 <label htmlFor="" className='detail-label-content'>Responsibility</label>
                 <span className="detail-brief">
-                    Bootcamps
+                    {postDetail.responsibility}
                 </span>
 
                 <label htmlFor="" className='detail-label-content'>Requirements</label>
                 <span className="detail-brief">
-                    Bootcamps
+                    {postDetail.requirements}
                 </span>
 
                 <label htmlFor="" className='detail-label-content'>Important Information</label>
@@ -82,7 +126,7 @@ const Details = () => {
                                 location_pin
                             </span>
                             <span className="detail-brief-card-name">
-                                pune
+                                {postDetail.location}
                             </span>
                         </div>
                         <div className="right-detail-brief-card">
@@ -90,91 +134,120 @@ const Details = () => {
                                 work_history
                             </span>
                             <span className="detail-brief-card-name">
-                                2 - 3 year experience
+                                {postDetail.minExperience} - {postDetail.maxExperience} year experience
                             </span>
                         </div>
                     </div>
                     <div className="detail-brief-card-items">
                         <div className="left-detail-brief-card">
+                            {showWorkingDaysContainer && (
+                            <>
                             <span className="material-icons detail-brief-card-icon">
                                 event
                             </span>
                             <span className="detail-brief-card-name">
-                                5 day working
+                            {postDetail.workingDays} days working
                             </span>
+                            </>
+                            )
+                            }
                         </div>
                         <div className="right-detail-brief-card">
                             <span className="material-icons detail-brief-card-icon">
                                 event_busy
                             </span>
                             <span className="detail-brief-card-name">
-                                Last date 04/12/2022
+                                Last date {postDetail.endDate}
                             </span>
                         </div>
                     </div>
                 </div>
-
-                <label htmlFor="" className='detail-label-content'>Prizes</label>
-                <div className="detail-brief-card-container">
-                    <div className="detail-brief-card-items">
-                        <div className="left-right-detail-brief-card">
-                            <span className="material-icons detail-brief-card-icon">
-                                emoji_events
-                            </span>
-                            <span className="detail-brief-card-name">
-                                1st position - 
-                            </span>
-                        </div>
-                    </div>
-                    <div className="detail-brief-card-items">
-                        <div className="left-right-detail-brief-card">
-                            <span className="material-icons detail-brief-card-icon">
-                                military_tech
-                            </span>
-                            <span className="detail-brief-card-name">
-                                2nd position - 
-                            </span>
-                        </div>
-                    </div>
-                    <div className="detail-brief-card-items">
-                        <div className="left-right-detail-brief-card">
-                            <span className="material-icons detail-brief-card-icon">
-                                military_tech
-                            </span>
-                            <span className="detail-brief-card-name">
-                                3rd position - 
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <label htmlFor="" className='detail-label-content'>Salary / Stipend</label>
-                <div className="detail-brief-card-container">
-                    <div className="detail-brief-card-items">
-                        <div className="left-right-detail-brief-card">
-                            <span className="material-icons detail-brief-card-icon">
-                                local_atm
-                            </span>
-                            <span className="detail-brief-card-name">
-                                50 - 60 LPA
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <label htmlFor="" className='detail-label-content'>Fees</label>
-                <div className="detail-brief-card-container">
-                    <div className="detail-brief-card-items">
-                        <div className="left-right-detail-brief-card">
-                            <span className="material-icons detail-brief-card-icon">
-                                attach_money
-                            </span>
-                            <span className="detail-brief-card-name">
-                                50,000 Rs
-                            </span>
-                        </div>
-                    </div>
-                </div>
+                
+                {
+                    showPrizesContainer
+                    &&
+                    (
+                        <>
+                            <label htmlFor="" className='detail-label-content'>Prizes</label>
+                            <div className="detail-brief-card-container">
+                                <div className="detail-brief-card-items">
+                                    <div className="left-right-detail-brief-card">
+                                        <span className="material-icons detail-brief-card-icon">
+                                            emoji_events
+                                        </span>
+                                        <span className="detail-brief-card-name">
+                                            1st position - {postDetail.firstPrize}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className="detail-brief-card-items">
+                                    <div className="left-right-detail-brief-card">
+                                        <span className="material-icons detail-brief-card-icon">
+                                            military_tech
+                                        </span>
+                                        <span className="detail-brief-card-name">
+                                            2nd position - {postDetail.secondPrize}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className="detail-brief-card-items">
+                                    <div className="left-right-detail-brief-card">
+                                        <span className="material-icons detail-brief-card-icon">
+                                            military_tech
+                                        </span>
+                                        <span className="detail-brief-card-name">
+                                            3rd position - {postDetail.thirdPrize}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>        
+                        </>
+                    )
+                }
+                
+                {
+                    showSalaryContainer
+                    &&
+                    (
+                        <>
+                            <label htmlFor="" className='detail-label-content'>Salary / Stipend</label>
+                            <div className="detail-brief-card-container">
+                                <div className="detail-brief-card-items">
+                                    <div className="left-right-detail-brief-card">
+                                        <span className="material-icons detail-brief-card-icon">
+                                            local_atm
+                                        </span>
+                                        <span className="detail-brief-card-name">
+                                            {postDetail.salary}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>        
+                        </>
+                    )
+                }
+                
+                {
+                    showFeesContainer
+                    &&
+                    (
+                        <>
+                            <label htmlFor="" className='detail-label-content'>Fees</label>
+                            <div className="detail-brief-card-container">
+                                <div className="detail-brief-card-items">
+                                    <div className="left-right-detail-brief-card">
+                                        <span className="material-icons detail-brief-card-icon">
+                                            attach_money
+                                        </span>
+                                        <span className="detail-brief-card-name">
+                                            {postDetail.fees}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>       
+                        </>
+                    )
+                }
             </div>
         </div>
     </>

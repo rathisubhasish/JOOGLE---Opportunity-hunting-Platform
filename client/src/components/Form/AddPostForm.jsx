@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "./FormCSS/Form.css";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import moment from 'moment';
 
 // API import
 import {addPost} from '../../api/api';
@@ -25,18 +26,19 @@ const AddPostForm = ({loadingVisibility}) => {
     const [secondPrizeDecide, setSecondPrizeDecide] = useState("");
     const [thirdPrizeDecide, setThirdPrizeDecide] = useState("");
     const [aboutUsDecide, setAboutUsDecide] = useState("");
+    
     var todayDate = new Date().toISOString().split('T')[0];
-    console.log(todayDate);
-
     const handleAddPost = async (e) => {
       e.preventDefault();
       window.scrollTo({top : 0, behavior: 'smooth'});
       loadingVisibility(true);
+      const StartDateFormatted = moment(startDate).format("MM/DD/YYYY");
+      const EndDateFormatted = moment(endDate).format("MM/DD/YYYY");
       const postData = {
         "postName": postName,
         "organization": organizationDecide,
-        "startDate": startDate,
-        "endDate": endDate,
+        "startDate": StartDateFormatted,
+        "endDate": EndDateFormatted,
         "aboutUs": aboutUsDecide,
         "category": categoryDecide,
         "responsibility": ResponsibilityDecide,
@@ -62,11 +64,11 @@ const AddPostForm = ({loadingVisibility}) => {
       }
       if(feeDecide && categoryDecide === "Bootcamps")
       {
-        postData.fee = feeDecide;
+        postData.fees = feeDecide;
       }
       else
       {
-        delete postData.fee;
+        delete postData.fees;
         setFeeDecide("");
       }
       if(firstPrizeDecide && categoryDecide === "Hiring Challenges")
@@ -162,7 +164,6 @@ const AddPostForm = ({loadingVisibility}) => {
         });
       }
     }
-    // const todayDate = new Date(Date.now()).toLocaleDateString();
     return (
       <>
         <div className="form-container">
@@ -173,7 +174,7 @@ const AddPostForm = ({loadingVisibility}) => {
               placeholder='Enter Post Name'
               className='input-content'
               value={postName}
-              maxlength="30"
+              maxLength="30"
               onChange={(e) => setPostName(e.target.value)}
               required
             />
@@ -195,16 +196,27 @@ const AddPostForm = ({loadingVisibility}) => {
               onChange={(e) => setStartDate(e.target.value)}
               required
             />
-            <label htmlFor="" className='label-content'>Registration Close Date <span className='mandatory-star'>*</span></label>
-            <input
-              type="date"
-              placeholder='Enter Post Name'
-              className='input-content'
-              min={todayDate}
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-              required
-            />
+
+            {
+              startDate
+              ?
+              (
+                <>
+                  <label htmlFor="" className='label-content'>Registration Close Date <span className='mandatory-star'>*</span></label>
+                  <input
+                    type="date"
+                    placeholder='Enter Post Name'
+                    className='input-content'
+                    min={startDate}
+                    value={endDate}
+                    onChange={(e) => setEndDate(e.target.value)}
+                    required
+                  />
+                </>
+              )
+              :
+              ''
+            }
             
             <label htmlFor="" className='label-content'>About Us <span className='mandatory-star'>*</span></label>
             <textarea name="" id="" className='input-content'  rows="10" value={aboutUsDecide}
@@ -305,7 +317,6 @@ const AddPostForm = ({loadingVisibility}) => {
                         className='input-content'
                         value={feeDecide}
                         onChange={(e) => setFeeDecide(e.target.value)}
-                        required
                       />
                     </>
                 )

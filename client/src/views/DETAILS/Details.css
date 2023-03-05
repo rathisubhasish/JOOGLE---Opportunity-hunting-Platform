@@ -91,6 +91,7 @@
 .detail-post-org{
     font-size: 1.1rem;
     color: red;
+    text-transform: uppercase;
 }
 
 .detail-label-content{
@@ -184,7 +185,7 @@
     word-wrap: break-word;
     display: flex;
     justify-content: flex-start;
-    text-align: center;
+    text-align: left;
     height: 100%;
     align-items: center;
     width: 100%;

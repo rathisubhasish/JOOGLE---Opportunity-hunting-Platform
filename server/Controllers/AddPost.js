@@ -17,8 +17,57 @@ const AddPost = async (req,res) => {
 
         // if new title, create a new post
         try{
-            var myData = req.body;
+            var myData = {
+                "postName": req.body.postName,
+                "organization": req.body.organization,
+                "startDate": req.body.startDate,
+                "endDate": req.body.endDate,
+                "aboutUs": req.body.aboutUs,
+                "responsibility": req.body.responsibility,
+                "requirements": req.body.requirements,
+                "category": req.body.category,
+                "location": req.body.location
+            }
             myData.userId = _id;
+            if(req.body.minExperience){
+                myData.minExperience = req.body.minExperience;
+            }
+            if(req.body.maxExperience){
+                myData.maxExperience = req.body.maxExperience;
+            }
+            if(req.body.category === "Hiring Challenges")
+            {
+                if(req.body.firstPrize)
+                {
+                    myData.firstPrize = req.body.firstPrize;
+                }
+                if(req.body.secondPrize)
+                {
+                    myData.secondPrize = req.body.secondPrize;
+                }
+                if(req.body.thirdPrize)
+                {
+                    myData.thirdPrize = req.body.thirdPrize;
+                }
+            }
+            else if(req.body.category === "Jobs")
+            {
+                if(req.body.salary)
+                {
+                    myData.salary = req.body.salary;
+                }
+                if(req.body.workingDays)
+                {
+                    myData.workingDays = req.body.workingDays;
+                }
+            }
+            else if(req.body.category === "Bootcamps")
+            {
+                if(req.body.fees)
+                {
+                    myData.fees = req.body.fees;
+                }
+            }
             console.log(myData);
             const newPost = new explores(myData);
             await newPost.save().then(()=>{
