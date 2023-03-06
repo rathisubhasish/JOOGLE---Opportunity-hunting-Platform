@@ -12,7 +12,7 @@ const Details = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, []);
-
+ 
   const { postId } = useParams();
   const [remainingDays, setRemainingDays] = useState("");
   const [registeredCount, setRegisteredCount] = useState(0);

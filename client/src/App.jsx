@@ -230,7 +230,7 @@ function App() {
                     :
                     (<>
                     {userLoading ? <Loading loadType='blankLoad'/> : ''}
-                    {!userLoading && <EXPLORE />} 
+                    {!userLoading && <EXPLORE />}
                     </>)
                   }
                 </>

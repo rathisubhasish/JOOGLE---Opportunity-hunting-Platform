@@ -5,10 +5,8 @@ import "./Explore.css";
 import {explore} from '../../api/api';
  
 const Explore = () => {
-
   const [exploreData, setExploreData] = useState([]);
   const [exploreLoading, setExploreLoading] = useState(true);
-
   useEffect(() => {
     window.scrollTo(0, 0)
   }, []);

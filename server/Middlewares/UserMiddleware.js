@@ -84,8 +84,7 @@ exports.validatePassword = async (req,res,next) => {
     next();
 }
 
-exports.validatePost = async (req,res,next) => {
-
+exports.validateAddPost = async (req,res,next) => {
     const checkDate = (myDate) => {
         return moment(myDate, "MM/DD/YYYY",true).isValid();
     }

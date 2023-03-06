@@ -3,13 +3,15 @@ import "./CardItem.css";
 import Img from "../../assets/images/global/cardBack.jpg";
 import { toast } from "react-toastify";
 import { useNavigate, NavLink } from "react-router-dom";
+import moment from 'moment';
 
 // functions
 import { deletePost } from "../../api/api";
 
 const CardItem = ({data, role}) => {
   const navigate = useNavigate();
-
+  const daysCalc = moment(data.endDate).diff(moment().format("MM/DD/YYYY"),'days');
+  
   const handleEditPost = (e) => {
     e.preventDefault();
     window.scrollTo({top : 0, behavior: 'smooth'});
@@ -117,7 +119,7 @@ const CardItem = ({data, role}) => {
                       timer
                     </span>
                     <span className="brief-name">
-                      3 days left
+                      {daysCalc} days left
                     </span>
                 </div>
               </div>
@@ -172,7 +174,7 @@ const CardItem = ({data, role}) => {
                             ?
                             (
                               <>
-                                {data.fee}
+                                {data.fees}
                               </>
                             )
                             :
