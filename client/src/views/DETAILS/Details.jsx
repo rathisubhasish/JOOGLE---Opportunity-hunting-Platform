@@ -1,13 +1,17 @@
-import React, {useEffect, useState} from 'react';
-import { CardItem, Filter, Header, Loading } from '../../components/components';
+import React, {useEffect, useState, useContext} from 'react';
+import { Header, Loading } from '../../components/components';
 import { useParams } from 'react-router-dom';
 import "./Details.css";
 import Img from "../../assets/images/global/card/back.jpg";
 import CImg from "../../assets/images/global/companies/bmw-2-logo-svgrepo-com.svg";
 import explorePost from '../../api/explorePost';
 import moment from 'moment';
+import { UserContext } from "../../UserContext";
+import cancelAppliedpost from '../../api/cancelAppliedPost';
+import { toast } from "react-toastify";
+import applyPost from '../../api/applyPost';
 const Details = () => { 
-
+  const {loggedInUserId} = useContext(UserContext);
   const [postDetail, setPostDetail] = useState([]);
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -20,12 +24,14 @@ const Details = () => {
   const [showWorkingDaysContainer, setWorkingDaysContainer] = useState(false);
   const [showPrizesContainer, setShowPrizesContainer] = useState(false);
   const [showFeesContainer, setShowFeesContainer] = useState(false);
+  const [alreadyApplied, setAlreadyApplied] = useState(false);
+  const [explorePostLoading, setExplorePostLoading] = useState(true);
+
   useEffect(() => { 
-    // setExploreLoading(true);
+    setExplorePostLoading(true);
     const ExplorePost = explorePost({postId})
       .then((actualData) => {
         setPostDetail(actualData.data[0]);
-        console.log(actualData.data[0]);
         const daysCalc = moment(actualData.data[0].endDate).diff(moment().format("MM/DD/YYYY"),'days');
         setRegisteredCount(actualData.data[0].registered.length);
         setRemainingDays(daysCalc);
@@ -42,22 +48,104 @@ const Details = () => {
         {
             setShowFeesContainer(true);
         }
-        // setTimeout(()=> {
-        //   setExploreLoading(false);
-        // },1000);
+
+        for(let value of Object.values(actualData.data[0].registered)) {
+            setAlreadyApplied(false);
+            if(value._id===loggedInUserId)
+            {
+                setAlreadyApplied(true);
+                break;
+            }
+        }
+        setExplorePostLoading(false);
       })
       .catch((err) => {
-        // setExploreLoading(false);
+        setExplorePostLoading(false);
         console.error(err.message)
         }
       );
     return () => ExplorePost;
-  }, []);
+  }, [alreadyApplied]);
 
+  const handleApplyPost = async (e) => {
+    e.preventDefault();
+    window.scrollTo({top : 0, behavior: 'smooth'});
+    try {
+      const res = await applyPost({postId});
+      if (res.error) toast.error(res.error, {
+        autoClose: 4000,
+        hideProgressBar: true,
+        closeButton: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      else {
+        toast.success(res.message, {
+          autoClose: 4000,
+          hideProgressBar: true,
+          closeButton: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        setAlreadyApplied(true);
+      }
+    } catch (err) {
+        setAlreadyApplied(false);
+      toast.error("Server error, please try later!", {
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeButton: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }
+
+  const handleCancelApplication = async (e) => {
+    e.preventDefault();
+    window.scrollTo({top : 0, behavior: 'smooth'});
+    try {
+      const res = await cancelAppliedpost({postId});
+      if (res.error) toast.error(res.error, {
+        autoClose: 4000,
+        hideProgressBar: true,
+        closeButton: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      else {
+        toast.success(res.message, {
+          autoClose: 4000,
+          hideProgressBar: true,
+          closeButton: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        setAlreadyApplied(false);
+      }
+    } catch (err) {
+        setAlreadyApplied(true);
+      toast.error("Server error, please try later!", {
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeButton: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }
 
   return (
     <>
+
         <Header headType="DetailHeader" headText=""/>
+        {explorePostLoading ? <Loading loadType="screenLoad"/> :''}
         <div className="details-container">
             <div className="details-items">
                 <div className="detail-cover-container">
@@ -76,7 +164,47 @@ const Details = () => {
                     <p className='detail-post-name'>{postDetail.postName}</p>
                     <p className='detail-post-org'>{postDetail.organization}</p>
                 </div>
-                
+                {
+                    remainingDays < 0
+                    ?
+                    ''
+                    :
+                    (
+                        <>
+                            {
+                                alreadyApplied
+                                ?
+                                (
+                                    <>
+                                        <div className="user-post-action">
+                                            <button
+                                                id="cancel-apply-btn"
+                                                className="floating-detail-action-btn"
+                                                onClick={handleCancelApplication}
+                                            >
+                                                Application CANCEL
+                                            </button>
+                                        </div>
+                                    </>
+                                )
+                                :
+                                (
+                                    <>
+                                        <div className="user-post-action">
+                                            <button
+                                                id="apply-btn"
+                                                className="floating-detail-action-btn"
+                                                onClick={handleApplyPost}
+                                            >
+                                                APPLY
+                                            </button>
+                                        </div>
+                                    </>
+                                )
+                            }        
+                        </>
+                    )
+                }
                 <div className="detail-brief-card-container">
                     <div className="detail-brief-card-items">
                         <div className="left-detail-brief-card">
@@ -92,7 +220,19 @@ const Details = () => {
                                 timer
                             </span>
                             <span className="detail-brief-card-name">
-                                {remainingDays} days left
+                                {
+                                    remainingDays < 0
+                                    ?
+                                    (
+                                        <p className='expired-item'>Expired</p>
+                                    )
+                                    :
+                                    (
+                                        <>
+                                            {remainingDays} days left
+                                        </>
+                                    )
+                                }
                             </span>
                         </div>
                     </div>

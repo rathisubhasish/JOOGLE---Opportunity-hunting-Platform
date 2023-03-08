@@ -9,9 +9,6 @@ import moment from 'moment';
 const EDITPOST = () => {
 
   const [editPostLoading, setEditPostLoading] = useState(false);
-  const {postId} = useParams();
-  const [fetchEditPostData, setFetchEditPostData] = useState([]);
-
   useEffect(() => {
     window.scrollTo(0, 0)
   }, []);
@@ -34,7 +31,7 @@ const EDITPOST = () => {
             </div>
             <br />
             <EditPostForm loadingVisibility={setEditPostLoading} />
-          </div>
+          </div> 
         </div>
     </>
   )

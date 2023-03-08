@@ -28,9 +28,6 @@ const Signup = async (req,res) => {
                 message: "Signup Successful, Please login to continue",
             });
         });
-        // const data = await users.find().then((data)=> {
-        //     console.log(data);
-        // });
     }
     catch(err)
     {

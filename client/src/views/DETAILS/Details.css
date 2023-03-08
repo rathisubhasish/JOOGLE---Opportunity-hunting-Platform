@@ -9,6 +9,42 @@
     text-align: center;
 }
 
+.user-post-action{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.4rem;
+}
+
+.floating-detail-action-btn{
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: 1.15rem;
+    border-radius: 20%;
+    font-weight: bold;
+    padding: 0.5rem;
+    text-transform: uppercase;
+    border: none;
+    outline: none;
+    font-family: var(--regularFont);
+}
+
+#apply-btn{
+    color: white;
+    background-color: var(--primaryBackColor);
+}
+
+#cancel-apply-btn{
+    color: white;
+    background-color: var(--secondaryColor);
+}
 .details-items{
     display: flex;
     flex-direction: column;
@@ -199,10 +235,19 @@
 /* Media queries */
 @media screen and (min-width: 768px) and (min-height: 900px) {
     
+    .floating-detail-action-btn{
+        width: 40%;
+    }
+    .detail-company-info-logo{
+        margin-top: 9.5rem;
+    }
 }
 
 @media screen and (min-width: 1280px) and (min-height: 700px) {
+    .floating-detail-action-btn{
+        width: 40%;
+    }
     .details-items{
-        width: 60%;
+        width: 50%;
     }
 }

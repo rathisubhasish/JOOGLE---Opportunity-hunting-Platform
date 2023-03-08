@@ -1,5 +1,4 @@
 const users = require('../DB/userCollection');
-
 const moment = require('moment');
 
 exports.userRegisterValidator = (req,res,next) => {
@@ -165,87 +164,108 @@ exports.validateAddPost = async (req,res,next) => {
     next();
 }
 
-// exports.validatePost = async (req,res,next) => {
-//     const today = moment(new Date()).format("MM/DD/YYYY");
+exports.validateEditPost = async (req,res,next) => {
+    const checkDate = (myDate) => {
+        return moment(myDate, "MM/DD/YYYY",true).isValid();
+    }
+    const validateStartDate = (dateInput) => {
+        const d1 = new Date(dateInput);
+        const d2 = new Date();
+        if(d1 < d2)
+        {
+            return false;
+        }
+        return true;
+    }
 
-//     const checkDate = (myDate) => {
-//         return moment(myDate, "MM/DD/YYYY").isValid();
-//     }
+    const validateEndDate = (compareDate,dateInput) => {
+        const d1 = new Date(dateInput);
+        const d2 = new Date(compareDate);
+        if(d1 < d2)
+        {
+            return false;
+        }
+        return true;
+    }
+    if('postName' in req.body)
+    {
+        req.check("postName","PostName is required").notEmpty();
+        req.check("postName")
+            .isLength({max:30})
+            .withMessage("postName should be <= 30 Letters");
+    }
+    if('organization' in req.body)
+    {
+        req.check("organization","Organization is required").notEmpty();
+    }
+    if('aboutUs' in req.body)
+    {
+        req.check("aboutUs","About Us is required!").notEmpty();
+    }
+    if('category' in req.body)
+    {
+        req.check("category","Category is required!").notEmpty();
+    }
+    if('responsibility' in req.body)
+    {
+        req.check("responsibility","Responsibility is required!").notEmpty();
+    }
+    if('requirements' in req.body)
+    {
+        req.check("requirements","Requirements is required!").notEmpty();
+    }
+    if('location' in req.body)
+    {
+        req.check("location","Location is required!").notEmpty();
+    }
 
+    if('startDate' in req.body)
+    {
+        req.check("startDate","StartDate is required!").notEmpty();
+        req.check("endDate","EndDate is required!").notEmpty();
+        if(!checkDate(req.body.startDate))
+        {
+            return res.status(400).json({
+                error: "Start/End Date should be in format mm-dd-yyyy",
+            });
+        }
+        if(!validateStartDate(req.body.startDate))
+        {
+            return res.status(400).json({
+                error: "Start Date should not be before today's date",
+            });
+        }
+    }
 
-//     const validateStartDate = (dateInput) => {
-//         if(dateInput < today){
-//             return false;
-//         }
-//         return true;
-//     } 
+    if('endDate' in req.body)
+    {
+        req.check("startDate","StartDate is required!").notEmpty();
+        req.check("endDate","EndDate is required!").notEmpty();
+        if(!checkDate(req.body.endDate))
+        {
+            return res.status(400).json({
+                error: "Start/End Date should be in format mm-dd-yyyy",
+            });
+        }
+        if(!validateEndDate(req.body.startDate,req.body.endDate))
+        {
+            return res.status(400).json({
+                error: "End Date should not be before Start's date",
+            });
+        }
+    }
 
-//     const validateEndDate = (dateInput) => {
-//         console.log(dateInput);
-//         const checkStart = moment(req.body.startDate).format("MM/DD/YYYY");
-//         console.log(checkStart);
-//         if(dateInput < checkStart)
-//         {
-//             console.log("sdfsd");
-//             return false;
-//         }
+    // check for errors
+    const Errors = req.validationErrors();
+    //if error , show the first one as it happens
+    if(Errors)
+    {
+        const firstError = Errors.map((err) => err.msg)[0];
+        return res.status(400).json({
+            error: firstError,
+        });
+    }
 
-//         return true;
-//     }
-    
-//     // itemName is not null
-//     req.check("postName","Post Name is required!").notEmpty();
-//     req.check("postName")
-//         .isLength({max:30})
-//         .withMessage("postName should be <= 30 Letters");
-    
-//     //organization is not null
-//     req.check("organization","Organization is required!").notEmpty();
-    
-//     //dates is required
-//     req.check("startDate","StartDate is required!").notEmpty();
-//     req.check("endDate","EndDate is required!").notEmpty();
-
-//     if(!checkDate(req.body.startDate) || !checkDate(req.body.endDate))
-//     {
-//         console.log(checkDate(req.body.startDate));
-//         return res.status(400).json({
-//             error: "Date should be in format mm-dd-yyyy",
-//         });
-//     }
-
-//     if(!validateStartDate(req.body.startDate))
-//     {
-//         return res.status(400).json({
-//             error: "Start Date should not be before today's date",
-//         });
-//     }
-//     console.log(validateEndDate(req.body.endDate));
-//     if(!validateEndDate(req.body.endDate))
-//     {
-//         return res.status(400).json({
-//             error: "End Date should not be before Start's date",
-//         });
-//     }
-
-//     //details is required
-//     req.check("aboutUs","About Us is required!").notEmpty();
-//     req.check("category","Category is required!").notEmpty();
-//     req.check("responsibility","Responsibility is required!").notEmpty();
-//     req.check("requirements","Requirements is required!").notEmpty();
-//     req.check("location","Location is required!").notEmpty();
-
-//     // check for errors
-//     const errors = req.validationErrors();
-//     //if error , show the first one as it happens
-//     if(errors)
-//     {
-//         const firstError = errors.map((err) => err.msg)[0];
-//         return res.status(400).json({
-//             error: firstError,
-//         });
-//     }
-
-//     //proceed to next middleware
-//     next();
-// }
+    //proceed to next middleware
+    next();
+}

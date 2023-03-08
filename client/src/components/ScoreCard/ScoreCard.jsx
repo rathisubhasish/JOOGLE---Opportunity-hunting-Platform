@@ -1,3 +1,4 @@
+//  _________________ importing modules
 import React from 'react';
 import "./ScoreCard.css";
 
@@ -30,51 +31,7 @@ const ScoreCard = ({ scoresData }) => {
                             );
                         })
                     }
-                    {/* <span className="score-card-item">
-                        <span className='score-icon-container'>
-                            <span className="material-icons score-icon">
-                                people_alt
-                            </span>
-                        </span>
-                        <span className='score-details'>
-                            <p className='score-count'>
-                                5000
-                            </p>
-                            <p className='score-info'>
-                                users
-                            </p>
-                        </span>
-                    </span>
-                    <span className="score-card-item">
-                        <span className='score-icon-container'>
-                            <span className="material-icons score-icon">
-                                people_alt
-                            </span>
-                        </span>
-                        <span className='score-details'>
-                            <p className='score-count'>
-                                5000
-                            </p>
-                            <p className='score-info'>
-                                users
-                            </p>
-                        </span>
-                    </span>
-                    <span className="score-card-item">
-                        <span className='score-icon-container'>
-                            <span className="material-icons score-icon">
-                                people_alt
-                            </span>
-                        </span>
-                        <span className='score-details'>
-                            <p className='score-count'>
-                                5000
-                            </p>
-                            <p className='score-info'>
-                                users
-                            </p>
-                        </span>
-                    </span> */}
+                    
                 </div>
                 <br />
             </div>

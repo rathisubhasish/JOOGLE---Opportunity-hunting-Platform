@@ -26,7 +26,7 @@ const AddPostForm = ({loadingVisibility}) => {
     const [secondPrizeDecide, setSecondPrizeDecide] = useState("");
     const [thirdPrizeDecide, setThirdPrizeDecide] = useState("");
     const [aboutUsDecide, setAboutUsDecide] = useState("");
-    
+     
     var todayDate = new Date().toISOString().split('T')[0];
     const handleAddPost = async (e) => {
       e.preventDefault();

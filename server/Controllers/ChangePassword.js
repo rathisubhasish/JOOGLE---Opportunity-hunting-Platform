@@ -21,7 +21,7 @@ const ChangePassword = async (req,res) => {
                             password : newHashedPassword 
                         }
                     }
-                ).exec((err,e) => {
+                ).exec((err,_) => {
                     if(err)
                     {
                         return res.status(400).json({

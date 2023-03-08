@@ -1,23 +1,26 @@
+// _________________________ importing modules
 import React, { useState } from 'react';
-import "./FormCSS/Form.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import "./FormCSS/Form.css";
 
-// functions
+// importing APIs
 import { signup } from "../../api/api";
+
 
 const SignupForm = ({loadingVisibility}) => {
   const navigate = useNavigate();
-  const [showCondition] = useState(true);
+
+  // _____________________ State Variables
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [contact, setContactNumber] = useState("");
   const [terms, setTerms] = useState(false);
-  // const [checkRole, setCheckRole] = useState(false);
+  const [showCondition] = useState(true);
   
-  // Password Validation
+  // _____________________ Password Validation
   let hasSixChar = password.length > 6;
   let hasUpperChar = /(.*[A-Z].*)/.test(password);
   let hasLowerChar = /(.*[a-z].*)/.test(password);
@@ -26,6 +29,7 @@ const SignupForm = ({loadingVisibility}) => {
   let checkContactDigit = /^\d+$/.test(contact);
   let checkContactLength = contact.length === 10;
 
+  // ____________________ Action Request
   const handleRegister = async (e) => {
     e.preventDefault();
     window.scrollTo({top : 0, behavior: 'smooth'});
@@ -56,7 +60,6 @@ const SignupForm = ({loadingVisibility}) => {
         // redirect to login
         navigate("/login");
       }
-
     } catch (err) {
       loadingVisibility(false);
       toast.error("Server error, please try later!", {
@@ -177,17 +180,6 @@ const SignupForm = ({loadingVisibility}) => {
             </span>
           </div>
           }
-
-          {/* <div className="role-container">
-            <div className="radio-item">
-              <input type="radio" name="role" id="student" value="student" />
-              <label htmlFor="" className='label-content'>Student</label>
-            </div>
-            <div className="radio-item">
-              <input type="radio" name="role" id="company" value="company"/>
-              <label htmlFor="" className='label-content'>Company</label>
-            </div>
-          </div> */}
 
           <div className="checkbox-container">
             <div className="checkbox-item">

@@ -1,8 +1,13 @@
 
 
-const explore = async () => {
+const explore = async ({getCategory}) => {
+    var requestTo = "explore";
+    if(getCategory)
+    {
+        requestTo = `explore?category=${getCategory}`;
+    }
     try{
-        const res = await fetch(`${process.env.REACT_APP_API_URL}/explore`,{
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/${requestTo}`,{
             method: "GET",
             credentials: "include",
         });

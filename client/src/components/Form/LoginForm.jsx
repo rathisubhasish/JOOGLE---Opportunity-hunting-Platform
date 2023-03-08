@@ -1,21 +1,23 @@
+// ___________________ importing modules
 import React, { useState, useContext } from 'react';
 import "./FormCSS/Form.css";
 import { useNavigate } from "react-router-dom";
 import { toast, Flip } from "react-toastify";
 
-
-// functions
+// Importing APIs and functions
 import { login } from "../../api/api";
 import { UserContext } from '../../UserContext';
-
 
 const LoginForm = ({loadingVisibility}) => {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
+  
+  // __________________ State Variables
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  // __________________ Action Request
   const handleLogin = async (e) => {
     e.preventDefault();
     window.scrollTo({top : 0, behavior: 'smooth'});
@@ -45,7 +47,7 @@ const LoginForm = ({loadingVisibility}) => {
           progress: undefined,
           transition: Flip
         });
-        setUser(res.username);
+        setUser(res.username); 
         loadingVisibility(false);
         //redirect the user to home
         navigate("/");
@@ -102,16 +104,6 @@ const LoginForm = ({loadingVisibility}) => {
               {showPassword ? "visibility" : "visibility_off"}
             </span>
           </div>
-          {/* <div className="role-container">
-            <div className="radio-item">
-              <input type="radio" name="role" id="student" value="student" />
-              <label htmlFor="" className='label-content'>Student</label>
-            </div>
-            <div className="radio-item">
-              <input type="radio" name="role" id="company" value="company"/>
-              <label htmlFor="" className='label-content'>Company</label>
-            </div>
-          </div> */}
           <br />
           <button
             disabled={!email || !password} 

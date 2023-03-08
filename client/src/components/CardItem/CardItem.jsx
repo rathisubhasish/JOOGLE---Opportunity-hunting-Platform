@@ -1,10 +1,11 @@
+// __________________ importing modules
 import React from 'react';
-import "./CardItem.css";
 import Img from "../../assets/images/global/cardBack.jpg";
 import { toast } from "react-toastify";
 import { useNavigate, NavLink } from "react-router-dom";
 import moment from 'moment';
-
+import "./CardItem.css";
+ 
 // functions
 import { deletePost } from "../../api/api";
 
@@ -12,12 +13,14 @@ const CardItem = ({data, role}) => {
   const navigate = useNavigate();
   const daysCalc = moment(data.endDate).diff(moment().format("MM/DD/YYYY"),'days');
   
+  // ______________ Edit Post Handle
   const handleEditPost = (e) => {
     e.preventDefault();
     window.scrollTo({top : 0, behavior: 'smooth'});
     navigate(`/editPost/${data._id}`);
   }
 
+  // ______________ Delete Post Handle
   const handleDeletePost = async (e) => {
     e.preventDefault();
     window.scrollTo({top : 0, behavior: 'smooth'});
@@ -70,10 +73,21 @@ const CardItem = ({data, role}) => {
                   <span className="material-icons action-item" id="post-insights-icon">
                     insights
                   </span>
-                  <span className="material-icons action-item" id="post-edit-icon"
-                  onClick={handleEditPost}>
-                    edit
-                  </span>
+                  {
+                    daysCalc < 0
+                    ?
+                    ''
+                    :
+                    (
+                      <>
+                        <span className="material-icons action-item" id="post-edit-icon"
+                        onClick={handleEditPost}>
+                          edit
+                        </span>    
+                      </>
+                    )
+                  }
+                  
                   <span className="material-icons action-item" id="post-delete-icon" onClick={handleDeletePost}>
                     delete
                   </span>
@@ -119,7 +133,21 @@ const CardItem = ({data, role}) => {
                       timer
                     </span>
                     <span className="brief-name">
-                      {daysCalc} days left
+                      {
+                        daysCalc < 0
+                        ?
+                        (
+                          <>
+                            <p className="expired-item">Expired</p>
+                          </>
+                        )
+                        :
+                        (
+                          <>
+                            {daysCalc} days left
+                          </>
+                        )
+                      }
                     </span>
                 </div>
               </div>

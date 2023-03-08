@@ -9,7 +9,7 @@ const ExploreHeader = () => {
     <>
         <header>
           <div className="explore-header-container">
-            <Back />
+            <Back/>
             <Search />            
             <Navigation navType="explore" />
           </div>

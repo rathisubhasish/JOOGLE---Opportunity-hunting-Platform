@@ -16,6 +16,14 @@ export const homeMenu = [
 
 export const exploreMenu = [
     {
+        "name":"home",
+        "icon":"home"
+    },
+    {
+        "name": "explore",
+        "icon": "explore"
+    },
+    {
         "name":"mypost",
         "icon":"article"
     },

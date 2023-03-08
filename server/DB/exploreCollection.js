@@ -1,5 +1,6 @@
 //Importing Modules
 const mongoose = require('mongoose');
+const users = require('../DB/userCollection');
 
 var postCategoryOptions = {
     values: ['Hiring Challenges', 'Jobs', 'Bootcamps', 'Others']
@@ -45,10 +46,9 @@ const ExploreSchema = new mongoose.Schema({
         required: true,
         enum: postCategoryOptions
     },
-    registered : {
-        type: Array,
-        default:[]
-    },
+    registered : [
+        {_id:{type: mongoose.Schema.Types.ObjectId}}
+    ],
     salary : {
         type: String,
     },

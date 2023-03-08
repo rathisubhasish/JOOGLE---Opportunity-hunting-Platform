@@ -16,13 +16,12 @@ const Logout = require('../Controllers/Logout');
 const ExploreDetail = require('../Controllers/ExploreDetail');
 const MyPost = require('../Controllers/MyPost');
 const EditPost = require('../Controllers/EditPost');
+const CancelApplication = require('../Controllers/CancelApplication');
 
 //Middlewares
-const {userRegisterValidator, userById, validatePassword, validateAddPost} = require('../Middlewares/UserMiddleware');
+const {userRegisterValidator, userById, validatePassword, validateAddPost, validateEditPost} = require('../Middlewares/UserMiddleware');
 const {verifyToken} = require('../Middlewares/AuthenticationMiddleware');
-const DeleteAccount = require('../Controllers/DeleteAccount');
-
-
+const ApplyPost = require('../Controllers/ApplyPost');
 
 // APIs Route
 router.get('/', (_,res) => {res.send('Hey, Welcome to JOOGLE');});
@@ -33,16 +32,12 @@ router.put('/changePassword',verifyToken,userById,validatePassword,ChangePasswor
 router.post('/logout', verifyToken, Logout);
 router.post('/explore/addPost', verifyToken, validateAddPost, userById, AddPost);
 router.get('/explorePost/:_id', verifyToken, ExploreDetail);
-router.put('/explore/editPost/:postId', verifyToken, validateAddPost, userById, EditPost);
-
-
-router.get('/profile/info', verifyToken, userById, ProfileInfo);
-
-
-router.get('/explore/myPost', verifyToken, userById, MyPost);
+router.put('/explore/editPost/:postId', verifyToken, validateEditPost, userById, EditPost);
 router.get('/explore', verifyToken, Explore);
+router.get('/profile/info', verifyToken, userById, ProfileInfo);
+router.get('/explore/myPost', verifyToken, userById, MyPost);
 router.delete('/explore/deletePost/:postId', verifyToken,userById,DeletePost);
-router.delete('/profile/deleteAccount', verifyToken,userById, DeleteAccount);
-
+router.post('/apply/post/:postId', verifyToken, userById, ApplyPost);
+router.post('/cancelApplication/post/:postId', verifyToken, userById, CancelApplication);
 
 module.exports = router;

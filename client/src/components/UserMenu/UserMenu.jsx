@@ -13,6 +13,16 @@ const UserMenu = ({menuType, visibility}) => {
     const handleUserMenuAction = async (e) => {
         
         visibility(!visibility);
+        if(e.currentTarget.id === "home")
+        {
+            e.preventDefault();
+            navigate("/");
+        }
+        if(e.currentTarget.id === "explore")
+        {
+            e.preventDefault();
+            navigate("/explore");
+        }
         if(e.currentTarget.id === "userprofile")
         {
             e.preventDefault();

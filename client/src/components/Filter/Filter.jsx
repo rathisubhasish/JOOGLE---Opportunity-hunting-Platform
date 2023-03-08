@@ -1,11 +1,11 @@
-import React  from 'react';
+import React, {useState}  from 'react';
 // import FilterPopup from '../Popup/FilterPopup';
 import "./Filter.css";
 
 const Filter = () => {
     // const [filterPopup, setFilterPopup] = useState(false);
     const handleFilter = () => {
-      alert("sdf");
+      console.log('sdffsd');
       // setFilterPopup(true);
     }
     return (

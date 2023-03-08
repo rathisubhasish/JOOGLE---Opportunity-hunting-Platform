@@ -1,8 +1,8 @@
+// ___________________ importing modules
 import React, {useState} from 'react';
-import "./Signup.css";
 import loginImg from "../../assets/images/signup/signup.svg";
-
 import {Header, Loading, Particles, SignupForm} from "../../components/components";
+import "./Signup.css";
 
 const Signup = () => {
   const [signupLoading, setSignupLoading] = useState(false);

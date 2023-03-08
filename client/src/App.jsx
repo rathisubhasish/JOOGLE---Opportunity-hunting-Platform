@@ -27,6 +27,7 @@ import {
 
 function App() {
   const [user, setUser] = useState(null);
+  const [loggedInUserId, setLoggedInUserId] = useState(null);
   const [userLoading, setUserLoading] = useState(false);
   const [scrollUp, setScrollUp] = useState(false);
 
@@ -40,6 +41,7 @@ function App() {
         }
         else{
           setUser(res.username);
+          setLoggedInUserId(res._id);
           setUserLoading(false);
         }
       })
@@ -67,7 +69,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <UserContext.Provider value={{ user, setUser }}>
+        <UserContext.Provider value={{ user, setUser ,loggedInUserId, setLoggedInUserId}}>
           <ToastContainer />
           {scrollUp && <ScrollUp />}
 

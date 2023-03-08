@@ -2,9 +2,9 @@ import React, { useState , useEffect} from 'react';
 import "./FormCSS/Form.css";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
-
+import moment from 'moment';
 // API import
-import {addPost, explorePost} from '../../api/api';
+import {addPost, editPost, explorePost} from '../../api/api';
 
 const EditPostForm = ({loadingVisibility}) => {
   const {postId} = useParams();
@@ -25,7 +25,9 @@ const EditPostForm = ({loadingVisibility}) => {
   const [LocationDecide, setLocationDecide] = useState("");
   const [minExperienceDecide, setMinExperienceDecide] = useState("");
   const [maxExperienceDecide, setMaxExperienceDecide] = useState("");
-  
+  const [startDateInputTypeManage, setStartDateInputTypeManage] = useState(false);
+  const [endDateInputTypeManage, setEndDateInputTypeManage] = useState(false);
+
   useEffect(() => { 
     // setExploreLoading(true);
     const ExplorePost = explorePost({postId})
@@ -77,11 +79,13 @@ const EditPostForm = ({loadingVisibility}) => {
       e.preventDefault();
       window.scrollTo({top : 0, behavior: 'smooth'});
       loadingVisibility(true);
+      const StartDateFormatted = moment(startDate).format("MM/DD/YYYY");
+      const EndDateFormatted = moment(endDate).format("MM/DD/YYYY");
       const postData = {
         "postName": postName,
         "organization": organizationDecide,
-        "startDate": startDate,
-        "endDate": endDate,
+        "startDate": StartDateFormatted,
+        "endDate": EndDateFormatted,
         "aboutUs": aboutUsDecide,
         "category": categoryDecide,
         "responsibility": ResponsibilityDecide,
@@ -96,13 +100,22 @@ const EditPostForm = ({loadingVisibility}) => {
         delete postData.salary;
         setSalarySelection("");
       }
-      if(feeDecide && categoryDecide === "Bootcamps")
+      if(workingDayDecide && categoryDecide === "Jobs")
       {
-        postData.fee = feeDecide;
+        postData.workingDays = workingDayDecide;
       }
       else
       {
-        delete postData.fee;
+        delete postData.workingDays;
+        setWorkingDayDecide("");
+      }
+      if(feeDecide && categoryDecide === "Bootcamps")
+      {
+        postData.fees = feeDecide;
+      }
+      else
+      {
+        delete postData.fees;
         setFeeDecide("");
       }
       if(firstPrizeDecide && categoryDecide === "Hiring Challenges")
@@ -140,67 +153,63 @@ const EditPostForm = ({loadingVisibility}) => {
       {
         postData.maxExperience = maxExperienceDecide;
       }
-      if(workingDayDecide)
-      {
-        postData.workingDays = workingDayDecide;
-      }
       console.log(postData);
       
-    //   try {
-    //     const res = await addPost(postData);
-    //     if (res.error){
-    //       loadingVisibility(false);
-    //       toast.error(res.error, {
-    //       autoClose: 4000,
-    //       hideProgressBar: true,
-    //       closeButton: false,
-    //       pauseOnHover: true,
-    //       draggable: true,
-    //       progress: undefined,
-    //     });
-    //     }
-    //     else {
-    //       loadingVisibility(false);
-    //       toast.success(res.message, {
-    //         autoClose: 4000,
-    //         hideProgressBar: true,
-    //         closeButton: false,
-    //         pauseOnHover: true,
-    //         draggable: true,
-    //         progress: undefined,
-    //       });
-    //       setPostName("");
-    //       setOrganizationSelection("");
-    //       setStartDate("");
-    //       setEndDate("");
-    //       setAboutUsDecide("");
-    //       setCategorySelection("");
-    //       setSalarySelection("");
-    //       setResponsibilityDetail("");
-    //       setRequirementsDetail("");
-    //       setLocationDecide("");
-    //       setMinExperienceDecide("");
-    //       setMaxExperienceDecide("");
-    //       setWorkingDayDecide("");
-    //       setFeeDecide("");
-    //       setFirstPrizeDecide("");
-    //       setSecondPrizeDecide("");
-    //       setThirdPrizeDecide("");
-    //       // redirect to home
-    //       navigate("/");
-    //     }
+      try {
+        const res = await editPost(postId,postData);
+        if (res.error){
+          loadingVisibility(false);
+          toast.error(res.error, {
+          autoClose: 4000,
+          hideProgressBar: true,
+          closeButton: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        }
+        else {
+          loadingVisibility(false);
+          toast.success(res.message, {
+            autoClose: 4000,
+            hideProgressBar: true,
+            closeButton: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+          setPostName("");
+          setOrganizationSelection("");
+          setStartDate("");
+          setEndDate("");
+          setAboutUsDecide("");
+          setCategorySelection("");
+          setSalarySelection("");
+          setResponsibilityDetail("");
+          setRequirementsDetail("");
+          setLocationDecide("");
+          setMinExperienceDecide("");
+          setMaxExperienceDecide("");
+          setWorkingDayDecide("");
+          setFeeDecide("");
+          setFirstPrizeDecide("");
+          setSecondPrizeDecide("");
+          setThirdPrizeDecide("");
+          // redirect to home
+          navigate("/myPost");
+        }
   
-    //   } catch (err) {
-    //     loadingVisibility(false);
-    //     toast.error("Server error, please try later!", {
-    //       autoClose: 2000,
-    //       hideProgressBar: true,
-    //       closeButton: false,
-    //       pauseOnHover: true,
-    //       draggable: true,
-    //       progress: undefined,
-    //     });
-    //   }
+      } catch (err) {
+        loadingVisibility(false);
+        toast.error("Server error, please try later!", {
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeButton: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
     }
     // const todayDate = new Date(Date.now()).toLocaleDateString();
     return (
@@ -214,7 +223,17 @@ const EditPostForm = ({loadingVisibility}) => {
               className='input-content'
               value={postName}
               maxLength="30"
-              onChange={(e) => setPostName(e.target.value)}
+              onChange={(e) => {
+                if(e.target.value === ' ')
+                {
+                  setPostName("");
+                }
+                else
+                {
+                setPostName(e.target.value)
+                }
+                }
+              }
               required
             />
             <label htmlFor="" className='label-content'>Enter Organization <span className='mandatory-star'>*</span></label>
@@ -223,28 +242,82 @@ const EditPostForm = ({loadingVisibility}) => {
               placeholder='Enter Organization Name'
               className='input-content'
               value={organizationDecide}
-              onChange={(e) => setOrganizationSelection(e.target.value)}
+              onChange={(e) => {
+                if(e.target.value === ' ')
+                  {
+                    setOrganizationSelection("");
+                  }
+                else
+                  {
+                  setOrganizationSelection(e.target.value) 
+                  }
+                }
+              }
               required
             />
             <label htmlFor="" className='label-content'>Registration Open Date <span className='mandatory-star'>*</span></label>
-            <input
-              type="date"
-              className='input-content'
-              min={todayDate}
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-              required
-            />
+            {
+              startDateInputTypeManage
+              ?
+              (
+                <>
+                  <input
+                    type="date"
+                    className='input-content'
+                    min={todayDate}
+                    value={startDate}
+                    onBlur={() => setStartDateInputTypeManage(false)}
+                    onChange={(e) => {setStartDate(e.target.value); setStartDateInputTypeManage(false)}}
+                    required
+                  />
+                </>
+              )
+              :
+              (
+                <>
+                  <input
+                    type="text"
+                    readOnly
+                    className='input-content'
+                    value={moment(startDate).format("MM/DD/YYYY")}
+                    onFocus={()=> setStartDateInputTypeManage(true)}
+                    required
+                  />
+                </>
+              )
+            }
+            
             <label htmlFor="" className='label-content'>Registration Close Date <span className='mandatory-star'>*</span></label>
-            <input
-              type="date"
-              placeholder={endDate}
-              className='input-content'
-              min="02/15/2023"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-              required
-            />
+            {
+              endDateInputTypeManage
+              ?
+              (
+                <>
+                  <input
+                  type="date"
+                  className='input-content'
+                  min={startDate}
+                  value={endDate}
+                  onBlur={() => setEndDateInputTypeManage(false)}
+                  onChange={(e) => {setEndDate(e.target.value); 
+                  setEndDateInputTypeManage(false)}}
+                  required
+                  />
+                </>
+              )
+              :
+              (
+                <>
+                  <input
+                    type="text"
+                    readOnly
+                    className='input-content'
+                    value={moment(endDate).format("MM/DD/YYYY")}
+                    onFocus={()=> setEndDateInputTypeManage(true)}
+                  />
+                </>
+              )
+            }
             
             <label htmlFor="" className='label-content'>About Us <span className='mandatory-star'>*</span></label>
             <textarea name="" id="" className='input-content'  rows="10" value={aboutUsDecide}
@@ -368,7 +441,17 @@ const EditPostForm = ({loadingVisibility}) => {
               type="text"
               className='input-content'
               value={LocationDecide}
-              onChange={(e) => setLocationDecide(e.target.value)}
+              onChange={(e) => {
+                if(e.target.value === ' ')
+                  {
+                    setLocationDecide("");
+                  }
+                else
+                  {
+                    setLocationDecide(e.target.value) 
+                  }
+                }
+              }
               required
             />
             <label htmlFor="" className='label-content'>Experience</label>

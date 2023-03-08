@@ -26,7 +26,7 @@ const ADDPOST = () => {
             </div>
             <br />
             <AddPostForm loadingVisibility={setAddPostLoading}/>
-          </div>
+          </div> 
         </div>
     </>
   )

@@ -1,0 +1,14 @@
+
+const applyPost = async ({postId}) => {
+    try{
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/apply/post/${postId}`,{
+            method: "POST",
+            credentials: "include",
+        });
+        return await res.json();
+    } catch(err) {
+        throw new Error("unable to fetch data");
+    }
+};
+
+module.exports = applyPost;
