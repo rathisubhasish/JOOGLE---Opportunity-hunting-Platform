@@ -10,7 +10,7 @@ MERN stack is the idea of using Javascript/Node for fullstack web development.
 
 ## clone or download
 ```terminal
-$ git clone https://github.com/rathisubhasish/JOOGLE---Opportunity-hunting-Platform.git
+$ git clone https://github.com/rathisubhasish/JOOGLE-Opportunity-hunting-Platform-.git
 $ yarn # or npm i
 ```
 
