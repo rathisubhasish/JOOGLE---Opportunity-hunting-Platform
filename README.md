@@ -63,7 +63,7 @@ $ echo "JWT_SECRET=YOUR_JWT_SECRET" >> src/.env
 $ echo "PORT=YOUR_PORT" >> src/.env
 $ echo "DB_URL=YOUR_MONGODB_URL" >> src/.env
 ```
-
+ 
 ### Start
 
 ```terminal
