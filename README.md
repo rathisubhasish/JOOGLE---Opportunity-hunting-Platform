@@ -1,12 +1,24 @@
 <h1 align="center">
 JOOGLE (Opportunistic Platform)
 </h1>
+<h6 align="center">A MERN Stack based web application.</h6>
 <p align="center">
-MongoDB, ExpressJS, React, Nodejs
+MongoDB, ExpressJS, React, NodeJS
 </p>
 
 > MERN is a fullstack implementation in MongoDB, Expressjs, React/Redux, Nodejs.
 MERN stack is the idea of using Javascript/Node for fullstack web development.
+
+<br>
+
+> <b>Joogle</b> is a opportunity searching platform which help us to fill the communication-gap between the job seeker and the hiring companies, also the learning opportunities like Bootcamp,etc. It is a fully responsive MERN based web application.
+
+<br>
+
+> Joogle provides the explore to Jobs, Hiring Challenges, Bootcamps, etc. We can perform multiple operations like example - .
+> <ul><li>Login</li><li>Signup</li><li>Explore Opportunity</li><li>Apply/Enroll the opportunity post</li><li>Create/Organise a opportunity via post</li><li>Edit the post created for others</li><li>Delete the post created</li><li>Withdraw the application from  competition</li><li>Review the people enrolled in your created oppotunity post</li><li>Time based workflow</li><li>Easy tracking system</li></ul><b>and much more via using 12+ APIs</b><br><strong>Screenshots of project is attached at the last section.</strong>
+
+
 
 ## clone or download
 ```terminal
