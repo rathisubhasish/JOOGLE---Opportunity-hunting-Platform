@@ -2,7 +2,7 @@
 JOOGLE (Opportunistic Platform)
 </h1>
 <p align="center">
-MongoDB, Expressjs, React, Nodejs
+MongoDB, ExpressJS, React, Nodejs
 </p>
 
 > MERN is a fullstack implementation in MongoDB, Expressjs, React/Redux, Nodejs.
